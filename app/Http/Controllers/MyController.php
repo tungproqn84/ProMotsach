@@ -17,7 +17,7 @@ class MyController extends Controller
         $slide=Slide::all();
         $sale= Product::where('PSale', '<>' ,0)->limit(3)->get();
         $hot=Product::orderby('PBuy', 'desc')->limit(3)->get();
-        return view('index', compact('product', 'cat', 'slide', 'sale', 'hot'));
+        return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
     }
     public function getcart()
     {
@@ -28,7 +28,7 @@ class MyController extends Controller
         $cat=Category::all();
         $slide=Slide::all();
         $product=Product::where('PID', $id)->first();
-        return view('detailproduct', compact('product', 'cat', 'slide'));
+        return view('customer/detailproduct', compact('product', 'cat', 'slide'));
     }
     public function getsee($id){
         if($id==1)
@@ -43,6 +43,6 @@ class MyController extends Controller
             $product=Product::paginate(6);
         $cat=Category::all();
         $slide=Slide::all();
-        return view('xemthempro', compact('product', 'cat', 'slide'));
+        return view('customer/xemthempro', compact('product', 'cat', 'slide'));
     }
 }

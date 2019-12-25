@@ -1,4 +1,4 @@
-@extends('master')
+@extends('customer/master')
 @section('content')
 <!DOCTYPE html>
 <html>
