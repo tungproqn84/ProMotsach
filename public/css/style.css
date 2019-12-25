@@ -1,0 +1,89 @@
+.beta-slides-quote {
+    text-align:center
+    }
+
+    .beta-slides-quote .beta-arrow-left,.beta-slides-quote .beta-arrow-right {
+    margin-top:30px;
+    display:inline-block;
+    position:relative;
+    width:38px;
+    height:38px;
+    border:1px solid #e1e1e1;
+    line-height:36px
+    }
+
+    .beta-slides-quote .beta-arrow-left i,.beta-slides-quote .beta-arrow-right i {
+    font-size:10px
+    }
+
+    .beta-slides-quote .beta-arrow-left:hover i,.beta-slides-quote .beta-arrow-right:hover i {
+    color:#f90
+    }
+
+    /* ==========================================================================
+        16. BETA SLIDES TWITTER
+    ============================================================================= */
+
+
+    .beta-slides-twitter {
+    text-align:center;
+    color:#fff
+    }
+
+    .beta-slides-twitter h5 {
+    color:#fff;
+    line-height:110%
+    }
+
+    .beta-slides-twitter h5 a {
+    color:#3a5c83
+    }
+
+    .beta-slides-twitter h5 a:hover {
+    text-decoration:underline
+    }
+
+    .beta-slides-twitter .beta-arrow-left,.beta-slides-twitter .beta-arrow-right {
+    margin-top:30px;
+    display:inline-block;
+    position:relative;
+    width:38px;
+    height:38px;
+    border:1px solid #3a5c83;
+    line-height:36px
+    }
+
+    .beta-slides-twitter .beta-arrow-left i,.beta-slides-twitter .beta-arrow-right i {
+    font-size:10px;
+    color:#3a5c83
+    }
+
+    .beta-slides-twitter .beta-arrow-left:hover i,.beta-slides-twitter .beta-arrow-right:hover i {
+    color:#fff
+    }
+
+    .beta-filter a {
+    display:inline-block;
+    padding:5px 15px
+    }
+
+    .beta-filter a.is-active {
+    border:1px solid #61acc9
+    }
+
+    .beta-filter-body {
+    margin-top:25px
+    }
+
+    .beta-filter-body li {
+    display:inline-block;
+    float:left;
+    height:320px;
+    position:relative;
+    overflow:hidden;
+    -webkit-transition:all .2s ease-in-out;
+    -moz-transition:all .2s ease-in-out;
+    -o-transition:all .2s ease-in-out;
+    -ms-transition:all .2s ease-in-out;
+    transition:all .2s ease-in-out
+    }
