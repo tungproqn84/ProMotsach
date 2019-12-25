@@ -1,0 +1,32 @@
+#image{
+    height: 300px;
+}
+#imagesale{
+    height: 150px;
+    width: 46%;
+}
+h4{
+    margin-left: 2% !important;
+    color: dodgerblue !important;
+}
+.thumbnails{
+    margin-left: 4% !important;
+}
+.checked {
+    color: orange;
+  }
+.well{
+    margin-top: 5%;
+    font-size: 20px !important;
+}
+#btn{
+    width: 50%;
+    font-size: 18px;
+}
+#name{
+    font-size: 20px;
+}
+.rating{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
