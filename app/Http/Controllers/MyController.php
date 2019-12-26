@@ -7,9 +7,29 @@ use App\Product;
 use App\Saleproduct;
 use App\Slide;
 use Illuminate\Http\Request;
+use App\Portfolio;
 
 class MyController extends Controller
 {
+
+
+// CONTROLLER ADMIN
+
+    // gọi trang chủ
+    public function getHomePage() {
+        return view('admin/home');
+    }
+    // gọi trang danh mục
+    public function getPortfolioPage() {
+        $portfolios = Portfolio::all();
+        return view('admin/portfolio', compact('portfolios'));
+    }
+    
+    public function AddPortfolio() {
+        return view('admin/addPortfolio');
+    }
+
+// CONTROLLER CUSTOMER
     public function getindex()
     {
         $product=Product::where('PSale', 0)->limit(3)->get();

@@ -15,6 +15,28 @@ use Illuminate\Support\Facades\Route;
 Route:: get('/', function () {
     return view('welcome');
 });
+
+
+// ROUTE ADMIN
+
+Route::get('admin', [
+    'as' => 'admin-home',
+    'uses' => 'MyController@getHomePage'
+]);
+
+Route::get('portfolio', [
+    'as' => 'admin-portfolio',
+    'uses' => 'MyController@getPortfolioPage'
+]);
+
+// route thêm danh mục
+Route::GET('/add-portfolio', [
+    'as' => 'admin-add-portfolio',
+    'uses' => 'MyController@AddPortfolio',
+
+]);
+
+// ROUTE CUSTOMER
 Route:: get('/index', [
     'as'=>'home',
     'uses'=>'MyController@getindex'
@@ -28,3 +50,4 @@ Route::get('/seeadd/{id}', [
     'as'=>'see',
     'uses'=>'MyController@getsee'
 ]);
+
