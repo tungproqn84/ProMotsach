@@ -1,4 +1,4 @@
-@extends('master')
+@extends('customer/master')
 @section('content')
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,13 @@
         </div>
         <div class="col-md-9">
             <div class="row" id=box-product>
-                <h4>Sản phẩm<hr></h4>
+                @if($id==1)
+                <h4>Sản phẩm bán chạy<hr></h4>
+                @elseif($id==2)
+                    <h4>Sản phẩm khuyến mãi<hr></h4>
+                @else
+                <h4>Sản phẩm đang bán<hr></h4>
+                @endif
                 <ul class="thumbnails">
                     @foreach ($product as $pd )
                     <li class="span3">
@@ -67,6 +73,7 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
 @endsection

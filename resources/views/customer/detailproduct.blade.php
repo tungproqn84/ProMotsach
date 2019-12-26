@@ -1,4 +1,4 @@
-@extends('master')
+@extends('customer/master')
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div class="container">
@@ -22,11 +22,10 @@
 							</div>
 							</div>
                         <!-- Split button -->
-                        <form action="" method="post">
+
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="number" min="0" max="5" value="0" name="amount">
-                            <button type="submit" class="btn btn-primary" id="btn">Đặt ngay</button>
-                        </form>
+                        <a href="../cart/{{$product->PID}}"> <button type="button" class="btn btn-primary" id="btn"><i class="fa fa-shopping-cart"></i> Đặt ngay</button></a>
+
                     </div>
                 </div>
             </div>

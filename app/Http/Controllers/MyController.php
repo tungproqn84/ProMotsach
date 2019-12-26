@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\Category;
+use App\Order;
 use App\Product;
 use App\Saleproduct;
 use App\Slide;
 use Illuminate\Http\Request;
 use App\Portfolio;
-
+use Cart;
 class MyController extends Controller
 {
 
@@ -24,7 +26,7 @@ class MyController extends Controller
         $portfolios = Portfolio::all();
         return view('admin/portfolio', compact('portfolios'));
     }
-    
+
     public function AddPortfolio() {
         return view('admin/addPortfolio');
     }
@@ -37,28 +39,17 @@ class MyController extends Controller
         $slide=Slide::all();
         $sale= Product::where('PSale', '<>' ,0)->limit(3)->get();
         $hot=Product::orderby('PBuy', 'desc')->limit(3)->get();
-<<<<<<< HEAD
-        return view('index', compact('product', 'cat', 'slide', 'sale', 'hot'));
-=======
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
-    }
-    public function getcart()
-    {
-
     }
     public function detailproduct($id)
     {
         $cat=Category::all();
         $slide=Slide::all();
         $product=Product::where('PID', $id)->first();
-<<<<<<< HEAD
-        return view('detailproduct', compact('product', 'cat', 'slide'));
-=======
         return view('customer/detailproduct', compact('product', 'cat', 'slide'));
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
     }
-    public function getsee($id){
+    public function getsee($id)
+    {
         if($id==1)
         {
             $product=Product::where('PSale', '<>', 0)->paginate(6);
@@ -71,10 +62,77 @@ class MyController extends Controller
             $product=Product::paginate(6);
         $cat=Category::all();
         $slide=Slide::all();
-<<<<<<< HEAD
-        return view('xemthempro', compact('product', 'cat', 'slide'));
-=======
-        return view('customer/xemthempro', compact('product', 'cat', 'slide'));
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'id'));
     }
+    //cart
+    public function getcart()
+    {
+        return view('customer/cart');
+    }
+    public function addcart($id)
+    {
+        $product = Product::where('PID', $id)-> first();
+        // print_r($product->PName); die();
+        if($product->PSale==0)
+            $price=$product->PPrice;
+        else
+            $price=$product->PPrice - $product->PPrice*$product->PSale;
+        Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'weight' =>0));
+        $cart = Cart::content();
+        return view('customer/cart', array('cart' => $cart,'product'=>$product));
+    }
+    public function getdelete($id)
+    {
+    $cart= Cart::content();
+        $rowId= Cart::search(function ($cartItem, $rowId) use($cart,$id) {
+            return $cartItem->id==$id;
+        })->first();
+        Cart::remove($rowId);
+        return view('customer/cart');
+    }
+    public function deletecart()
+    {
+        Cart::destroy();
+        return redirect(Route('home'));
+    }
+    //update giỏ hàng
+    public function updatecart(Request $rq)
+    {
+        $cart=Cart::content();
+        $id=$rq->id;
+        $rowId = Cart::search(function ($cart, $key) use($id) {
+            return $cart->id == $id;
+         })->first();
+         printf($rowId);die();
+        Cart::update($rowId[0], $rq->id);
+        printf($rq->id); die();
+    }
+    //mua sản phẩm
+    public function buy(){
+        $cart=Cart::content();
+        $total=Cart::subtotal();
+        $hd= new Bill();
+        $hd->CusID=Session::get('id');
+        $hd->BillDate= now();
+        $hd->Total=$total;
+        $hd->save();
+        foreach($cart as $sp){
+            $idhd=bills::max('ID');
+            $detail= new Order();
+            $detail->OrderID=$idhd;
+            $detail->PID=$sp->id;
+            $detail->Amount=$sp->qty;
+            $detail->save();
+            $product=product::find($detail->PID);
+            $product->soluong=$product->PAmount - $detail->Amount;
+            $product->save();
+            }
+            // //gửi mail
+            // $user = User::find(Session::get('id'));
+            // $email = new UserRegistered($user);
+            // Mail::to($user->email)->send($email);
+        Cart::destroy();
+        return redirect(Route('home'));
+    }
+
 }
