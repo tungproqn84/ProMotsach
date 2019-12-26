@@ -24,9 +24,14 @@ class MyController extends Controller
         $portfolios = Portfolio::all();
         return view('admin/portfolio', compact('portfolios'));
     }
-    
+    // Thêm danh mục
     public function AddPortfolio() {
         return view('admin/addPortfolio');
+    }
+    // Hiển thị thông tin danh mục
+    public function ShowPortfolio($id) {
+        $portfolio = Portfolio::where('PortfolioID', $id)->first();
+        return view('admin/showPortfolio', compact('portfolio'));
     }
 
 // CONTROLLER CUSTOMER
@@ -37,11 +42,7 @@ class MyController extends Controller
         $slide=Slide::all();
         $sale= Product::where('PSale', '<>' ,0)->limit(3)->get();
         $hot=Product::orderby('PBuy', 'desc')->limit(3)->get();
-<<<<<<< HEAD
-        return view('index', compact('product', 'cat', 'slide', 'sale', 'hot'));
-=======
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
     }
     public function getcart()
     {
@@ -52,11 +53,7 @@ class MyController extends Controller
         $cat=Category::all();
         $slide=Slide::all();
         $product=Product::where('PID', $id)->first();
-<<<<<<< HEAD
-        return view('detailproduct', compact('product', 'cat', 'slide'));
-=======
         return view('customer/detailproduct', compact('product', 'cat', 'slide'));
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
     }
     public function getsee($id){
         if($id==1)
@@ -71,10 +68,6 @@ class MyController extends Controller
             $product=Product::paginate(6);
         $cat=Category::all();
         $slide=Slide::all();
-<<<<<<< HEAD
-        return view('xemthempro', compact('product', 'cat', 'slide'));
-=======
         return view('customer/xemthempro', compact('product', 'cat', 'slide'));
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
     }
 }

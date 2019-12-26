@@ -16,29 +16,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-
     <div class="container">
-        <div class="row" id="FormAddPortfolio">
-            <div class="col-8" id="titleBox"><span>THÊM DANH MỤC</span><hr></div>
-            <div class="col-8">
-                <label for="PortfolioName" value="">Tên danh mục</label><br>
-                <input type="text" name="PortfolioName" id="PortfolioName">
-            </div>
-            <div class="col-8">
-                <label for="PortfolioDescription">Mô tả</label><br>
-                <textarea  name="PortfolioDescription" id="PortfolioDescription"></textarea><hr>
-            </div>
-            <hr>
-            <div class="col-8">
-                <div class="row" id="button">
-                    <div class="col-6">
-                        <button class="btn btn-primary">Tạo mới danh mục</button>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-danger">Hủy bỏ</button>
-                    </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12" id="title"><span>Chi tiết danh mục</span><hr></div>
+                </div>
+                <div class="row">
+                    <ul>
+                        @foreach($portfolio as $portfolio)
+                        <li><span>Danh mục: {{$portfolio->PortfolioName}}</span></li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
+            <div class="col-sm-4">thao tác</div>
         </div>
     </div>
 
