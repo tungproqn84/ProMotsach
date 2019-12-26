@@ -39,7 +39,8 @@
                             @foreach($portfolios as $portfolio)
                                 <tr>
                                     <td>{{$portfolio->count()}}</td>
-                                    <td>{{$portfolio->PortfolioName}}</td>
+                                    <!-- <td><a href="{{ route('admin-show-portfolio', $portfolio->PortfolioID) }}" id="showInfo">{{$portfolio->PortfolioName}}</a></td> -->
+                                    <td><span id ="showInfo">{{ $portfolio->PortfolioName }}</span></td>
                                     @if($portfolio->PortfolioStatus==0)
                                         <td style="color:red">Ngừng hoạt động</td>
                                     @else
