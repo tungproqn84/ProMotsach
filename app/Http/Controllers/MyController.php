@@ -29,8 +29,8 @@ class MyController extends Controller
         return view('admin/addPortfolio');
     }
     // Hiển thị thông tin danh mục
-    public function ShowPortfolio($id) {
-        $portfolio = Portfolio::where('PortfolioID', $id)->first();
+    public function ShowPortfolio($portfolio_id) {
+        $portfolio = Portfolio::where('PortfolioID',$portfolio_id)->get();
         return view('admin/showPortfolio', compact('portfolio'));
     }
 

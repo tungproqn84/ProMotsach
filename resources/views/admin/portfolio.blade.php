@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/admin/portfolio.css')}}">
     <script rel="javascript" type="text/javascript" href="js/jquery-1.11.3.min.js"></script>
     <!-- <script type="text/javascript" src="{{asset('js/admin/portfolio.js')}}"></script> -->
@@ -39,8 +40,12 @@
                             @foreach($portfolios as $portfolio)
                                 <tr>
                                     <td>{{$portfolio->count()}}</td>
+                                    <!-- giữ id danh mục -->
                                     <!-- <td><a href="{{ route('admin-show-portfolio', $portfolio->PortfolioID) }}" id="showInfo">{{$portfolio->PortfolioName}}</a></td> -->
-                                    <td><span id ="showInfo">{{ $portfolio->PortfolioName }}</span></td>
+                                    <td>
+                                        <span class="showInfo" style="cursor: pointer;" onclick="show({{ $portfolio->PortfolioID }})">{{ $portfolio->PortfolioName }}</span>
+                                        <!-- <input type="text" id="port_id" value="{{ $portfolio->PortfolioID }}"> -->
+                                    </td>
                                     @if($portfolio->PortfolioStatus==0)
                                         <td style="color:red">Ngừng hoạt động</td>
                                     @else

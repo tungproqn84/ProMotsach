@@ -36,7 +36,7 @@ Route::GET('/add-portfolio', [
 
 ]);
 // route hiển thị thông tin danh mục
-Route::GET('show-portfolio/{id}', [
+Route::GET('show-portfolio/{portfolio_id}', [
     'as' => 'admin-show-portfolio',
     'uses' => 'MyController@ShowPortfolio',
 
