@@ -18,9 +18,32 @@
                     <div class="col-sm-12" id="title"><span>Chi tiết danh mục</span><hr></div>
                 </div>
                 <div class="row">
-                    <ul>
+                    <ul id="portfolioInfomation">
                     @foreach($portfolio as $port)
-                        <li><span>Danh mục: {{$port->PortfolioName}}</span></li>
+                        <li>
+                            <label for="">Danh mục: </label>
+                            <span>{{$port->PortfolioName}}</span>
+                        </li>
+                        <li>
+                            <label>Trạng thái: </label>
+                            @if($port->PortfolioStatus == 1)
+                                <span>Đang hoạt động</span>
+                            @else
+                                <span>Đã ngừng hoạt động</span>
+                            @endif
+                        </li>
+                        <li>
+                            <label>Thể loại sách:</label>
+                        </li>
+                        <li>
+                            <label>Tổng số lượng sách:</label>
+                        </li>
+                        <li>
+                            <label>Số lượt tìm kiếm trung bình mỗi tháng:</label>
+                        </li>
+                        <li>
+                            <label>Doanh thu trung bình hàng tháng:</label>
+                        </li>
                     @endforeach
                     </ul>
                 </div>

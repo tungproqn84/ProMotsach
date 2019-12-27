@@ -60,3 +60,14 @@
 #FormAddPortfolio button {
     width: 100%;
 }
+
+
+#portfolioInfomation label {
+    width: 60%;
+    font-size: 16px;
+}
+
+#portfolioInfomation {
+    list-style: none;
+    font-size: 18px;
+}
