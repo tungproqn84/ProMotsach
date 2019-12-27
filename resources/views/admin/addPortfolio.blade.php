@@ -19,17 +19,17 @@
 
     <div class="container">
         <div class="row" id="FormAddPortfolio">
-            <div class="col-8" id="titleBox"><span>THÊM DANH MỤC</span><hr></div>
-            <div class="col-8">
+            <div class="col-sm-9 col-12" id="titleBox"><span>THÊM DANH MỤC</span><hr></div>
+            <div class="col-sm-9 col-12">
                 <label for="PortfolioName" value="">Tên danh mục</label><br>
                 <input type="text" name="PortfolioName" id="PortfolioName">
             </div>
-            <div class="col-8">
+            <div class="col-sm-9 col-12">
                 <label for="PortfolioDescription">Mô tả</label><br>
                 <textarea  name="PortfolioDescription" id="PortfolioDescription"></textarea><hr>
             </div>
             <hr>
-            <div class="col-8">
+            <div class="col-sm-9 col-12">
                 <div class="row" id="button">
                     <div class="col-6">
                         <button class="btn btn-primary">Tạo mới danh mục</button>

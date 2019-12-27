@@ -20,45 +20,49 @@ Route:: get('/', function () {
 // ROUTE ADMIN
 
 Route::get('admin', [
-    'as' => 'admin-home',
+    'as'   => 'admin-home',
     'uses' => 'MyController@getHomePage'
 ]);
 
 Route::get('portfolio', [
-    'as' => 'admin-portfolio',
+    'as'   => 'admin-portfolio',
     'uses' => 'MyController@getPortfolioPage'
 ]);
 
 // route thêm danh mục
 Route::GET('/add-portfolio', [
-    'as' => 'admin-add-portfolio',
-    'uses' => 'MyController@AddPortfolio',
+    'as'   => 'admin-add-portfolio',
+    'uses' => 'MyController@AddPortfolio'
 
 ]);
 // route hiển thị thông tin danh mục
 Route::GET('show-portfolio/{portfolio_id}', [
-    'as' => 'admin-show-portfolio',
-    'uses' => 'MyController@ShowPortfolio',
-
+    'as'   => 'admin-show-portfolio',
+    'uses' => 'MyController@ShowPortfolio'
+]);
+// route sản phẩm
+Route::GET('/product', [
+    'as'   => 'admin-product',
+    'uses' => 'MyController@getProductPage'
 ]);
 
 // ROUTE CUSTOMER
 Route:: get('/index', [
-    'as'=>'home',
-    'uses'=>'MyController@getindex'
+    'as'   => 'home',
+    'uses' => 'MyController@getindex'
 ] );
 Route::get('/cart',[
-    'as'=>'cart',
-    'uses'=>'MyController@getcart'
+    'as'   => 'cart',
+    'uses' => 'MyController@getcart'
 ]);
-Route::get('/detailproduct/{id}', 'MyController@detailproduct');
-Route::get('/seeadd/{id}', [
-    'as'=>'see',
-    'uses'=>'MyController@getsee'
+Route:: get('/detailproduct/{id}', 'MyController@detailproduct');
+Route:: get('/seeadd/{id}', [
+    'as'   => 'see',
+    'uses' => 'MyController@getsee'
 ]);
-Route::get('/cart/{id}', 'MyController@addcart');
-Route::get('/delete/{id}','MyController@getdelete');
-Route::get('/xoa', 'MyController@deletecart');
-Route::get('/update','MyController@updatecart');
-Route::post('/update','MyController@updatecart');
+Route:: get('/cart/{id}', 'MyController@addcart');
+Route:: get('/delete/{id}','MyController@getdelete');
+Route:: get('/xoa', 'MyController@deletecart');
+Route:: get('/update','MyController@updatecart');
+Route:: post('/update','MyController@updatecart');
 
