@@ -74,7 +74,7 @@
                         <div class="caption">
                         <center><h5>{{$pd->PName}}</h5></center>
                         <center>{{number_format($pd->PPrice)}}</center>
-                        <p align="center"><a href="../detailproduct/" class="btn btn-primary btn-block">Detail</a></p>
+                        <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
                         </div>
                     </div>
                     </li>
@@ -93,7 +93,7 @@
                         <div class="caption">
                         <center><h5>{{$pd->PName}}</h5></center>
                         <center>{{number_format($pd->PPrice)}}</center>
-                        <p align="center"><a href="../detailproduct/" class="btn btn-primary btn-block">Detail</a></p>
+                        <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
                         </div>
                     </div>
                     </li>

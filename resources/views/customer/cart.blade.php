@@ -1,3 +1,5 @@
+{{-- @extends('customer/master')
+@section('content') --}}
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -23,21 +25,16 @@ $cart=Cart::content();
                     <form action="../update" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         @foreach ($cart as $ca )
+                            @foreach($pro as $p)
+                                @if($p->PID==$ca->id)
                             <tr>
                             <input type="hidden" name="id" value="{{$ca->id}}">
                                 <td class="col-sm-8 col-md-6">
                                 <div class="media">
-                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{$product->PImage}}" style="width: 72px; height: 72px;"> </a>
+                                <a class="thumbnail pull-left" href="../detailproduct/{{$ca->id}}"> <img class="media-object" src="{{$ca->image}}" style="width: 72px; height: 72px;"> </a>
                                     <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">{{$ca->name}}</a></h4>
-                                    <h5 class="media-heading"> by <a href="#">{{$product->PAuthor}}</a></h5>
-                                        <span>Status: </span><span class="text-success"><strong>
-                                            @if($product->PStatus==0)
-                                            Hiện chưa bán
-                                            @else
-                                            Đang hoạt động
-                                            @endif
-                                        </strong></span>
+                                    <h4 class="media-heading"><a href="../detailproduct/{{$ca->id}}">{{$ca->name}}</a></h4>
+                                    <h5 class="media-heading"> Tác giả : <a href="#">{{$p->PAuthor}}</a></h5>
                                     </div>
                                 </div></td>
                                 <td class="col-sm-1 col-md-1" style="text-align: center">
@@ -45,11 +42,7 @@ $cart=Cart::content();
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center">
                                     <strong>
-                                        @if($product->PSale==0)
-                                            {{number_format($product->PPrice)}}
-                                        @else
-                                            {{number_format(($product->PPrice)-($product->PPrice)*($product->PSale))}}
-                                        @endif
+                                       {{number_format($ca->price)}}
                                     </strong></td>
                             <td class="col-sm-1 col-md-1 text-center"><strong>{{number_format($ca->subtotal)}}</strong></td>
                                 <td class="col-sm-1 col-md-1">
@@ -57,6 +50,9 @@ $cart=Cart::content();
                                     <span class="glyphicon glyphicon-remove"></span> Remove
                                 </button></a></td>
                             </tr>
+
+                        @endif
+                        @endforeach
                         @endforeach
                         {{-- <tr>
                             <td>   </td>
@@ -75,9 +71,9 @@ $cart=Cart::content();
                         <tr>
                             <td>   </td>
                             <td>
-                                <button type="submit" class="btn btn-success">
+                                {{-- <button type="submit" class="btn btn-success">
                                     Cập nhật <span class="glyphicon glyphicon-play"></span>
-                                </button>
+                                </button> --}}
                             </td>
                             <td><a href="/xoa"><button type="button" class="btn btn-success">Xóa giỏ hàng</button></a></td>
                             <td>
@@ -88,9 +84,12 @@ $cart=Cart::content();
                                 </a>
                             </td>
                             <td>
-                            <button type="button" class="btn btn-success">
-                                Thanh toán ngay <span class="glyphicon glyphicon-play"></span>
-                            </button></td>
+                                <a href="../buy">
+                                    <button type="button" class="btn btn-success">
+                                        Thanh toán ngay <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                </a>
+                        </td>
                         </tr>
                     </form>
                 </tbody>
@@ -101,3 +100,5 @@ $cart=Cart::content();
         </div>
     </div>
 </div>
+
+{{-- @endsection --}}
