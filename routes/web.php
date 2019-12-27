@@ -56,4 +56,9 @@ Route::get('/seeadd/{id}', [
     'as'=>'see',
     'uses'=>'MyController@getsee'
 ]);
+Route::get('/cart/{id}', 'MyController@addcart');
+Route::get('/delete/{id}','MyController@getdelete');
+Route::get('/xoa', 'MyController@deletecart');
+Route::get('/update','MyController@updatecart');
+Route::post('/update','MyController@updatecart');
 

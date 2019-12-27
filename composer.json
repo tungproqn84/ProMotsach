@@ -9,11 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-<<<<<<< HEAD
-=======
         "bumbummen99/shoppingcart": "^2.8",
->>>>>>> b240f84293fccf3611cf5dd12e21c3d053c31c33
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0"
     },
