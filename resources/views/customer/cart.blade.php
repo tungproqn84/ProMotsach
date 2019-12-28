@@ -4,9 +4,6 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<?php
-$cart=Cart::content();
-?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -29,6 +26,7 @@ $cart=Cart::content();
                                 @if($p->PID==$ca->id)
                             <tr>
                             <input type="hidden" name="id" value="{{$ca->id}}">
+                            <input type="hidden" name="rowId" value="{{$ca->rowId}}">
                                 <td class="col-sm-8 col-md-6">
                                 <div class="media">
                                 <a class="thumbnail pull-left" href="../detailproduct/{{$ca->id}}"> <img class="media-object" src="{{$ca->image}}" style="width: 72px; height: 72px;"> </a>
@@ -46,7 +44,7 @@ $cart=Cart::content();
                                     </strong></td>
                             <td class="col-sm-1 col-md-1 text-center"><strong>{{number_format($ca->subtotal)}}</strong></td>
                                 <td class="col-sm-1 col-md-1">
-                                <a href="../delete/{{$ca->id}}"><button type="button" class="btn btn-danger">
+                                <a href="../delete/{{$ca->rowId}}"><button type="button" class="btn btn-danger">
                                     <span class="glyphicon glyphicon-remove"></span> Remove
                                 </button></a></td>
                             </tr>
@@ -71,9 +69,9 @@ $cart=Cart::content();
                         <tr>
                             <td>   </td>
                             <td>
-                                {{-- <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-success">
                                     Cập nhật <span class="glyphicon glyphicon-play"></span>
-                                </button> --}}
+                                </button>
                             </td>
                             <td><a href="/xoa"><button type="button" class="btn btn-success">Xóa giỏ hàng</button></a></td>
                             <td>

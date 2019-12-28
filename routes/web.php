@@ -62,3 +62,4 @@ Route::get('/xoa', 'MyController@deletecart');
 Route::get('/update','MyController@updatecart');
 Route::post('/update','MyController@updatecart');
 Route::get('/buy','MyController@buy');
+Route::get('/x','MyController@d');
