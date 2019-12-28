@@ -32,7 +32,7 @@
                                 <a class="thumbnail pull-left" href="../detailproduct/{{$ca->id}}"> <img class="media-object" src="{{$ca->image}}" style="width: 72px; height: 72px;"> </a>
                                     <div class="media-body">
                                     <h4 class="media-heading"><a href="../detailproduct/{{$ca->id}}">{{$ca->name}}</a></h4>
-                                    <h5 class="media-heading"> Tác giả : <a href="#">{{$p->PAuthor}}</a></h5>
+                                    <h5 class="media-heading"> Tác giả : <a href="../author/{{$p->PAuthor}}">{{$p->PAuthor}}</a></h5>
                                     </div>
                                 </div></td>
                                 <td class="col-sm-1 col-md-1" style="text-align: center">

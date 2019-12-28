@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="container" style="margin-left: 23%">
+    <div class="container-fluid" style="margin-left: 23%">
         <div class="row">
             <div id="demo" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
@@ -45,6 +45,8 @@
             </div>
         </div>
         <div class="col-md-9">
+            {{-- Xem thêm sản phẩm khác --}}
+            @if($type=='product')
             <div class="row" id=box-product>
                 @if($id==1)
                 <h4>Sản phẩm bán chạy<hr></h4>
@@ -71,6 +73,30 @@
                     {{$product->links()}}
                 </div>
             </div>
+            @else
+            {{-- Xem thêm theo tên tác giả --}}
+            <div class="row" id=box-product>
+
+                <h4>Sách theo tác giả<hr></h4>
+                <ul class="thumbnails">
+                    @foreach ($product as $pd )
+                    <li class="span3">
+                    <div class="thumbnail">
+                    <img src="{{$pd->PImage}}" id="image">
+                        <div class="caption">
+                        <center><h5>{{$pd->PName}}</h5></center>
+                        <center>{{number_format($pd->PPrice)}}</center>
+                        <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                        </div>
+                    </div>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="col-md-12">
+                    {{$product->links()}}
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 

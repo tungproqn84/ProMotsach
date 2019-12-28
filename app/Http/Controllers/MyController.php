@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Bill;
 use App\Category;
+use App\Feedback;
 use App\Order;
 use App\Product;
 use App\Saleproduct;
@@ -64,10 +65,10 @@ class MyController extends Controller
         }
         else
             $product=Product::paginate(6);
+        $type='product';
         $cat=Category::all();
         $slide=Slide::all();
-        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'id'));
-        return view('customer/xemthempro', compact('product', 'cat', 'slide'));
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'id', 'type'));
     }
     //cart
     public function getcart()
@@ -138,7 +139,23 @@ class MyController extends Controller
         Cart::destroy();
         return redirect(Route('home'));
     }
-    public function d(){
-        Session::flush();
+    public function getauthor($author)
+    {
+        $product=Product::where('PAuthor', $author)->paginate(6);
+        $cat=Category::all();
+        $slide=Slide::all();
+        $type='author';
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
+    }
+    //feedback
+    public function feedback(Request $rq)
+    {
+        $feedback=$rq->feedback;
+        $tbl=new Feedback();
+        $cus=Session::get('id');
+        $tbl->CusID=$cus;
+        $tbl->Feedback=$feedback;
+        $tbl->save();
+        return redirect(Route('home'));
     }
 }
