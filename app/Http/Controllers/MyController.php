@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Bill;
 use App\Category;
 use App\Order;
@@ -13,10 +11,7 @@ use App\Portfolio;
 use Cart;
 class MyController extends Controller
 {
-
-
 // CONTROLLER ADMIN
-
     // gọi trang chủ
     public function getHomePage() {
         return view('admin/home');
@@ -26,6 +21,7 @@ class MyController extends Controller
         $portfolios = Portfolio::all();
         return view('admin/portfolio', compact('portfolios'));
     }
+    // Thêm danh mục
     public function AddPortfolio() {
         return view('admin/addPortfolio');
     }
@@ -40,6 +36,12 @@ class MyController extends Controller
         $products = Product::all();
         return view('admin/product', compact('products'));
     }
+    
+    // Thêm sản phẩm
+    public function AddProduct() {
+        $portfolios = Portfolio::all();
+        return view('admin/AddProduct', compact('portfolios'));
+    }
 
 // CONTROLLER CUSTOMER
     public function getindex()
@@ -50,10 +52,6 @@ class MyController extends Controller
         $sale= Product::where('PSale', '<>' ,0)->limit(3)->get();
         $hot=Product::orderby('PBuy', 'desc')->limit(3)->get();
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
-    }
-    public function getcart()
-    {
-
     }
     public function detailproduct($id)
     {
@@ -76,34 +74,38 @@ class MyController extends Controller
             $product=Product::paginate(6);
         $cat=Category::all();
         $slide=Slide::all();
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'id'));
         return view('customer/xemthempro', compact('product', 'cat', 'slide'));
     }
     //cart
-    // public function getcart()
-    // {
-    //     return view('customer/cart');
-    // }
+    public function getcart()
+    {
+        $cat=Category::all();
+        $cart=Cart::content();
+        $pro=Product::all();
+        return view('customer/cart', compact('cart', 'pro', 'cat'));
+    }
     public function addcart($id)
     {
         $product = Product::where('PID', $id)-> first();
-        // print_r($product->PName); die();
         if($product->PSale==0)
             $price=$product->PPrice;
         else
             $price=$product->PPrice - $product->PPrice*$product->PSale;
-        Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'weight' =>0));
+        $image=$product->PImage;
+                //   print_r($product); die();
+        Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
         $cart = Cart::content();
-        return view('customer/cart', array('cart' => $cart,'product'=>$product));
+        $pro=Product::all();
+        return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
     }
-    public function getdelete($id)
-    {
-    $cart= Cart::content();
-        $rowId= Cart::search(function ($cartItem, $rowId) use($cart,$id) {
-            return $cartItem->id==$id;
-        })->first();
-        Cart::remove($rowId);
-        return view('customer/cart');
-    }
+    // public function getdelete($id)
+    // {
+    // $cart= Cart::content();
+    //     $rowId = Cart::search(array('id' => $id));
+    //     Cart::remove($rowId);
+    //     return view('customer/cart');
+    // }
     public function deletecart()
     {
         Cart::destroy();
@@ -126,19 +128,19 @@ class MyController extends Controller
         $cart=Cart::content();
         $total=Cart::subtotal();
         $hd= new Bill();
-        $hd->CusID=Session::get('id');
+        $hd->CusID=1;
         $hd->BillDate= now();
         $hd->Total=$total;
         $hd->save();
-        foreach($cart as $sp){
-            $idhd=bills::max('ID');
-            $detail= new Order();
-            $detail->OrderID=$idhd;
-            $detail->PID=$sp->id;
-            $detail->Amount=$sp->qty;
-            $detail->save();
-            $product=product::find($detail->PID);
-            $product->soluong=$product->PAmount - $detail->Amount;
+        foreach($cart as $ca){
+            $id=Bill::max('Bill_ID');
+            $de= new Order();
+            $de->OrderID=$id;
+            $de->PID=$ca->id;
+            $de->Amount=$ca->qty;
+            $de->save();
+            $product=Product::find($de->PID);
+            $product->soluong=$product->PAmount - $de->Amount;
             $product->save();
             }
             // //gửi mail

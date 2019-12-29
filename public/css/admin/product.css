@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin-top: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 #ProductContainer {
     margin-top: 100px;
@@ -31,4 +32,31 @@ body {
 }
 #dataBox td {
     padding: 5px 2px 5px 2px;
+}
+#InfomationBox ul {
+    list-style: none;
+}
+#InfomationBox li {
+    width: 100%;
+}
+#InfomationBox label,
+#InfomationBox input[type="text"],
+#InfomationBox textarea,
+#InfomationBox select{
+    width: 100%;
+    font-size: 18px;
+}
+
+#InfomationBox input[type="radio"] {
+    margin-left: 20px;
+}
+#InfomationBox label {
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#InfomationBox #titleBox span {
+    font-size: 20px;
+}
+#InfomationBox button {
+    width: 100%;
 }
