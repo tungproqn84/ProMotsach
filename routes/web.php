@@ -41,7 +41,10 @@ Route::GET('show-portfolio/{id}', [
     'uses' => 'MyController@ShowPortfolio',
 
 ]);
-
+// Route::get('/login',['as'=>'login','uses'=>'MyController@getlogin']);
+// Route::post('/login','mycontrollerMyController@postlogin');
+// Route::get('/dangki',['as'=>'signin','uses'=>'MyController@getsignin']);
+// Route::post('/dangki','MyController@postsignin');
 // ROUTE CUSTOMER
 Route:: get('/index', [
     'as'=>'home',
@@ -64,3 +67,9 @@ Route::post('/update','MyController@updatecart');
 Route::get('/buy','MyController@buy');
 Route::get('/author/{author}','MyController@getauthor');
 Route::post('/feedback',['as'=>'feedback','uses'=>'MyController@feedback']);
+ Route::get('/login', ['as' => 'login', 'uses' => 'MyController@getlogin']);
+ Route::post('/postlogin', ['as' => 'postlogin', 'uses' => 'MyController@login']);
+Route::get('/logout', ['as' => 'logout', 'uses' =>'MyController@getlogout']);
+ Route::get('/signin', ['as' => 'signin', 'uses' => 'MyController@getsignin']);
+ Route::post('/postsignin', ['as' => 'postsignin', 'uses' => 'MyController@postsignin']);
+Route::post('/search',['as'=>'search','uses'=>'MyController@getsearch']);

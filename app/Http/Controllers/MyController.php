@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Bill;
 use App\Category;
+use App\Customer;
 use App\Feedback;
 use App\Order;
 use App\Product;
@@ -9,8 +10,11 @@ use App\Saleproduct;
 use App\Slide;
 use Illuminate\Http\Request;
 use App\Portfolio;
+use App\User;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class MyController extends Controller
@@ -19,7 +23,6 @@ class MyController extends Controller
     // gọi trang chủ
     public function getHomePage() {
         return view('admin/home');
-
     }
     // gọi trang danh mục
     public function getPortfolioPage() {
@@ -35,15 +38,76 @@ class MyController extends Controller
         $portfolio = Portfolio::where('PortfolioID', $id)->first();
         return view('admin/showPortfolio', compact('portfolio'));
     }
+    //login
+    public function getlogin(){
+        return view('admin/login');
+    }
+    public function login(Request $rq)
+    {
+        $xacnhan= array('email'=>$rq->email,'password'=>$rq->password);
+        if (($rq->email)=='admin') {
+            Session::put('user', 'Admin');
+            return view('admin/home');
+        }
+        else {
+            if (Auth::attempt($xacnhan)) {
+                $user=User::where('email', $rq->email)->first();
+                Session::put('user', $user->name);
+                Session::put('id', $user->id);
+                return redirect(Route('home'));
+            } else {
+                return redirect()->back()->with('notice', "Sai tên đăng nhập hoặc mật khẩu");
+                }
+            }
+    }
+    //endlogin
+    //logout
+    public function getlogout(){
+        Session::flush();
+        return redirect(Route('login'));
+    }
+    //endlogout
+    //signin
+    public function getsignin()
+    {
+        // echo 'a'; die();
+        return view('admin/signup');
+    }
+    public function postsignin(Request $rq){
+        // $this->validate($rq,
+        //     ['email'=>'required||unique:users,email','mobile'=>'required||unique:tblcustomer,Cellphone',''=>'required','address'=>'required'],
+        //     ['email.unique'=>'Email này đã được đăng kí','mobile.unique'=>'Số điện thoại đã được đăng kí','name.required'=>'Tên của bạn còn trống','mobile.required'=>'Số điện thoại còn trống','address.required'=>'Địa chỉ của bạn còn trống','email.required'=>'Tên đăng nhập còn trống']
+        // );
 
+        if($rq->gender=='nam')
+            $gender=1;
+        else
+            $gender=0;
+        $user=new User();
+        $user->name=$rq->name;
+        $user->email=$rq->email;
+        $user->password= Hash::make($rq->password);
+        $user->save();
+        $customer= new Customer();
+        $customer->CusName=$rq->name;
+        $customer->Gender=$gender;
+        $customer->DayOfBirth=$rq->dob;
+        $customer->Cellphone=$rq->mobile;
+        $customer->CusAddress=$rq->address;
+        $customer->Email=$rq->email;
+        $customer->Password=$rq->password;
+        $customer->save();
+        return redirect(Route('login'))->with("thanhcong","Tài khoản của bạn đã sẵn sàng để sử dụng");
+    }
+    //endsignin
 // CONTROLLER CUSTOMER
     public function getindex()
     {
-        $product=Product::where('PSale', 0)->limit(3)->get();
+        $product=Product::where('PSale', 0)->limit(4)->get();
         $cat=Category::all();
         $slide=Slide::all();
-        $sale= Product::where('PSale', '<>' ,0)->limit(3)->get();
-        $hot=Product::orderby('PBuy', 'desc')->limit(3)->get();
+        $sale= Product::where('PSale', '<>' ,0)->limit(4)->get();
+        $hot=Product::orderby('PBuy', 'desc')->limit(4)->get();
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
     }
     public function detailproduct($id)
@@ -57,14 +121,14 @@ class MyController extends Controller
     {
         if($id==1)
         {
-            $product=Product::where('PSale', '<>', 0)->paginate(6);
+            $product=Product::where('PSale', '<>', 0)->paginate(8);
         }
         elseif($id==2)
         {
-            $product=Product::orderby('PBuy', 'desc')->paginate(6);
+            $product=Product::orderby('PBuy', 'desc')->paginate(8);
         }
         else
-            $product=Product::paginate(6);
+            $product=Product::paginate(8);
         $type='product';
         $cat=Category::all();
         $slide=Slide::all();
@@ -80,17 +144,23 @@ class MyController extends Controller
     }
     public function addcart($id)
     {
-        $product = Product::where('PID', $id)-> first();
-        if($product->PSale==0)
-            $price=$product->PPrice;
+        if(Session::has('id'))
+        {
+            $product = Product::where('PID', $id)-> first();
+            if($product->PSale==0)
+                $price=$product->PPrice;
+            else
+                $price=$product->PPrice - $product->PPrice*$product->PSale;
+            $image=$product->PImage;
+                    //   print_r($product); die();
+            Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
+            $cart = Cart::content();
+            $pro=Product::all();
+            return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
+        }
         else
-            $price=$product->PPrice - $product->PPrice*$product->PSale;
-        $image=$product->PImage;
-                //   print_r($product); die();
-        Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
-        $cart = Cart::content();
-        $pro=Product::all();
-        return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
+            return redirect('login');
+
     }
     public function deletecart()
     {
@@ -116,7 +186,7 @@ class MyController extends Controller
         $carts=Cart::content();
         $total=Cart::subtotal();
         $hd= new Bill();
-        $hd->CusID=1;
+        $hd->CusID=Session::get('id');
         $hd->BillDate= now();
         $hd->Total=$total;
         $hd->save();
@@ -141,7 +211,7 @@ class MyController extends Controller
     }
     public function getauthor($author)
     {
-        $product=Product::where('PAuthor', $author)->paginate(6);
+        $product=Product::where('PAuthor', $author)->paginate(8);
         $cat=Category::all();
         $slide=Slide::all();
         $type='author';
@@ -157,5 +227,16 @@ class MyController extends Controller
         $tbl->Feedback=$feedback;
         $tbl->save();
         return redirect(Route('home'));
+    }
+    //tìm kiếm sản phẩm
+    public function getsearch(Request $rq)
+    {
+
+        $product=Product::where('PName', 'like', '%'. $rq->search. '%')->paginate(8);
+        // echo $rq->search; die();
+        $cat=Category::all();
+        $slide=Slide::all();
+        $type='search';
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
     }
 }

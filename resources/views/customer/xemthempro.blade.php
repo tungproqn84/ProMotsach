@@ -47,55 +47,89 @@
         <div class="col-md-9">
             {{-- Xem thêm sản phẩm khác --}}
             @if($type=='product')
-            <div class="row" id=box-product>
-                @if($id==1)
-                <h4>Sản phẩm bán chạy<hr></h4>
-                @elseif($id==2)
-                    <h4>Sản phẩm khuyến mãi<hr></h4>
-                @else
-                <h4>Sản phẩm đang bán<hr></h4>
-                @endif
-                <ul class="thumbnails">
-                    @foreach ($product as $pd )
-                    <li class="span3">
-                    <div class="thumbnail">
-                    <img src="{{$pd->PImage}}" id="image">
-                        <div class="caption">
-                        <center><h5>{{$pd->PName}}</h5></center>
-                        <center>{{number_format($pd->PPrice)}}</center>
-                        <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
-                        </div>
-                    </div>
-                    </li>
-                    @endforeach
-                </ul>
-                <div class="col-md-12">
-                    {{$product->links()}}
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Sản phẩm khác <hr></h4>
                 </div>
             </div>
-            @else
+            <div class="row" id=box-product>
+                        @foreach ($product as $pd )
+                        <div class="col-sm-3 col-6 thumbnail">
+                            <img src="{{$pd->PImage}}" id="image">
+                            <div class="caption">
+                            <center><h5>{{$pd->PName}}</h5></center>
+                            <center>{{number_format($pd->PPrice)}}</center>
+                            <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            {{$product->links()}}
+                        </div>
+                    </div>
+            </div>
+            @elseif($type=='author')
             {{-- Xem thêm theo tên tác giả --}}
-            <div class="row" id=box-product>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Tác phẩm cùng tác giả <hr></h4>
 
-                <h4>Sách theo tác giả<hr></h4>
-                <ul class="thumbnails">
-                    @foreach ($product as $pd )
-                    <li class="span3">
-                    <div class="thumbnail">
-                    <img src="{{$pd->PImage}}" id="image">
-                        <div class="caption">
-                        <center><h5>{{$pd->PName}}</h5></center>
-                        <center>{{number_format($pd->PPrice)}}</center>
-                        <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
-                        </div>
-                    </div>
-                    </li>
-                    @endforeach
-                </ul>
-                <div class="col-md-12">
-                    {{$product->links()}}
                 </div>
             </div>
+            <div class="row" id=box-product>
+                        @foreach ($product as $pd )
+                        <div class="col-sm-3 col-6 thumbnail">
+                            <img src="{{$pd->PImage}}" id="image">
+                            <div class="caption">
+                            <center><h5>{{$pd->PName}}</h5></center>
+                            <center>{{number_format($pd->PPrice)}}</center>
+                            <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="col-sm-12">
+                        {{$product->links()}}
+                    </div>
+            </div>
+                @foreach ($sale as $pd )
+                <div class="col-sm-3 col-6 thumbnail">
+                    <img src="{{$pd->PImage}}" id="image">
+                    <div class="caption">
+                    <center><h5>{{$pd->PName}}</h5></center>
+                    <center>{{number_format($pd->PPrice)}}</center>
+                    <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                    </div>
+                </div>
+            @endforeach
+            <div class="col-sm-12">
+                {{$product->links()}}
+            </div>
+    </div>
+            @else
+                {{-- Tìm kiếm sản phẩm theo tên --}}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Kết quả tìm kiếm có {{count($product)}} sản phẩm <hr></h4>
+
+                    </div>
+                </div>
+                <div class="row" id=box-product>
+                            @foreach ($product as $pd )
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                                </div>
+                            </div>
+                        @endforeach
+                        <div class="col-sm-12">
+                            {{$product->links()}}
+                        </div>
+                </div>
+
             @endif
         </div>
     </div>

@@ -3,7 +3,9 @@
 section {
     padding: 60px 0;
 }
-
+a{
+    text-decoration: none;
+}
 section .section-title {
     text-align: center;
     color: #007b5e;

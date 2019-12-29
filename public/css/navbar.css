@@ -2,7 +2,9 @@
     background-color: #2874f0;
     color: #FFFFFF;
 }
-
+a{
+    text-decoration: none;
+}
 .row1{
     padding-top: 10px;
     padding-right: 50px;
