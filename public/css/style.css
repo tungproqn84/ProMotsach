@@ -18,7 +18,9 @@
     .beta-slides-quote .beta-arrow-left:hover i,.beta-slides-quote .beta-arrow-right:hover i {
     color:#f90
     }
-
+    a{
+        text-decoration: none;
+    }
     /* ==========================================================================
         16. BETA SLIDES TWITTER
     ============================================================================= */
@@ -75,7 +77,6 @@
     }
 
     .beta-filter-body li {
-    display:inline-block;
     float:left;
     height:320px;
     position:relative;

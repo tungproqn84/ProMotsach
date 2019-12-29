@@ -1,5 +1,8 @@
 #image{
-    height: 300px;
+    height: 200px;
+}
+a{
+    text-decoration: none;
 }
 #imagesale{
     height: 150px;
