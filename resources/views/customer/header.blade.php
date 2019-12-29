@@ -17,14 +17,14 @@
                         @endforeach
                     </ul>
                 </li>
-                <li class="upper-links"><a class="links" href="http://clashhacks.in/">Liên hệ</a></li>
-                <li class="upper-links"><a class="links" href="http://clashhacks.in/">Giới thiệu</a></li>
+                <li class="upper-links"><a class="links" href="lienhe">Liên hệ</a></li>
+                <li class="upper-links"><a class="links" href="gioithieu">Giới thiệu</a></li>
             </ul>
         </div>
         <div class="row row2">
             <div class="col-sm-2">
-                <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ Brand</span></h2>
-                <h1 style="margin:0px;"><span class="largenav">Brand</span></h1>
+                <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ Logo</span></h2>
+                <h1 style="margin:0px;"><span class="largenav">Logo</span></h1>
             </div>
             <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
                 <div class="row">
@@ -53,10 +53,10 @@
         <span class="sidenav-heading">Home</span>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     </div>
-    <a href="http://clashhacks.in/">Home</a>
-    <a href="http://clashhacks.in/">Product</a>
-    <a href="http://clashhacks.in/">Link</a>
-    <a href="http://clashhacks.in/">Link</a>
+<a href="{{Route('home')}}">Trang chủ</a>
+    <a href="x">Sản phẩm</a>
+    <a href="gioithieu">Giới thiệu</a>
+    <a href="lienhe">Liên hệ</a>
 </div>
 
 

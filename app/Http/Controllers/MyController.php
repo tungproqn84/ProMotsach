@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Bill;
 use App\Category;
+use App\Feedback;
 use App\Order;
 use App\Product;
 use App\Saleproduct;
@@ -9,12 +10,16 @@ use App\Slide;
 use Illuminate\Http\Request;
 use App\Portfolio;
 use Cart;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 class MyController extends Controller
 {
 // CONTROLLER ADMIN
     // gọi trang chủ
     public function getHomePage() {
         return view('admin/home');
+
     }
     // gọi trang danh mục
     public function getPortfolioPage() {
@@ -72,10 +77,10 @@ class MyController extends Controller
         }
         else
             $product=Product::paginate(6);
+        $type='product';
         $cat=Category::all();
         $slide=Slide::all();
-        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'id'));
-        return view('customer/xemthempro', compact('product', 'cat', 'slide'));
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'id', 'type'));
     }
     //cart
     public function getcart()
@@ -99,13 +104,6 @@ class MyController extends Controller
         $pro=Product::all();
         return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
     }
-    // public function getdelete($id)
-    // {
-    // $cart= Cart::content();
-    //     $rowId = Cart::search(array('id' => $id));
-    //     Cart::remove($rowId);
-    //     return view('customer/cart');
-    // }
     public function deletecart()
     {
         Cart::destroy();
@@ -114,41 +112,62 @@ class MyController extends Controller
     //update giỏ hàng
     public function updatecart(Request $rq)
     {
-        $cart=Cart::content();
-        $id=$rq->id;
-        $rowId = Cart::search(function ($cart, $key) use($id) {
-            return $cart->id == $id;
-         })->first();
-         printf($rowId);die();
-        Cart::update($rowId[0], $rq->id);
-        printf($rq->id); die();
+        $rowId = $rq->rowId;
+        $qty = $rq->qty;
+        Cart::update($rowId, $qty);
+        return redirect(Route('cart'));
+    }
+    //remove sản phẩm
+    public function getdelete($id)
+    {
+        Cart::remove($id);
+        return redirect(Route('cart'));
     }
     //mua sản phẩm
     public function buy(){
-        $cart=Cart::content();
+        $carts=Cart::content();
         $total=Cart::subtotal();
         $hd= new Bill();
         $hd->CusID=1;
         $hd->BillDate= now();
         $hd->Total=$total;
         $hd->save();
-        foreach($cart as $ca){
+        foreach($carts as $cart){
             $id=Bill::max('Bill_ID');
-            $de= new Order();
-            $de->OrderID=$id;
-            $de->PID=$ca->id;
-            $de->Amount=$ca->qty;
-            $de->save();
-            $product=Product::find($de->PID);
-            $product->soluong=$product->PAmount - $de->Amount;
-            $product->save();
-            }
-            // //gửi mail
-            // $user = User::find(Session::get('id'));
-            // $email = new UserRegistered($user);
-            // Mail::to($user->email)->send($email);
+            $order= new Order();
+            $order->OrderID=$id;
+            $order->PID=$cart->id;
+            $order->Amount=$cart->qty;
+            $order->save();
+            $product=Product::where('PID', $cart->id)->first();
+
+            $product->PBuy=($product->PBuy) + ($cart->qty);
+            // echo $product->PBuy; die();
+            DB::update("update tblproduct set PBuy = $product->PBuy where PID = ?", [$cart->id]);
+            $product->PAmount=$product->PAmount - $order->Amount;
+            DB::update("update tblproduct set PAmount = $product->PAmount where PID = ?", [$cart->id]);
+            // $product->save();
+        }
         Cart::destroy();
         return redirect(Route('home'));
     }
-
+    public function getauthor($author)
+    {
+        $product=Product::where('PAuthor', $author)->paginate(6);
+        $cat=Category::all();
+        $slide=Slide::all();
+        $type='author';
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
+    }
+    //feedback
+    public function feedback(Request $rq)
+    {
+        $feedback=$rq->feedback;
+        $tbl=new Feedback();
+        $cus=Session::get('id');
+        $tbl->CusID=$cus;
+        $tbl->Feedback=$feedback;
+        $tbl->save();
+        return redirect(Route('home'));
+    }
 }
