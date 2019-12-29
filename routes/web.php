@@ -13,51 +13,77 @@
 
 use Illuminate\Support\Facades\Route;
 Route:: get('/', function () {
-    return view('welcome');
+    return view('customer/welcome');
 });
 
 
 // ROUTE ADMIN
 
 Route::get('admin', [
-    'as' => 'admin-home',
+    'as'   => 'admin-home',
     'uses' => 'MyController@getHomePage'
 ]);
 
 Route::get('portfolio', [
-    'as' => 'admin-portfolio',
+    'as'   => 'admin-portfolio',
     'uses' => 'MyController@getPortfolioPage'
 ]);
 
 // route thêm danh mục
 Route::GET('/add-portfolio', [
-    'as' => 'admin-add-portfolio',
-    'uses' => 'MyController@AddPortfolio',
+    'as'   => 'admin-add-portfolio',
+    'uses' => 'MyController@AddPortfolio'
 
 ]);
+// Chèn danh mục
+Route::POST('/insert-portfolio', [
+    'as' => 'insert-portfolio',
+    'uses' => 'MyController@InsertPortfolio'
+]);
+Route::GET('/insert-portfolio', [
+    'as' => 'insert-portfolio',
+    'uses' => 'MyController@InsertPortfolio'
+]);
 // route hiển thị thông tin danh mục
-Route::GET('show-portfolio/{id}', [
-    'as' => 'admin-show-portfolio',
-    'uses' => 'MyController@ShowPortfolio',
-
+Route::GET('show-portfolio/{portfolio_id}', [
+    'as'   => 'admin-show-portfolio',
+    'uses' => 'MyController@ShowPortfolio'
+]);
+// route sản phẩm
+Route::GET('/product', [
+    'as'   => 'admin-product',
+    'uses' => 'MyController@getProductPage'
 ]);
 // Route::get('/login',['as'=>'login','uses'=>'MyController@getlogin']);
 // Route::post('/login','mycontrollerMyController@postlogin');
 // Route::get('/dangki',['as'=>'signin','uses'=>'MyController@getsignin']);
 // Route::post('/dangki','MyController@postsignin');
+// route thêm sản phẩm
+Route::GET('/add-product', [
+    'as' => 'admin-add-product',
+    'uses' => 'MyController@AddProduct'
+]);
+// route thể loại
+Route::GET('/category', [
+    'as'   => 'admin-category',
+    'uses' => 'MyController@getCategoryPage'
+]);
+
+
+
 // ROUTE CUSTOMER
 Route:: get('/index', [
-    'as'=>'home',
-    'uses'=>'MyController@getindex'
+    'as'   => 'home',
+    'uses' => 'MyController@getindex'
 ] );
 Route::get('/cart',[
-    'as'=>'cart',
-    'uses'=>'MyController@getcart'
+    'as'   => 'cart',
+    'uses' => 'MyController@getcart'
 ]);
-Route::get('/detailproduct/{id}', 'MyController@detailproduct');
-Route::get('/seeadd/{id}', [
-    'as'=>'see',
-    'uses'=>'MyController@getsee'
+Route:: get('/detailproduct/{id}', 'MyController@detailproduct');
+Route:: get('/seeadd/{id}', [
+    'as'   => 'see',
+    'uses' => 'MyController@getsee'
 ]);
 Route::get('/cart/{id}', 'MyController@addcart');
 Route::get('/delete/{id}','MyController@getdelete');

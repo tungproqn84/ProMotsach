@@ -17,30 +17,39 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="row" id="FormAddPortfolio">
-            <div class="col-8" id="titleBox"><span>THÊM DANH MỤC</span><hr></div>
-            <div class="col-8">
-                <label for="PortfolioName" value="">Tên danh mục</label><br>
-                <input type="text" name="PortfolioName" id="PortfolioName">
-            </div>
-            <div class="col-8">
-                <label for="PortfolioDescription">Mô tả</label><br>
-                <textarea  name="PortfolioDescription" id="PortfolioDescription"></textarea><hr>
-            </div>
-            <hr>
-            <div class="col-8">
-                <div class="row" id="button">
-                    <div class="col-6">
-                        <button class="btn btn-primary">Tạo mới danh mục</button>
+    <form action="{{ route('insert-portfolio') }}" method="POST">
+        {{csrf_field()}}
+        <div class="container">
+            <div class="row" id="FormAddPortfolio">
+                    <div class="col-sm-9 col-12" id="titleBox"><span>THÊM DANH MỤC</span><hr></div>
+                    
+                    <div class="col-sm-9 col-12">
+                        <label for="PortfolioName" value="">Tên danh mục</label><br>
+                        <input type="text" name="PortfolioName" id="PortfolioName">
                     </div>
-                    <div class="col-6">
-                        <button class="btn btn-danger">Hủy bỏ</button>
+                    <div class="col-sm-9 col-12">
+                        <label for="PortfolioDescription">Mô tả</label><br>
+                        <textarea  name="PortfolioDescription" id="PortfolioDescription"></textarea>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <label for="PortfolioStatus">Mô tả</label><br>
+                        <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="0">Kích hoạt
+                        <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="1">Ngừng hoạt động
+                        <hr>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                        <div class="row" id="button">
+                            <div class="col-6">
+                                <input type="submit" name="btnAddPortfolio" class="btn btn-primary" value="Tạo mới danh mục">
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-danger">Hủy bỏ</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
 
 </body>
 </html>

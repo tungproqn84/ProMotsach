@@ -34,8 +34,8 @@ class MyController extends Controller
         return view('admin/addPortfolio');
     }
     // Hiển thị thông tin danh mục
-    public function ShowPortfolio($id) {
-        $portfolio = Portfolio::where('PortfolioID', $id)->first();
+    public function ShowPortfolio($portfolio_id) {
+        $portfolio = Portfolio::where('PortfolioID',$portfolio_id)->get();
         return view('admin/showPortfolio', compact('portfolio'));
     }
     //login
@@ -78,6 +78,33 @@ class MyController extends Controller
         //     ['email'=>'required||unique:users,email','mobile'=>'required||unique:tblcustomer,Cellphone',''=>'required','address'=>'required'],
         //     ['email.unique'=>'Email này đã được đăng kí','mobile.unique'=>'Số điện thoại đã được đăng kí','name.required'=>'Tên của bạn còn trống','mobile.required'=>'Số điện thoại còn trống','address.required'=>'Địa chỉ của bạn còn trống','email.required'=>'Tên đăng nhập còn trống']
         // );
+    // Chèn danh mục
+    public function InsertPortfolio (Request $request)
+    {
+        $portfolio = new Portfolio;
+        $portfolio->PortfolioName = request('PortfolioName');
+        $portfolio->PortfolioDescription = request('PortfolioDescription');
+        $portfolio->PortfolioStatus = request('PortfolioStatus');
+        $portfolio->save();
+        return redirect()->route('admin-portfolio');
+    }
+
+    // gọi trang sản phẩm
+    public function getProductPage() {
+        $products = Product::all();
+        return view('admin/product', compact('products'));
+    }
+
+    // Thêm sản phẩm
+    public function AddProduct() {
+        $portfolios = Portfolio::all();
+        return view('admin/AddProduct', compact('portfolios'));
+    }
+
+    // Trang thể loại
+    public function getCategoryPage() {
+        return view('admin/Category');
+    }
 
         if($rq->gender=='nam')
             $gender=1;
@@ -161,6 +188,13 @@ class MyController extends Controller
         else
             return redirect('login');
 
+            $price=$product->PPrice - $product->PPrice*$product->PSale;
+            $image=$product->PImage;
+                //   print_r($product); die();
+        Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
+        $cart = Cart::content();
+        $pro=Product::all();
+        return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
     }
     public function deletecart()
     {

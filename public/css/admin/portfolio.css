@@ -2,9 +2,9 @@
     margin-top: 100px;
 }
 
-#PortfolioContainer #FunctionPortfolio {
-    /* background-color: #ffcc5f; */
-}
+/* #PortfolioContainer #FunctionPortfolio {
+    background-color: #ffcc5f;
+} */
 
 #DisplayPortfolio #titleBox {
     background-color: #115353;
@@ -53,10 +53,29 @@
     font-weight: bold;
 }
 
-#FormAddPortfolio input, #FormAddPortfolio textarea {
+#FormAddPortfolio input[type="text"], #FormAddPortfolio textarea {
     width: 100%;
 }
 
 #FormAddPortfolio button {
     width: 100%;
+}
+
+
+
+#portfolioInfomation ul{
+    list-style: none;
+    font-size: 18px;
+    padding: 0;
+    width: 100%;
+}
+#portfolioInfomation label {
+    width: 60%;
+    font-size: 16px;
+    padding: 0;
+}
+
+#action button {
+    width: 100%;
+    margin-top: 10px;
 }
