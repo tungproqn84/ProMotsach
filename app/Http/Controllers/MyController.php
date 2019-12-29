@@ -35,6 +35,15 @@ class MyController extends Controller
         $portfolio = Portfolio::where('PortfolioID',$portfolio_id)->get();
         return view('admin/showPortfolio', compact('portfolio'));
     }
+    // Chèn danh mục
+    public function InsertPortfolio(Request $request){
+        $portfolio = new Portfolio;
+        $portfolio->PortfolioName = request('PortfolioName');
+        $portfolio->PortfolioDescription = request('PortfolioDescription');
+        $portfolio->PortfolioStatus = request('PortfolioStatus');
+        $portfolio->save();
+        return redirect()->route('admin-portfolio');
+    }
 
     // gọi trang sản phẩm
     public function getProductPage() {
@@ -46,6 +55,11 @@ class MyController extends Controller
     public function AddProduct() {
         $portfolios = Portfolio::all();
         return view('admin/AddProduct', compact('portfolios'));
+    }
+
+    // Trang thể loại
+    public function getCategoryPage() {
+        return view('admin/Category');
     }
 
 // CONTROLLER CUSTOMER
@@ -97,7 +111,7 @@ class MyController extends Controller
             $price=$product->PPrice;
         else
             $price=$product->PPrice - $product->PPrice*$product->PSale;
-        $image=$product->PImage;
+            $image=$product->PImage;
                 //   print_r($product); die();
         Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
         $cart = Cart::content();

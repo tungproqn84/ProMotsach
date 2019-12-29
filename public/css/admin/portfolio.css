@@ -53,7 +53,7 @@
     font-weight: bold;
 }
 
-#FormAddPortfolio input, #FormAddPortfolio textarea {
+#FormAddPortfolio input[type="text"], #FormAddPortfolio textarea {
     width: 100%;
 }
 

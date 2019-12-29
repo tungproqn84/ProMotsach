@@ -35,6 +35,15 @@ Route::GET('/add-portfolio', [
     'uses' => 'MyController@AddPortfolio'
 
 ]);
+// Chèn danh mục
+Route::POST('/insert-portfolio', [
+    'as' => 'insert-portfolio',
+    'uses' => 'MyController@InsertPortfolio'
+]);
+Route::GET('/insert-portfolio', [
+    'as' => 'insert-portfolio',
+    'uses' => 'MyController@InsertPortfolio'
+]);
 // route hiển thị thông tin danh mục
 Route::GET('show-portfolio/{portfolio_id}', [
     'as'   => 'admin-show-portfolio',
@@ -50,7 +59,11 @@ Route::GET('/add-product', [
     'as' => 'admin-add-product',
     'uses' => 'MyController@AddProduct'
 ]);
-
+// route thể loại
+Route::GET('/category', [
+    'as'   => 'admin-category',
+    'uses' => 'MyController@getCategoryPage'
+]);
 
 
 
