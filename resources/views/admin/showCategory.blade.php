@@ -23,11 +23,11 @@
                         <ul>
                             <li>
                                 <label for="">Danh mục: </label>
-                                <span>{{$portfolio->PortfolioName}}</span>
+                                <span>{{$category->CategoryName}}</span>
                             </li>
                             <li>
                                 <label>Trạng thái: </label>
-                                @if($portfolio->PortfolioStatus == 1)
+                                @if($category->CategoryStatus == 1)
                                     <span style="color: green;">Đang hoạt động</span>
                                 @else
                                     <span style="color: red;">Ngừng hoạt động</span>
@@ -49,9 +49,6 @@
             <div class="col-sm-3" id="action">
                 <div class="row">
                     <div class="col-sm-12 col-4">
-                        <button class="btn btn-info"><i class="fas fa-plus-circle"></i> Thêm thể loại</button>
-                    </div>
-                    <div class="col-sm-12 col-4">
                         <button class="btn btn-success"><i class="fas fa-edit"></i> Sửa</button>
                     </div>
                     <div class="col-sm-12 col-4">
@@ -65,6 +62,6 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{asset('js/admin/portfolio.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/admin/category.js')}}"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ body {
 #ProductContainer {
     margin-top: 100px;
     padding: 0px 0px 0px 10px;
+    margin-bottom: 100px;
 }
 #DisplayProduct #titleBox {
     background-color: #115353;
@@ -33,6 +34,9 @@ body {
 #dataBox td {
     padding: 5px 2px 5px 2px;
 }
+.showInfo {
+    cursor: pointer;
+}
 #InfomationBox ul {
     list-style: none;
 }
@@ -57,6 +61,7 @@ body {
 #InfomationBox #titleBox span {
     font-size: 20px;
 }
-#InfomationBox button {
+#action button {
     width: 100%;
+    margin-top: 10px;
 }

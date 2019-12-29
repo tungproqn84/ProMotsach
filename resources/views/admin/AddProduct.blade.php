@@ -27,42 +27,43 @@
                     </div>
                 </div>
                 <div class="row">
-                    <ul>
-                        <li><label for="ProductName">Tên sách</label></li>
-                        <li><input type="text" id="ProductName" name="ProductName"></li>
-                        <li><label for="Author">Tác giả</label></li>
-                        <li><input type="text" id="Author" name="Author"></li>
-                        <li><label for="Porfolio">Danh mục</label></li>
-                        <li>
-                            <!-- <input type="text" id="Porfolio" name="Porfolio"> -->
-                            <select name="Porfolio" id="Porfolio">
-                                @foreach($portfolios as $portfolio)
-                                    <option value="{{ $portfolio->PortfolioID }}">{{ $portfolio->PortfolioName }}</option>
-                                @endforeach
-                            </select>
-                        </li>
-                        <li><label for="Category">Thể loại</label></li>
-                        <li><input type="text" id="Category" name="Category"></li>
-                        <li><label for="Price">Đơn giá</label></li>
-                        <li><input type="text" id="Price" name="Price"></li>
-                        <li><label for="Amount">Số lượng</label></li>
-                        <li><input type="text" id="Amount" name="Amount"></li>
-                        <li><label for="Image">Ảnh minh họa</label></li>
-                        <li><input type="file" id="Image" name="Image"></li>
-                        <li><label for="Detail">Chi tiết</label></li>
-                        <li>
-                            <!-- <input type="text" id="Detail" name="Detail"> -->
-                            <textarea name="Detail" id="Detail"></textarea>
-                        </li>
-                        <li><label for="Status">Trạng thái</label></li>
-                        <li>
-                            <input type="radio" id="Status" name="Status" value="Kích hoạt">Kích hoạt
-                            <input type="radio" id="Status" name="Status" value="Tạm hoãn">Tạm hoãn
-                        </li>
-                    </ul>
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><label for="ProductName">Tên sách</label></li>
+                            <li><input type="text" id="ProductName" name="ProductName"></li>
+                            <li><label for="Author">Tác giả</label></li>
+                            <li><input type="text" id="Author" name="Author"></li>
+                            <li><label for="Porfolio">Danh mục</label></li>
+                            <li>
+                                <!-- <input type="text" id="Porfolio" name="Porfolio"> -->
+                                <select name="Porfolio" id="Porfolio">
+                                    @foreach($portfolios as $portfolio)
+                                        <option value="{{ $portfolio->PortfolioID }}">{{ $portfolio->PortfolioName }}</option>
+                                    @endforeach
+                                </select>
+                            </li>
+                            <li><label for="Category">Thể loại</label></li>
+                            <li><input type="text" id="Category" name="Category"></li>
+                            <li><label for="Price">Đơn giá</label></li>
+                            <li><input type="text" id="Price" name="Price"></li>
+                            <li><label for="Amount">Số lượng</label></li>
+                            <li><input type="text" id="Amount" name="Amount"></li>
+                            <li><label for="Image">Ảnh minh họa</label></li>
+                            <li><input type="file" id="Image" name="Image"></li>
+                            <li><label for="Detail">Chi tiết</label></li>
+                            <li>
+                                <textarea name="Detail" id="Detail"></textarea>
+                            </li>
+                            <li><label for="Status">Trạng thái</label></li>
+                            <li>
+                                <input type="radio" id="Status" name="Status" value="Kích hoạt">Kích hoạt
+                                <input type="radio" id="Status" name="Status" value="Tạm hoãn">Tạm hoãn
+                            </li>
+                        </ul>
+                    </div>
                 </div><hr>
                 <div class="row">
-                    <div class="col-sm-8 offset-sm-4">
+                    <div class="col-sm-8 offset-sm-4" id="action">
                         <div class="row">
                             <div class="col-6">
                                 <button class="btn btn-primary">Thêm sản phẩm</button>

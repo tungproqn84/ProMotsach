@@ -9,6 +9,20 @@ $(document).ready(function() {
             },
         });
     });
+
+    
 });
 // CKeditor
 CKEDITOR.replace( 'Detail' );
+
+// show infomation
+function show(id) {
+    $.ajax({
+        url    : '/show-product/' + id,
+        type   : "GET",
+        success: function(result){
+            $('#FunctionProduct').html("");
+            $('#FunctionProduct').html(result);
+        }
+    });
+}

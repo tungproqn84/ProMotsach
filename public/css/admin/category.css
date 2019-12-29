@@ -1,12 +1,8 @@
-#PortfolioContainer {
+#CategoryContainer {
     margin-top: 100px;
 }
 
-/* #PortfolioContainer #FunctionPortfolio {
-    background-color: #ffcc5f;
-} */
-
-#DisplayPortfolio #titleBox {
+#DisplayCategory #titleBox {
     background-color: #115353;
     color: #ffffff;
     font-size: 18px;
@@ -19,57 +15,51 @@
     top: 15%;
 }
 
-#btnAddPortfolio {
+#btnAddCategory {
     padding: 5px 5px;
     float: right;
     right: 0%;
 }
-
 #dataBox {
     padding: 0;
-}
-#DisplayPortfolio th,
-#DisplayPortfolio td {
-    padding: 5px 5px;
-    text-align: center;
-}
-
-/* css form thêm danh mục */
-#FormAddPortfolio {
-    position: relative;
-    margin: auto auto auto auto;
 }
 .showInfo {
     cursor: pointer;
 }
-#FormAddPortfolio #titleBox span{
+#DisplayCategory th,
+#DisplayCategory td {
+    padding: 5px 5px;
+    text-align: center;
+}
+
+#FormAddCategory #titleBox span{
     color: #000000;
     font-size: 18px;
 }
-#FormAddPortfolio label {
+#FormAddCategory label {
     width: 100%;
     text-align: left;
     font-size: 16px;
     font-weight: bold;
 }
 
-#FormAddPortfolio input[type="text"], #FormAddPortfolio textarea {
+#FormAddCategory input[type="text"], #FormAddCategory textarea {
     width: 100%;
 }
 
-#FormAddPortfolio button {
+#FormAddCategory button {
     width: 100%;
 }
 
 
 
-#portfolioInfomation ul{
+#CategoryInfomation ul{
     list-style: none;
     font-size: 18px;
     padding: 0;
     width: 100%;
 }
-#portfolioInfomation label {
+#CategoryInfomation label {
     width: 60%;
     font-size: 16px;
     padding: 0;

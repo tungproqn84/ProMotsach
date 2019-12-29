@@ -37,7 +37,9 @@
                             @foreach($products as $product)
                             <tr>
                                 <td>{{ $product->count() }}</td>
-                                <td>{{ $product->PName }}</td>
+                                <td>
+                                    <span class="showInfo" onclick="show({{ $product->PID }})">{{ $product->PName }}</span>
+                                </td>
                                 <td>{{ $product->PAuthor }}</td>
                                 <td>{{ $product->PStatus }}</td>
                             </tr>

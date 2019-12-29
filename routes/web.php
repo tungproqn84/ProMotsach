@@ -45,7 +45,7 @@ Route::GET('/insert-portfolio', [
     'uses' => 'MyController@InsertPortfolio'
 ]);
 // route hiển thị thông tin danh mục
-Route::GET('show-portfolio/{portfolio_id}', [
+Route::GET('/show-portfolio/{portfolio_id}', [
     'as'   => 'admin-show-portfolio',
     'uses' => 'MyController@ShowPortfolio'
 ]);
@@ -59,10 +59,32 @@ Route::GET('/add-product', [
     'as' => 'admin-add-product',
     'uses' => 'MyController@AddProduct'
 ]);
+// route thông tin sản phẩm
+Route::GET('/show-product/{product_id}', [
+    'as' => 'admin-show-product',
+    'uses' => 'MyController@ShowProduct'
+]);
 // route thể loại
 Route::GET('/category', [
     'as'   => 'admin-category',
     'uses' => 'MyController@getCategoryPage'
+]);
+// route hiển thị thông tin thể loại
+
+// thêm thể loại
+Route::GET('/add-category', [
+    'as' => 'admin-add-category',
+    'uses' => 'MyController@AddCategory'
+]);
+// chèn thể loại
+Route::GET('/insert-category', [
+    'as' => 'insert-category',
+    'uses' => 'MyController@InsertCategory'
+]);
+// xem thông tin thể loại
+Route::GET('/show-category/{category_id}', [
+    'as' =>'admin-show-category',
+    'uses' => 'MyController@showCategory'
 ]);
 
 

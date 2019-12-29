@@ -17,30 +17,30 @@
 </head>
 <body>
 
-    <form action="{{ route('insert-portfolio') }}" method="POST">
+    <form action="{{ route('insert-category') }}" method="POST">
         {{csrf_field()}}
         <div class="container">
-            <div class="row" id="FormAddPortfolio">
-                    <div class="col-sm-9 col-12" id="titleBox"><span>THÊM DANH MỤC</span><hr></div>
+            <div class="row" id="FormAddCategory">
+                    <div class="col-sm-9 offset-sm-1 col-12" id="titleBox"><span>THÊM THỂ LOẠI</span><hr></div>
                     
-                    <div class="col-sm-9 col-12">
-                        <label for="PortfolioName" value="">Tên danh mục</label><br>
-                        <input type="text" name="PortfolioName" id="PortfolioName">
+                    <div class="col-sm-9 offset-sm-1 col-12">
+                        <label for="CategoryName" value="">Tên thể loại</label><br>
+                        <input type="text" name="CategoryName" id="CategoryName">
                     </div>
-                    <div class="col-sm-9 col-12">
-                        <label for="PortfolioDescription">Mô tả</label><br>
-                        <textarea  name="PortfolioDescription" id="PortfolioDescription"></textarea>
+                    <div class="col-sm-9 offset-sm-1 col-12">
+                        <label for="CategoryDescription">Mô tả</label><br>
+                        <textarea  name="CategoryDescription" id="CategoryDescription"></textarea>
                     </div>
-                    <div class="col-sm-9 col-12">
-                        <label for="PortfolioStatus">Mô tả</label><br>
-                        <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="0">Kích hoạt
-                        <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="1">Tạm hoãn
+                    <div class="col-sm-9 offset-sm-1 col-12">
+                        <label for="CategoryStatus">Trạng thái</label><br>
+                        <input type="radio" name="CategoryStatus" id="CategoryStatus" value="0">Kích hoạt
+                        <input type="radio" name="CategoryStatus" id="CategoryStatus" value="1">Tạm hoãn
                         <hr>
                     </div>
-                    <div class="col-sm-9 col-12">
+                    <div class="col-sm-9 offset-sm-1 col-12">
                         <div class="row" id="button">
                             <div class="col-6">
-                                <input type="submit" name="btnAddPortfolio" class="btn btn-primary" value="Tạo mới danh mục">
+                                <input type="submit" name="btnAddCategory" class="btn btn-primary" value="Tạo mới danh mục">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-danger">Hủy bỏ</button>
@@ -50,6 +50,8 @@
                 </div>
             </div>
         </form>
+
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
 </body>
 </html>

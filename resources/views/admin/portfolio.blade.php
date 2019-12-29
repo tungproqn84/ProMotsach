@@ -40,11 +40,8 @@
                             @foreach($portfolios as $portfolio)
                                 <tr>
                                     <td>{{$portfolio->count()}}</td>
-                                    <!-- giữ id danh mục -->
-                                    <!-- <td><a href="{{ route('admin-show-portfolio', $portfolio->PortfolioID) }}" id="showInfo">{{$portfolio->PortfolioName}}</a></td> -->
                                     <td>
-                                        <span class="showInfo" style="cursor: pointer;" onclick="show({{ $portfolio->PortfolioID }})">{{ $portfolio->PortfolioName }}</span>
-                                        <!-- <input type="text" id="port_id" value="{{ $portfolio->PortfolioID }}"> -->
+                                        <span class="showInfo" onclick="show({{ $portfolio->PortfolioID }})">{{ $portfolio->PortfolioName }}</span>
                                     </td>
                                     @if($portfolio->PortfolioStatus==0)
                                         <td style="color:red">Ngừng hoạt động</td>

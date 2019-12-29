@@ -32,7 +32,7 @@ class MyController extends Controller
     }
     // Hiển thị thông tin danh mục
     public function ShowPortfolio($portfolio_id) {
-        $portfolio = Portfolio::where('PortfolioID',$portfolio_id)->get();
+        $portfolio = Portfolio::where('PortfolioID',$portfolio_id)->first();
         return view('admin/showPortfolio', compact('portfolio'));
     }
     // Chèn danh mục
@@ -56,11 +56,31 @@ class MyController extends Controller
         $portfolios = Portfolio::all();
         return view('admin/AddProduct', compact('portfolios'));
     }
+    // hiển thị thông tin sản phẩm
+    public function ShowProduct($product_id) {
+        $product = Product::where('PID', $product_id)->first();
+        return view('admin/showProduct', compact('product'));
+    }
 
     // Trang thể loại
     public function getCategoryPage() {
-        return view('admin/Category');
+        $categories = Category::all();
+        return view('admin/Category', compact('categories'));
     }
+    // Thêm thể loại
+    public function AddCategory() {
+        return view('admin/addCategory');
+    }
+    // chèn thể loại
+    // public function InsertCategory() {
+    //         // code
+    // }
+    // Xem thông tin thể 
+    public function showCategory($category_id) {
+        $category = Category::where('CategoryID',$category_id)->first();
+        return view('admin/showCategory', compact('category'));
+    }
+
 
 // CONTROLLER CUSTOMER
     public function getindex()
