@@ -73,11 +73,27 @@ class MyController extends Controller
         // echo 'a'; die();
         return view('admin/signup');
     }
-    // public function postsignin(Request $rq){
-        // $this->validate($rq,
-        //     ['email'=>'required||unique:users,email','mobile'=>'required||unique:tblcustomer,Cellphone',''=>'required','address'=>'required'],
-        //     ['email.unique'=>'Email này đã được đăng kí','mobile.unique'=>'Số điện thoại đã được đăng kí','name.required'=>'Tên của bạn còn trống','mobile.required'=>'Số điện thoại còn trống','address.required'=>'Địa chỉ của bạn còn trống','email.required'=>'Tên đăng nhập còn trống']
-        // );
+    public function postsignin(Request $rq){
+        if($rq->gender=='nam')
+            $gender=1;
+        else
+            $gender=0;
+        $user=new User();
+        $user->name=$rq->name;
+        $user->email=$rq->email;
+        $user->password= Hash::make($rq->password);
+        $user->save();
+        $customer= new Customer();
+        $customer->CusName=$rq->name;
+        $customer->Gender=$gender;
+        $customer->DayOfBirth=$rq->dob;
+        $customer->Cellphone=$rq->mobile;
+        $customer->CusAddress=$rq->address;
+        $customer->Email=$rq->email;
+        $customer->Password=$rq->password;
+        $customer->save();
+        return redirect(Route('login'))->with("thanhcong","Tài khoản của bạn đã sẵn sàng để sử dụng");
+    }
     // Chèn danh mục
     public function InsertPortfolio (Request $request)
     {
@@ -125,25 +141,6 @@ class MyController extends Controller
         return view('admin/showCategory', compact('category'));
     
 
-        if($rq->gender=='nam')
-            $gender=1;
-        else
-            $gender=0;
-        $user=new User();
-        $user->name=$rq->name;
-        $user->email=$rq->email;
-        $user->password= Hash::make($rq->password);
-        $user->save();
-        $customer= new Customer();
-        $customer->CusName=$rq->name;
-        $customer->Gender=$gender;
-        $customer->DayOfBirth=$rq->dob;
-        $customer->Cellphone=$rq->mobile;
-        $customer->CusAddress=$rq->address;
-        $customer->Email=$rq->email;
-        $customer->Password=$rq->password;
-        $customer->save();
-        return redirect(Route('login'))->with("thanhcong","Tài khoản của bạn đã sẵn sàng để sử dụng");
     }
     //endsignin
 // CONTROLLER CUSTOMER

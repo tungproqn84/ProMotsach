@@ -7,6 +7,14 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <div id="flipkart-navbar">
     <div class="container">
+        <div class="row"style="float: right; margin-right: 10%;">
+            @if(Session::has('user'))
+                <span >Xin chào <a href="edit" style="color: chartreuse; text-decoration: none"> {{Session::get('user')}}</a>     <a href="{{Route('logout')}}"><button class="btn btn-success">Đăng xuất</button></a>
+                </span>
+                @else
+                    <button class="btn btn-success"> <a class="links" href="login">Đăng nhập</a></button>
+                @endif
+        </div>
         <div class="row row1">
             <ul class="largenav pull-right">
             <li class="upper-links"><a class="links" href="{{Route('home')}}">Trang chủ</a></li>
@@ -19,14 +27,9 @@
                 </li>
                 <li class="upper-links"><a class="links" href="lienhe">Liên hệ</a></li>
                 <li class="upper-links"><a class="links" href="gioithieu">Giới thiệu</a></li>
+
             </ul>
         </div>
-        @if(Session::has('user'))
-            <span style="float: right;">Xin chào <a href="edit" style="color: chartreuse; text-decoration: none"> {{Session::get('user')}}</a>     <a href="{{Route('logout')}}"><button class="btn btn-success">Đăng xuất</button></a>
-            </span>
-        @else
-            <button class="btn btn-info" style="float: right;"><a class="links" href="login">Đăng nhập</a></li>
-        @endif
         <form action="{{Route('search')}}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row row2">
@@ -43,6 +46,7 @@
                             </svg>
                         </button>
                 </div>
+
             </div>
             <div class="cart largenav col-sm-2">
             <a class="cart-button" href="{{Route('cart')}}">
