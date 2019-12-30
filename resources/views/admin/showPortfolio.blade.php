@@ -34,7 +34,7 @@
                                 @endif
                             </li>
                             <li>
-                                <label>Mô tả:</label>
+                                <label>Mô tả:</label><br>
                                 <span>{{$portfolio->PortfolioDescription}}</span>
                             </li>
                             <li>

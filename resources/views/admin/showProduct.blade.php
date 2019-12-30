@@ -37,14 +37,14 @@
                                 <label>Số lượng hiện tại:</label>
                                 <span>{{ $product->PAmount }}</span>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <label>Danh mục:</label>
-                                <span>{{ $portfolio->PortfolioName }}</span>
+                                <span> $portfolio->PortfolioName </span>
                             </li>
                             <li>
                                 <label>Thể loại:</label>
-                                <span>{{ $category->CategoryName }}</span>
-                            </li>
+                                <span> $category->CategoryName </span>
+                            </li> -->
                             <li>
                                 <label>Ngày phát hành sản phẩm:</label>
                                 <span>{{ $product->PStartDay }}</span>
@@ -61,7 +61,7 @@
                                 <label>Doanh thu trung bình hàng tháng:</label>
                             </li>
                             <li>
-                                <label>Chi tiết sản phẩm:</label>
+                                <label>Chi tiết sản phẩm:</label><br>
                                 {!! $product->PDetail !!}
                             </li>
                             

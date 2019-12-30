@@ -38,7 +38,7 @@
                                 <span>{{ $category->StartDay }}</span>
                             </li>
                             <li>
-                                <label>Mô tả thể loại:</label>
+                                <label>Mô tả thể loại:</label><br>
                                 <span>{{ $category->CategoryDescription }}</span>
                             </li>
                             <li>
