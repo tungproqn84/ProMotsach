@@ -135,11 +135,11 @@ class MyController extends Controller
     // public function InsertCategory() {
     //         // code
     // }
-    // Xem thông tin thể 
+    // Xem thông tin thể
     public function showCategory($category_id) {
         $category = Category::where('CategoryID',$category_id)->first();
         return view('admin/showCategory', compact('category'));
-    
+
 
     }
     //endsignin
@@ -288,5 +288,15 @@ class MyController extends Controller
         $slide=Slide::all();
         $type='search';
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
+    }
+    //liên hệ
+    public function getcontact(){
+        $cat=Category::all();
+        $slide=Slide::all();
+        return view('customer/contact', compact('cat','slide'));
+    }
+    public function postcontact(Request $rq)
+    {
+
     }
 }

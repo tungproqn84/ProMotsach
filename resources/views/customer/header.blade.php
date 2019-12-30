@@ -25,7 +25,7 @@
                         @endforeach
                     </ul>
                 </li>
-                <li class="upper-links"><a class="links" href="lienhe">Liên hệ</a></li>
+                <li class="upper-links"><a class="links" href="contact">Liên hệ</a></li>
                 <li class="upper-links"><a class="links" href="gioithieu">Giới thiệu</a></li>
 
             </ul>
