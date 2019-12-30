@@ -11,6 +11,7 @@ use App\Slide;
 use Illuminate\Http\Request;
 use App\Portfolio;
 use App\User;
+use Carbon\Carbon;
 use Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -101,6 +102,7 @@ class MyController extends Controller
         $portfolio->PortfolioName = request('PortfolioName');
         $portfolio->PortfolioDescription = request('PortfolioDescription');
         $portfolio->PortfolioStatus = request('PortfolioStatus');
+        
         $portfolio->save();
         return redirect()->route('admin-portfolio');
     }
@@ -114,12 +116,34 @@ class MyController extends Controller
     // Thêm sản phẩm
     public function AddProduct() {
         $portfolios = Portfolio::all();
-        return view('admin/AddProduct', compact('portfolios'));
+        $categories = Category::all();
+        return view('admin/AddProduct', compact('portfolios', 'categories'));
     }
     // hiển thị thông tin sản phẩm
     public function ShowProduct($product_id) {
         $product = Product::where('PID', $product_id)->first();
-        return view('admin/showProduct', compact('product'));
+        $portfolio = Portfolio::where('PortfolioID', $product->PPortfolio)->first();
+        $category = Category::where('CategoryID', $product->PCategory)->first();
+        return view('admin/showProduct', compact('product', 'portfolio', 'category'));
+    }
+    // chèn sản phẩm
+    public function InsertProduct(Request $request) {
+        $product = new Product;
+        $startday = Carbon::now();
+        $product->PName = request('ProductName');
+        $product->PAuthor = request('Author');
+        $product->PAmount = request('Amount');
+        $product->PPortfolio = request('Portfolio');
+        $product->PCategory = request('Category');
+        $product->PStartDay = $startday;
+        $product->PImage = request('Image');
+        $product->PDetail = request('Detail');
+        $product->PStatus= request('Status');
+        $product->PPrice= request('Price');
+        $product->PSale= 0;
+        $product->PBuy= 0;
+        $product->save();
+        return redirect()->route('admin-product');
     }
 
     // Trang thể loại
@@ -132,9 +156,16 @@ class MyController extends Controller
         return view('admin/addCategory');
     }
     // chèn thể loại
-    // public function InsertCategory() {
-    //         // code
-    // }
+    public function InsertCategory(Request $request) {
+            $category = new Category;
+            $startday = Carbon::now();
+            $category->CategoryName = request('CategoryName');
+            $category->CategoryDescription = request('CategoryDescription');
+            $category->CategoryStatus = request('CategoryStatus');
+            $category->StartDay = $startday;
+            $category->save();
+            return redirect()->route('admin-category');
+    }
     // Xem thông tin thể 
     public function showCategory($category_id) {
         $category = Category::where('CategoryID',$category_id)->first();

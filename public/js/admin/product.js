@@ -10,10 +10,9 @@ $(document).ready(function() {
         });
     });
 
-    
+
 });
-// CKeditor
-CKEDITOR.replace( 'Detail' );
+
 
 // show infomation
 function show(id) {

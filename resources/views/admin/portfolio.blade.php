@@ -43,7 +43,7 @@
                                     <td>
                                         <span class="showInfo" onclick="show({{ $portfolio->PortfolioID }})">{{ $portfolio->PortfolioName }}</span>
                                     </td>
-                                    @if($portfolio->PortfolioStatus==0)
+                                    @if($portfolio->PortfolioStatus==1)
                                         <td style="color:red">Ngừng hoạt động</td>
                                     @else
                                         <td style="color:green">Đang hoạt động</td>
