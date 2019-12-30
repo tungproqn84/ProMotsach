@@ -33,8 +33,8 @@
                     </div>
                     <div class="col-sm-9 offset-sm-1 col-12">
                         <label for="CategoryStatus">Trạng thái</label><br>
-                        <input type="radio" name="CategoryStatus" id="CategoryStatus" value="0">Kích hoạt
-                        <input type="radio" name="CategoryStatus" id="CategoryStatus" value="1">Tạm hoãn
+                        <input type="radio" name="CategoryStatus" id="CategoryStatus" value="1">Kích hoạt
+                        <input type="radio" name="CategoryStatus" id="CategoryStatus" value="2">Tạm hoãn
                         <hr>
                     </div>
                     <div class="col-sm-9 offset-sm-1 col-12">
