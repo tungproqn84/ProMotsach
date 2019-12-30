@@ -102,7 +102,7 @@ class MyController extends Controller
         $portfolio->PortfolioName = request('PortfolioName');
         $portfolio->PortfolioDescription = request('PortfolioDescription');
         $portfolio->PortfolioStatus = request('PortfolioStatus');
-        
+
         $portfolio->save();
         return redirect()->route('admin-portfolio');
     }
@@ -156,6 +156,10 @@ class MyController extends Controller
         return view('admin/addCategory');
     }
     // chèn thể loại
+    // public function InsertCategory() {
+    //         // code
+    // }
+    // Xem thông tin thể
     public function InsertCategory(Request $request) {
             $category = new Category;
             $startday = Carbon::now();
@@ -166,11 +170,11 @@ class MyController extends Controller
             $category->save();
             return redirect()->route('admin-category');
     }
-    // Xem thông tin thể 
+    // Xem thông tin thể
     public function showCategory($category_id) {
         $category = Category::where('CategoryID',$category_id)->first();
         return view('admin/showCategory', compact('category'));
-    
+
 
     }
     //endsignin
@@ -319,5 +323,15 @@ class MyController extends Controller
         $slide=Slide::all();
         $type='search';
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
+    }
+    //liên hệ
+    public function getcontact(){
+        $cat=Category::all();
+        $slide=Slide::all();
+        return view('customer/contact', compact('cat','slide'));
+    }
+    public function postcontact(Request $rq)
+    {
+
     }
 }

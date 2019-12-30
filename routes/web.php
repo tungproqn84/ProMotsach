@@ -134,3 +134,4 @@ Route:: get('/logout', ['as' => 'logout', 'uses' =>'MyController@getlogout']);
 Route:: get('/signin', ['as' => 'signin', 'uses' => 'MyController@getsignin']);
 Route:: post('/postsignin', ['as' => 'postsignin', 'uses' => 'MyController@postsignin']);
 Route:: post('/search',['as'=>'search','uses'=>'MyController@getsearch']);
+Route::get('/contact', 'MyController@getcontact');
