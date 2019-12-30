@@ -22,7 +22,7 @@
                     <div class="col-sm-12" id="portfolioInfomation">
                         <ul>
                             <li>
-                                <label for="">Danh mục: </label>
+                                <label for="">Thể loại: </label>
                                 <span>{{$category->CategoryName}}</span>
                             </li>
                             <li>
@@ -34,7 +34,12 @@
                                 @endif
                             </li>
                             <li>
-                                <label>Thể loại sách:</label>
+                                <label>Ngày khởi tạo:</label>
+                                <span>{{ $category->StartDay }}</span>
+                            </li>
+                            <li>
+                                <label>Mô tả thể loại:</label>
+                                <span>{{ $category->CategoryDescription }}</span>
                             </li>
                             <li>
                                 <label>Tổng số lượng sách:</label>

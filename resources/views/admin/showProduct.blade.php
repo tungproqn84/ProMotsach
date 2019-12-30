@@ -22,8 +22,32 @@
                     <div class="col-sm-12" id="productInfomation">
                         <ul>
                             <li>
-                                <label for="">Danh mục: </label>
-                                <span>{{$product->PName}}</span>
+                                <label for="">Tên sản phẩm: </label>
+                                <span>{{ $product->PName }}</span>
+                            </li>
+                            <li>
+                                <label>Tác giả:</label>
+                                <span>{{ $product->PAuthor }}</span>
+                            </li>
+                            <li>
+                                <label>Đơn giá:</label>
+                                <span>{{ $product->PPrice }}</span>
+                            </li>
+                            <li>
+                                <label>Số lượng hiện tại:</label>
+                                <span>{{ $product->PAmount }}</span>
+                            </li>
+                            <li>
+                                <label>Danh mục:</label>
+                                <span>{{ $portfolio->PortfolioName }}</span>
+                            </li>
+                            <li>
+                                <label>Thể loại:</label>
+                                <span>{{ $category->CategoryName }}</span>
+                            </li>
+                            <li>
+                                <label>Ngày phát hành sản phẩm:</label>
+                                <span>{{ $product->PStartDay }}</span>
                             </li>
                             <li>
                                 <label>Trạng thái: </label>
@@ -34,14 +58,13 @@
                                 @endif
                             </li>
                             <li>
-                                <label>Thể loại sách:</label>
-                            </li>
-                            <li>
-                                <label>Tổng số lượng sách:</label>
-                            </li>
-                            <li>
                                 <label>Doanh thu trung bình hàng tháng:</label>
                             </li>
+                            <li>
+                                <label>Chi tiết sản phẩm:</label>
+                                {!! $product->PDetail !!}
+                            </li>
+                            
                         </ul>
                     </div>
                 </div><hr>
@@ -62,6 +85,9 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
+        <script>
+    CKEDITOR.replace( 'Detail' );
+    </script>
     <script type="text/javascript" src="{{asset('js/admin/product.js')}}"></script>
 </body>
 </html>

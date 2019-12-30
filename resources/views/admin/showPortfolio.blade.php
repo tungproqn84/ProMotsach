@@ -34,7 +34,8 @@
                                 @endif
                             </li>
                             <li>
-                                <label>Thể loại sách:</label>
+                                <label>Mô tả:</label>
+                                <span>{{$portfolio->PortfolioDescription}}</span>
                             </li>
                             <li>
                                 <label>Tổng số lượng sách:</label>

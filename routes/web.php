@@ -68,6 +68,15 @@ Route::GET('/show-product/{product_id}', [
     'as'   => 'admin-show-product',
     'uses' => 'MyController@ShowProduct'
 ]);
+// chèn thể loại
+Route::GET('/insert-product', [
+    'as'   => 'insert-product',
+    'uses' => 'MyController@InsertProduct'
+]);
+Route::POST('/insert-product', [
+    'as'   => 'insert-product',
+    'uses' => 'MyController@InsertProduct'
+]);
 // route thể loại
 Route::GET('/category', [
     'as'   => 'admin-category',
@@ -82,6 +91,10 @@ Route::GET('/add-category', [
 ]);
 // chèn thể loại
 Route::GET('/insert-category', [
+    'as'   => 'insert-category',
+    'uses' => 'MyController@InsertCategory'
+]);
+Route::POST('/insert-category', [
     'as'   => 'insert-category',
     'uses' => 'MyController@InsertCategory'
 ]);
