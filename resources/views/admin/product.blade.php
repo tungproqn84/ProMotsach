@@ -29,10 +29,10 @@
                     <div class="col-sm-12" id="dataBox">
                         <table class="table table-light table-striped">
                             <tr>
-                                <th width="5%">STT</th>
+                                <th width="3%">STT</th>
                                 <th width="50%">Tên sản phẩm</th>
-                                <th width="25%">Tác giả</th>
-                                <th width="20%">Trạng thái</th>
+                                <th width="22%">Tác giả</th>
+                                <th width="25%">Trạng thái</th>
                             </tr>
                             @foreach($products as $product)
                             <tr>
@@ -41,7 +41,13 @@
                                     <span class="showInfo" onclick="show({{ $product->PID }})">{{ $product->PName }}</span>
                                 </td>
                                 <td>{{ $product->PAuthor }}</td>
-                                <td>{{ $product->PStatus }}</td>
+                                <td>
+                                @if($product->PStatus == 1)
+                                    <span style="color: green;">Đang hoạt động</span>
+                                @else
+                                    <span style="color: red;">Ngừng hoạt động</span>
+                                @endif
+                                </td>
                             </tr>
                             @endforeach
                         </table>
