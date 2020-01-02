@@ -19,17 +19,22 @@ Route:: get('/', function () {
 
 // ROUTE ADMIN
 
-Route::get('admin', [
+Route::get('/admin', [
     'as'   => 'admin-home',
     'uses' => 'MyController@getHomePage'
 ]);
+// trang khách hàng
+Route::get('/customer', [
+    'as'   => 'admin-customer',
+    'uses' => 'MyController@getCustomerPage'
+]);
 
-Route::get('portfolio', [
+Route::get('/portfolio', [
     'as'   => 'admin-portfolio',
     'uses' => 'MyController@getPortfolioPage'
 ]);
 
-// route thêm danh mục
+// thêm danh mục
 Route::GET('/add-portfolio', [
     'as'   => 'admin-add-portfolio',
     'uses' => 'MyController@AddPortfolio'
@@ -49,6 +54,11 @@ Route::GET('/show-portfolio/{portfolio_id}', [
     'as'   => 'admin-show-portfolio',
     'uses' => 'MyController@ShowPortfolio'
 ]);
+// xóa danh mục
+Route::GET('delete-portfolio/{portfolio_id}', [
+    'as'   => 'admin-delete-portfolio',
+    'uses' => 'MyController@DeletePortfolio'
+]);
 // route sản phẩm
 Route::GET('/product', [
     'as'   => 'admin-product',
@@ -67,6 +77,11 @@ Route::GET('/add-product', [
 Route::GET('/show-product/{product_id}', [
     'as'   => 'admin-show-product',
     'uses' => 'MyController@ShowProduct'
+]);
+// xóa sản phẩm
+Route::GET('delete-product/{product_id}', [
+    'as'   => 'admin-delete-product',
+    'uses' => 'MyController@DeleteProduct'
 ]);
 // chèn thể loại
 Route::GET('/insert-product', [
@@ -102,6 +117,11 @@ Route::POST('/insert-category', [
 Route::GET('/show-category/{category_id}', [
     'as'   => 'admin-show-category',
     'uses' => 'MyController@showCategory'
+]);
+// xóa sản phẩm
+Route::GET('delete-category/{category_id}', [
+    'as'   => 'admin-delete-category',
+    'uses' => 'MyController@DeleteCategory'
 ]);
 
 

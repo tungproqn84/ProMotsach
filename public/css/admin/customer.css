@@ -1,0 +1,42 @@
+body {
+    padding: 10px;
+    margin: 0;
+}
+
+#CustomerContainer {
+    margin-top: 100px;
+}
+#DisplayCustomer #titleBox {
+    background-color: #115353;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 8px 0px;
+    top: 50%;
+}
+
+
+#titleBox span {
+    position: relative;
+    top: 15%;
+}
+table {
+    display: table;
+}
+
+#dataBox {
+    padding: 0;
+}
+#DisplayCustomer th,
+#DisplayCustomer td {
+    padding: 5px 5px;
+    text-align: center;
+}
+
+/* css form thêm danh mục */
+#FormAddCustomer {
+    position: relative;
+    margin: auto auto auto auto;
+}
+.showInfo {
+    cursor: pointer;
+}

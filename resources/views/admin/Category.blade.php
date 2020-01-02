@@ -37,13 +37,13 @@
                                 <th width="50%">Thể loại</th>
                                 <th width="40%">Trạng thái</th>
                             </tr>
-                            @foreach($categories as $Category)
+                            @foreach($categories as $category)
                                 <tr>
-                                    <td>{{$Category->count()}}</td>
+                                    <td>{{$category->count()}}</td>
                                     <td>
-                                        <span class="showInfo" onclick="show({{$Category->CategoryID}})">{{ $Category->CategoryName }}</span>
+                                        <span class="showInfo" onclick="show({{$category->CategoryID}})">{{ $category->CategoryName }}</span>
                                     </td>
-                                    @if($Category->CategoryStatus==0)
+                                    @if($category->CategoryStatus==0)
                                         <td style="color:red">Ngừng hoạt động</td>
                                     @else
                                         <td style="color:green">Đang hoạt động</td>

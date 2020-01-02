@@ -13,7 +13,7 @@
     });
     
    function show(id) {
-        $.ajax({
+        $.ajax({    
             url    : '/show-portfolio/' + id,
             type : "GET",
             success: function(result){

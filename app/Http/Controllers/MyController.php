@@ -23,8 +23,18 @@ class MyController extends Controller
 // CONTROLLER ADMIN
     // gọi trang chủ
     public function getHomePage() {
-        return view('admin/home');
+        $count_customer = Customer::count();
+        $count_product = Product::count();
+        return view('admin/home', compact('count_customer', 'count_product'));
     }
+
+    // gọi trang khách hàng
+    public function getCustomerPage() {
+        $customers = Customer::all();
+        return view('admin.customer', compact('customers'));
+    } 
+
+    
     // gọi trang danh mục
     public function getPortfolioPage() {
         $portfolios = Portfolio::all();
@@ -38,6 +48,11 @@ class MyController extends Controller
     public function ShowPortfolio($portfolio_id) {
         $portfolio = Portfolio::where('PortfolioID',$portfolio_id)->first();
         return view('admin/showPortfolio', compact('portfolio'));
+    }
+    // xóa danh mục
+    public function DeletePortfolio($portfolio_id) {
+        $portfolio = Portfolio::where('PortfolioID', $portfolio_id)->delete();
+        return redirect()->back();
     }
     //login
     public function getlogin(){
@@ -145,6 +160,11 @@ class MyController extends Controller
         $product->save();
         return redirect()->route('admin-product');
     }
+    // xóa sản phẩm
+    public function DeleteProduct($product_id) {
+        $product = Product::where('PID', $product_id)->delete();
+        return redirect()->back();
+    }
 
     // Trang thể loại
     public function getCategoryPage() {
@@ -154,6 +174,11 @@ class MyController extends Controller
     // Thêm thể loại
     public function AddCategory() {
         return view('admin/addCategory');
+    }
+    // xóa danh mục
+    public function DeleteCategory($category_id) {
+        $category = Category::where('CategoryID', $category_id)->delete();
+        return redirect()->back();
     }
     // chèn thể loại
     // public function InsertCategory() {
