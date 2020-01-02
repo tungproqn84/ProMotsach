@@ -37,21 +37,21 @@
                                 <label>Số lượng hiện tại:</label>
                                 <span>{{ $product->PAmount }}</span>
                             </li>
-                            <!-- <li>
+                            <li>
                                 <label>Danh mục:</label>
-                                <span> $portfolio->PortfolioName </span>
+                                <span>{{ $portfolio->PortfolioName }}</span>
                             </li>
                             <li>
                                 <label>Thể loại:</label>
-                                <span> $category->CategoryName </span>
-                            </li> -->
+                                <span>{{ $category->CategoryName }}</span>
+                            </li>
                             <li>
                                 <label>Ngày phát hành sản phẩm:</label>
                                 <span>{{ $product->PStartDay }}</span>
                             </li>
                             <li>
                                 <label>Trạng thái: </label>
-                                @if($product->PStatus == 1)
+                                @if($product->PStatus == 0)
                                     <span style="color: green;">Đang hoạt động</span>
                                 @else
                                     <span style="color: red;">Ngừng hoạt động</span>

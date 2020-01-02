@@ -26,9 +26,9 @@
                 </div>
                 <div class="sidebar-footing">
                     <ul>
-                        <button class="btn btn-primary" title="Danh mục"><i class="fab fa-facebook-f"></i></button>
-                        <button class="btn btn-primary" title="Danh mục"><i class="fas fa-phone"></i></button>
-                        <button class="btn btn-primary" title="Danh mục"><i class="fas fa-map-marker-alt"></i></button>
+                        <li><button class="btn btn-primary" title="Danh mục"><i class="fab fa-facebook-f"></i></button></li>
+                        <li><button class="btn btn-primary" title="Danh mục"><i class="fas fa-phone"></i></button></li>
+                        <li><button class="btn btn-primary" title="Danh mục"><i class="fas fa-map-marker-alt"></i></button></li>
                     </ul>
                 </div>
             </div>
