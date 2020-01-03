@@ -7,6 +7,7 @@
 <script src="js/admin/signup.js"></script>
 <script type="text/javascript" src="https://itexpress.vn/js/noel.js"></script>
 <head>
+    <title>Liên hệ với chúng tôi- Nhà sách Mọt sách</title>
     <style>
         body{
             font-size: 15px !important;

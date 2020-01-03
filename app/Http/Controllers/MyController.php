@@ -188,13 +188,18 @@ class MyController extends Controller
         $hot=Product::orderby('PBuy', 'desc')->limit(4)->get();
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
     }
+    //chi tiết sản phẩm
     public function detailproduct($id)
     {
         $cat=Category::all();
         $slide=Slide::all();
         $product=Product::where('PID', $id)->first();
-        return view('customer/detailproduct', compact('product', 'cat', 'slide'));
+        $idmore=$product->PCategory;
+
+        $more_product=Product::where('PCategory', $idmore)->limit(4)->get();
+        return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product'));
     }
+    //xem sản phẩm cùng loại khác
     public function getsee($id)
     {
         if($id==1)
@@ -303,7 +308,11 @@ class MyController extends Controller
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
     }
     //feedback
-    public function feedback(Request $rq)
+    public function getfeedback()
+    {
+        return redirect('getfeedback');
+    }
+    public function sendfeedback(Request $rq)
     {
         $feedback=$rq->feedback;
         $tbl=new Feedback();

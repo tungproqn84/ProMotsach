@@ -1,0 +1,45 @@
+#avatar{
+    margin-left: 20px;
+}
+#img{
+    width: 50px;height: 50px;
+    width: 50px !important;
+    border: 1px solid aqua !important;
+    border-radius: 70px;
+}
+#comment{
+    margin-left: 50px;
+    font-size: 15px;
+}
+#time{
+    font-size: 10px;
+}
+#detail{
+    font-size: 15px;
+}
+#namep{
+    font-size: 20px;
+}
+a{
+    text-decoration: none !important;
+}
+#more{
+    margin-bottom: 5px;
+    border: 1px solid gray;
+}
+.sp{
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+#btndetail{
+    float: bottom;
+}
+#imgmore{
+    height: 250px;
+    margin-top: 20px;
+    width: 80%;
+}
+#formm{
+    margin-bottom: 20px;
+}

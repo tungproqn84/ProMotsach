@@ -73,7 +73,7 @@
                             </li>
                             <!-- icon đăng xuất -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i></a>
+                                <a class="nav-link" href="logout" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i></a>
                             </li>
                         </ul>
                     </div>

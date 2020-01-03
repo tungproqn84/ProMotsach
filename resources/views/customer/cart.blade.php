@@ -36,7 +36,7 @@
                                     </div>
                                 </div></td>
                                 <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="number" class="form-control" value="{{$ca->qty}}" name="qty">
+                                    <input type="number" class="form-control" value="{{$ca->qty}}" name="qty" min="0" max="5">
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center">
                                     <strong>
@@ -48,7 +48,6 @@
                                     <span class="glyphicon glyphicon-remove"></span> Remove
                                 </button></a></td>
                             </tr>
-
                         @endif
                         @endforeach
                         @endforeach

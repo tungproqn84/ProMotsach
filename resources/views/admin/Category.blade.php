@@ -21,6 +21,7 @@
         <div class="row">
             <!-- Hiển thị danh sách danh mục đang sử dụng -->
             <div class="col-sm-5" id="DisplayCategory">
+                <span>Tổng cộng {{count($categories)}} thể loại</span>
                 <div class="row" id="titleBox">
                     <div class="col-8">
                         <span>DANH SÁCH THỂ LOẠI</span>
@@ -33,13 +34,13 @@
                     <div class="col-sm-12" id="dataBox">
                         <table class="table table-light table-striped">
                             <tr>
-                                <th width="10%">STT</th>
+                                <th width="10%">ID</th>
                                 <th width="50%">Thể loại</th>
                                 <th width="40%">Trạng thái</th>
                             </tr>
                             @foreach($categories as $Category)
                                 <tr>
-                                    <td>{{$Category->count()}}</td>
+                                    <td>{{$Category->CategoryyID}}</td>
                                     <td>
                                         <span class="showInfo" onclick="show({{$Category->CategoryID}})">{{ $Category->CategoryName }}</span>
                                     </td>
@@ -63,8 +64,8 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-    
-    
+
+
     <script type="text/javascript" src="{{asset('js/admin/category.js')}}"></script>
 </body>
 </html>

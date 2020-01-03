@@ -21,6 +21,7 @@
         <div class="row">
             <!-- Hiển thị danh sách danh mục đang sử dụng -->
             <div class="col-sm-5" id="DisplayPortfolio">
+                <span>Tổng cộng {{count($portfolios)}} danh mục</span>
                 <div class="row" id="titleBox">
                     <div class="col-8">
                         <span>DANH SÁCH DANH MỤC</span>
@@ -33,15 +34,15 @@
                     <div class="col-sm-12" id="dataBox">
                         <table class="table table-light table-striped">
                             <tr>
-                                <th width="10%">STT</th>
+                                <th width="10%">ID</th>
                                 <th width="50%">Danh mục</th>
                                 <th width="40%">Trạng thái</th>
                             </tr>
                             @foreach($portfolios as $portfolio)
                                 <tr>
-                                    <td>{{$portfolio->count()}}</td>
+                                    <td>{{$portfolio->PortfolioID}}</td>
                                     <td>
-                                        <span class="showInfo" onclick="show({{ $portfolio->PortfolioID }})">{{ $portfolio->PortfolioName }}</span>
+                                        <span class="showInfo" onclick="show({{ $portfolio->PortfolioName }})">{{ $portfolio->PortfolioName }}</span>
                                     </td>
                                     @if($portfolio->PortfolioStatus==1)
                                         <td style="color:red">Ngừng hoạt động</td>
@@ -63,8 +64,8 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-    
-    
+
+
     <script type="text/javascript" src="{{asset('js/admin/portfolio.js')}}"></script>
 </body>
 </html>

@@ -28,7 +28,5 @@
 	<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 	<!--customjs-->
     <script src="../layout/assets/dest/js/custom2.js"></script>
-    <script type="text/javascript" src="https://itexpress.vn/js/noel.js"></script>
-
 </body>
 </html>
