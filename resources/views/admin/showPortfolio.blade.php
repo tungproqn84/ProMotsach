@@ -56,7 +56,7 @@
                         <button class="btn btn-success"><i class="fas fa-edit"></i> Sửa</button>
                     </div>
                     <div class="col-sm-12 col-4">
-                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Xóa</button>
+                        <button class="btn btn-danger" id="btnDeletePortfolio" onclick="location.href='delete-portfolio/{{ $portfolio->PortfolioID }}'"><i class="fas fa-trash-alt"></i> Xóa</button>
                     </div>
                 </div>
             </div>

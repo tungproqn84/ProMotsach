@@ -57,7 +57,7 @@
                         <button class="btn btn-success"><i class="fas fa-edit"></i> Sửa</button>
                     </div>
                     <div class="col-sm-12 col-4">
-                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Xóa</button>
+                        <button class="btn btn-danger" onclick="location.href='delete-category/{{ $category->CategoryID }}'"><i class="fas fa-trash-alt"></i> Xóa</button>
                     </div>
                 </div>
             </div>

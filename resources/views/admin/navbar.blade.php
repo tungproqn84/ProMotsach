@@ -17,7 +17,7 @@
                     <a href="{{ route('admin-home') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-home"></i> Trang chủ</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-id-card"></i> Hồ sơ cá nhân</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-file-invoice-dollar"></i> Doanh thu</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users"></i> Khách hàng</a>
+                    <a href="{{ route('admin-customer') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users"></i> Khách hàng</a>
                     <a href="{{ route('admin-portfolio') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-layer-group"></i> Danh mục sản phẩm</a>
                     <a href="{{ route('admin-category') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-clipboard-list"></i> Thể loại</a>
                     <a href="{{ route('admin-product') }}" class="list-group-item list-group-item-action bg-light"><i class="fab fa-product-hunt"></i> Sản phẩm</a>
@@ -26,9 +26,9 @@
                 </div>
                 <div class="sidebar-footing">
                     <ul>
-                        <button class="btn btn-primary" title="Danh mục"><i class="fab fa-facebook-f"></i></button>
-                        <button class="btn btn-primary" title="Danh mục"><i class="fas fa-phone"></i></button>
-                        <button class="btn btn-primary" title="Danh mục"><i class="fas fa-map-marker-alt"></i></button>
+                        <li><button class="btn btn-primary" title="Danh mục"><i class="fab fa-facebook-f"></i></button></li>
+                        <li><button class="btn btn-primary" title="Danh mục"><i class="fas fa-phone"></i></button></li>
+                        <li><button class="btn btn-primary" title="Danh mục"><i class="fas fa-map-marker-alt"></i></button></li>
                     </ul>
                 </div>
             </div>

@@ -35,8 +35,13 @@
   #sidebar-wrapper .sidebar-footing {
     position: absolute;
     bottom: 0;
+    padding: 0px 20px 0px 20px;
   }
 
+  #sidebar-wrapper .sidebar-footing li {
+    float: left;
+    margin-left: 10px;
+  }
  
   
   #sidebar-wrapper .list-group {
