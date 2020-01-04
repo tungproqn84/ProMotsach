@@ -39,8 +39,9 @@
   }
 
   #sidebar-wrapper .sidebar-footing li {
+    list-style: none;
     float: left;
-    margin-left: 10px;
+    margin-left: 5px;
   }
  
   

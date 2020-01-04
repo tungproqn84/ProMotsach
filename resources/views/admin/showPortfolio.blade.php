@@ -27,7 +27,7 @@
                             </li>
                             <li>
                                 <label>Trạng thái: </label>
-                                @if($portfolio->PortfolioStatus == 1)
+                                @if($portfolio->PortfolioStatus == 0)
                                     <span style="color: green;">Đang hoạt động</span>
                                 @else
                                     <span style="color: red;">Ngừng hoạt động</span>

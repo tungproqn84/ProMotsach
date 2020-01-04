@@ -38,7 +38,7 @@
             </div>
             <div class="col-sm-3 col-6" id="Revenue">
                 <div id="dashboard">
-                    <p id="amount">200 000</p>
+                    <p id="amount">2 000 000</p>
                     <p id="name">Doanh thu</p>
                     <a href="#">Xem thêm <i class="fas fa-angle-double-right"></i></a>
                 </div>

@@ -197,7 +197,7 @@ class MyController extends Controller
     }
     // Xem thông tin thể
     public function showCategory($category_id) {
-        $category = Category::where('CategoryID',$category_id)->first();
+        $category = Category::where('CategoryyID',$category_id)->first();
         return view('admin/showCategory', compact('category'));
 
 
@@ -213,18 +213,15 @@ class MyController extends Controller
         $hot=Product::orderby('PBuy', 'desc')->limit(4)->get();
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
     }
-    //chi tiết sản phẩm
     public function detailproduct($id)
     {
         $cat=Category::all();
         $slide=Slide::all();
         $product=Product::where('PID', $id)->first();
         $idmore=$product->PCategory;
-
         $more_product=Product::where('PCategory', $idmore)->limit(4)->get();
         return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product'));
     }
-    //xem sản phẩm cùng loại khác
     public function getsee($id)
     {
         if($id==1)
@@ -333,6 +330,7 @@ class MyController extends Controller
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
     }
     //feedback
+<<<<<<< HEAD
     public function getfeedback()
     {
         $cat=Category::all();
@@ -340,6 +338,9 @@ class MyController extends Controller
         return view('customer/feedback', compact('cat', 'slide'));
     }
     public function sendfeedback(Request $rq)
+=======
+    public function feedback(Request $rq)
+>>>>>>> e00a07e746602738645d0f909af7411fc9551f90
     {
         $feedback=$rq->feedback;
         $tbl=new Feedback();

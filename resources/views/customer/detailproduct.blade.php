@@ -82,7 +82,7 @@
                 <a href="../detailproduct/{{$more->PID}}">
                     <center><img src="{{$more->PImage}}" id="imgmore"></center>
                     <div class="row" id="namep">
-                        <center>{{$more->PName}}</span></center>
+                        <!-- <center><span>$more->PName</span></center> -->
                     </div>
                 </a>
             </div>

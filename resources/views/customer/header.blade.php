@@ -2,17 +2,19 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="../js/navbar.js"></script>
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css">
 <!------ Include the above in your HEAD tag ---------->
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <div id="flipkart-navbar">
     <div class="container">
-        <div class="row"style="float: right; margin-right: 10%;">
+        <div class="row"style="float: right; margin-top: 5px;">
             @if(Session::has('user'))
                 <span >Xin chào <a href="edit" style="color: chartreuse; text-decoration: none"> {{Session::get('user')}}</a>     <a href="{{Route('logout')}}"><button class="btn btn-success">Đăng xuất</button></a>
                 </span>
                 @else
-                    <button class="btn btn-success"> <a class="links" href="login">Đăng nhập</a></button>
+                    <button class="btn btn-info"> <a class="links" href="login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></button>
                 @endif
         </div>
         <div class="row row1">
@@ -34,8 +36,8 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row row2">
             <div class="col-sm-2">
-                <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ Logo</span></h2>
-                <h1 style="margin:0px;"><span class="largenav">Logo</span></h1>
+                <h3 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ MỌT SÁCH</span></h3>
+                <h3 style="margin:0px;"><span class="largenav">MỌT SÁCH</span></h3>
             </div>
             <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
                 <div class="row">
