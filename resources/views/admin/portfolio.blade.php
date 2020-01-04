@@ -21,7 +21,6 @@
         <div class="row">
             <!-- Hiển thị danh sách danh mục đang sử dụng -->
             <div class="col-sm-5" id="DisplayPortfolio">
-                <span>Tổng cộng {{count($portfolios)}} danh mục</span>
                 <div class="row" id="titleBox">
                     <div class="col-8">
                         <span>DANH SÁCH DANH MỤC</span>
@@ -42,7 +41,7 @@
                                 <tr>
                                     <td>{{$portfolio->PortfolioID}}</td>
                                     <td>
-                                        <span class="showInfo" onclick="show({{ $portfolio->PortfolioName }})">{{ $portfolio->PortfolioName }}</span>
+                                        <span class="showInfo" onclick="show({{ $portfolio->PortfolioID }})">{{ $portfolio->PortfolioName }}</span>
                                     </td>
                                     @if($portfolio->PortfolioStatus==1)
                                         <td style="color:red">Ngừng hoạt động</td>

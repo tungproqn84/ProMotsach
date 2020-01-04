@@ -63,7 +63,9 @@ body {
 #InfomationBox #titleBox span {
     font-size: 20px;
 }
+#action {
+    margin-top: 10px;
+}
 #action button {
     width: 100%;
-    margin-top: 10px;
 }

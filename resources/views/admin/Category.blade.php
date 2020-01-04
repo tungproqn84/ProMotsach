@@ -21,7 +21,6 @@
         <div class="row">
             <!-- Hiển thị danh sách danh mục đang sử dụng -->
             <div class="col-sm-5" id="DisplayCategory">
-                <span>Tổng cộng {{count($categories)}} thể loại</span>
                 <div class="row" id="titleBox">
                     <div class="col-8">
                         <span>DANH SÁCH THỂ LOẠI</span>
@@ -40,13 +39,9 @@
                             </tr>
                             @foreach($categories as $category)
                                 <tr>
-<<<<<<< HEAD
-                                    <td>{{$Category->CategoryyID}}</td>
-=======
-                                    <td>{{$category->count()}}</td>
->>>>>>> aac9446e8fbfe09c213a16a5712733067e54bba4
+                                    <td>{{$category->CategoryyID}}</td>
                                     <td>
-                                        <span class="showInfo" onclick="show({{$category->CategoryID}})">{{ $category->CategoryName }}</span>
+                                        <span class="showInfo" onclick="show({{$category->CategoryyID}})">{{ $category->CategoryName }}</span>
                                     </td>
                                     @if($category->CategoryStatus==0)
                                         <td style="color:red">Ngừng hoạt động</td>

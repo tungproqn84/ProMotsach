@@ -44,7 +44,7 @@
                                 </td>
                                 <td>{{ $product->PAuthor }}</td>
                                 <td>
-                                @if($product->PStatus == 0)
+                                @if($product->PStatus == 1)
                                     <span style="color: green;">Đang hoạt động</span>
                                 @else
                                     <span style="color: red;">Ngừng hoạt động</span>
