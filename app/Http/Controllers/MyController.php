@@ -32,9 +32,9 @@ class MyController extends Controller
     public function getCustomerPage() {
         $customers = Customer::all();
         return view('admin.customer', compact('customers'));
-    } 
+    }
 
-    
+
     // gọi trang danh mục
     public function getPortfolioPage() {
         $portfolios = Portfolio::all();
@@ -335,7 +335,9 @@ class MyController extends Controller
     //feedback
     public function getfeedback()
     {
-        return redirect('getfeedback');
+        $cat=Category::all();
+        $slide=Slide::all();
+        return view('customer/feedback', compact('cat', 'slide'));
     }
     public function sendfeedback(Request $rq)
     {

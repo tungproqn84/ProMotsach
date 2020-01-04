@@ -1,0 +1,25 @@
+
+#title{
+    color: green !important;
+    }
+.form-area
+{
+    background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+    border: 2px solid GREY;
+    background-color: rgb(214, 238, 148);
+	}
+.container{
+    font-size: 17px !important;
+    margin-top: 20px;
+}
+#main{
+
+}
+.form-control{
+    font-size: 17px !important;
+}
+#submit{
+    font-size: 17px;
+}

@@ -33,3 +33,17 @@ h4{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+#imgbox{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+#box-infor{
+    border: 3px solid gainsboro;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+#infor{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

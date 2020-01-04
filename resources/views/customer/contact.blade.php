@@ -5,7 +5,6 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="css/admin/signup.css">
 <script src="js/admin/signup.js"></script>
-<script type="text/javascript" src="https://itexpress.vn/js/noel.js"></script>
 <head>
     <title>Liên hệ với chúng tôi- Nhà sách Mọt sách</title>
     <style>
