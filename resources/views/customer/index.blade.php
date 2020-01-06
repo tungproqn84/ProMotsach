@@ -39,75 +39,100 @@
         </a>
       </div>
     <div class="container-fluid">
-        <div class="col-sm-1">
+        <div class="row" id="infor">
+            <div class="col-sm-auto"></div>
+            <div class="col-sm-3">
+                <div id="box-infor">
+                    <img src="http://heabea.vn/public/themes/images/certificate.png" id="imgbox">
+                    <span>GIẤY PHÉP KINH DOANH</span>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+                <div id="box-infor">
+                    <img src="http://heabea.vn/public/themes/images/warrenty.png" id="imgbox">
+                    <span>CAM KẾT SẢN PHẨM</span>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+                <div id="box-infor">
+                    <img src="https://mpng.pngfly.com/20171128/3bf/transparent-owl-with-book-png-clipart-picture-5a1d4eea72d575.9840075615118701864704.jpg" id="imgbox">
+                    <span>PHÙ HỢP MỌI LỨA TUỔI</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
             {{-- <div class="row">
                 Menu
             </div> --}}
-        </div>
-        <div class="col-sm-9">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>Sản phẩm bán chạy <hr></h4>
-
-                </div>
             </div>
-            <div class="row" id=box-product>
-                        @foreach ($hot as $pd )
-                        <div class="col-sm-3 col-6 thumbnail">
-                            <img src="{{$pd->PImage}}" id="image">
-                            <div class="caption">
-                            <center><h5>{{$pd->PName}}</h5></center>
-                            <center>{{number_format($pd->PPrice)}}</center>
-                            <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Xem chi tiết</a></p>
-                            </div>
-                        </div>
-                    @endforeach
+            <div class="col-sm-9">
+                <div class="row">
                     <div class="col-sm-12">
-                        <center><a href="../seeadd/1">Xem thêm >></a></center>
+                        <h4>Sản phẩm bán chạy <hr></h4>
+
                     </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>Sản phẩm HOT <hr></h4>
-
                 </div>
-            </div>
-            <div class="row" id=box-product>
-                        @foreach ($sale as $pd )
-                        <div class="col-sm-3 col-6 thumbnail">
-                            <img src="{{$pd->PImage}}" id="image">
-                            <div class="caption">
-                            <center><h5>{{$pd->PName}}</h5></center>
-                            <center>{{number_format($pd->PPrice)}}</center>
-                            <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                <div class="row" id=box-product>
+                            @foreach ($hot as $pd )
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Xem chi tiết</a></p>
+                                </div>
                             </div>
+                        @endforeach
+                        <div class="col-sm-12">
+                            <center><a href="../seeadd/1">Xem thêm >></a></center>
                         </div>
-                    @endforeach
-                    <div class="col-sm-12">
-                        <center><a href="../seeadd/2">Xem thêm >></a></center>
-                    </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4>Sản phẩm khác <hr></h4>
-
                 </div>
-            </div>
-            <div class="row" id=box-product>
-                        @foreach ($product as $pd )
-                        <div class="col-sm-3 col-6 thumbnail">
-                            <img src="{{$pd->PImage}}" id="image">
-                            <div class="caption">
-                            <center><h5>{{$pd->PName}}</h5></center>
-                            <center>{{number_format($pd->PPrice)}}</center>
-                            <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Xem chi tiết</a></p>
-                            </div>
-                        </div>
-                    @endforeach
+
+                <div class="row">
                     <div class="col-sm-12">
-                        <center><a href="../seeadd/3">Xem thêm >></a></center>
+                        <h4>Sản phẩm HOT <hr></h4>
+
                     </div>
+                </div>
+                <div class="row" id=box-product>
+                            @foreach ($sale as $pd )
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                                </div>
+                            </div>
+                        @endforeach
+                        <div class="col-sm-12">
+                            <center><a href="../seeadd/2">Xem thêm >></a></center>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Sản phẩm khác <hr></h4>
+
+                    </div>
+                </div>
+                <div class="row" id=box-product>
+                            @foreach ($product as $pd )
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Xem chi tiết</a></p>
+                                </div>
+                            </div>
+                        @endforeach
+                        <div class="col-sm-12">
+                            <center><a href="../seeadd/3">Xem thêm >></a></center>
+                        </div>
+                </div>
             </div>
         </div>
     </div>

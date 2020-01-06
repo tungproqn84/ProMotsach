@@ -32,9 +32,9 @@ class MyController extends Controller
     public function getCustomerPage() {
         $customers = Customer::all();
         return view('admin.customer', compact('customers'));
-    } 
+    }
 
-    
+
     // gọi trang danh mục
     public function getPortfolioPage() {
         $portfolios = Portfolio::all();
@@ -335,7 +335,17 @@ class MyController extends Controller
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
     }
     //feedback
+<<<<<<< HEAD
+    public function getfeedback()
+    {
+        $cat=Category::all();
+        $slide=Slide::all();
+        return view('customer/feedback', compact('cat', 'slide'));
+    }
+    public function sendfeedback(Request $rq)
+=======
     public function feedback(Request $rq)
+>>>>>>> e00a07e746602738645d0f909af7411fc9551f90
     {
         $feedback=$rq->feedback;
         $tbl=new Feedback();

@@ -3,7 +3,6 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="css/admin/signup.css">
 <script src="js/admin/signup.js"></script>
-<script type="text/javascript" src="https://itexpress.vn/js/noel.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <form action="postsignin"  method="post"name="myForm">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
