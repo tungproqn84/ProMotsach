@@ -54,6 +54,11 @@ class MyController extends Controller
         $portfolio = Portfolio::where('PortfolioID', $portfolio_id)->delete();
         return redirect()->back();
     }
+    // sửa danh mục
+    public function EditPortfolio($portfolio_id){
+        $portfolio = Portfolio::where('PortfolioID', $portfolio_id)->first();
+        return view('admin.editPortfolio', compact('portfolio'));
+    }
     //login
     public function getlogin(){
         return view('admin/login');
@@ -138,7 +143,7 @@ class MyController extends Controller
     public function ShowProduct($product_id) {
         $product = Product::where('PID', $product_id)->first();
         $portfolio = Portfolio::where('PortfolioID', $product->PPortfolio)->first();
-        $category = Category::where('CategoryID', $product->PCategory)->first();
+        $category = Category::where('CategoryyID', $product->PCategory)->first();
         return view('admin/showProduct', compact('product', 'portfolio', 'category'));
     }
     // chèn sản phẩm
@@ -177,7 +182,7 @@ class MyController extends Controller
     }
     // xóa danh mục
     public function DeleteCategory($category_id) {
-        $category = Category::where('CategoryID', $category_id)->delete();
+        $category = Category::where('CategoryyID', $category_id)->delete();
         return redirect()->back();
     }
     // chèn thể loại

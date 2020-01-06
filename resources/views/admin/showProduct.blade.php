@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-9 offset-sm-1">
                 <div class="row">
-                    <div class="col-sm-12" id="title"><span>Chi tiết danh mục</span><hr></div>
+                    <div class="col-sm-12" id="title"><span>CHI TIẾT SẢN PHẨM</span><hr></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12" id="productInfomation">
@@ -31,7 +31,7 @@
                             </li>
                             <li>
                                 <label>Đơn giá:</label>
-                                <span>{{ $product->PPrice }}</span>
+                                <span>{{ $product->PPrice }} (VND)</span>
                             </li>
                             <li>
                                 <label>Số lượng hiện tại:</label>
@@ -51,7 +51,7 @@
                             </li>
                             <li>
                                 <label>Trạng thái: </label>
-                                @if($product->PStatus == 0)
+                                @if($product->PStatus == 1)
                                     <span style="color: green;">Đang hoạt động</span>
                                 @else
                                     <span style="color: red;">Ngừng hoạt động</span>
@@ -69,8 +69,8 @@
                     </div>
                 </div><hr>
             </div>
-            <div class="col-sm-2" id="action">
-                <div class="row">
+            <div class="col-sm-2">
+                <div class="row" id="action">
                     <div class="col-sm-12 col-4">
                         <button class="btn btn-success"><i class="fas fa-edit"></i> Sửa</button>
                     </div>

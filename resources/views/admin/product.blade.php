@@ -19,7 +19,6 @@
     <div class="container-fluid">
         <div class="row" id="ProductContainer">
             <div class="col-sm-5" id="DisplayProduct">
-                <span>Tổng cộng {{count($products)}} sản phẩm</span>
                 <div class="row" id="titleBox">
                     <div class="col-8"><span>THÔNG TIN SẢN PHẨM</span></div>
                     <div class="col-4">

@@ -37,35 +37,35 @@ body {
 .showInfo {
     cursor: pointer;
 }
-#InfomationBox ul {
+#productInfomation ul {
     list-style: none;
 }
 #InfomationBox li {
     width: 100%;
 }
-#InfomationBox label,
-#InfomationBox input[type="text"],
-#InfomationBox textarea,
-#InfomationBox select{
+#productInfomation input[type="text"],
+#productInfomation textarea,
+#productInfomation select{
     width: 100%;
     font-size: 18px;
 }
 
-#InfomationBox input[type="radio"] {
+#productInfomation input[type="radio"] {
     margin-left: 20px;
 }
-#InfomationBox label {
+#productInfomation label {
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
     font-weight: 700;
 }
-#InfomationBox #titleBox span {
+#productInfomation #titleBox span {
     font-size: 20px;
 }
 #action {
     margin-top: 10px;
 }
 #action button {
+    margin-top: 10px;
     width: 100%;
 }

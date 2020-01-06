@@ -59,6 +59,11 @@ Route::GET('delete-portfolio/{portfolio_id}', [
     'as'   => 'admin-delete-portfolio',
     'uses' => 'MyController@DeletePortfolio'
 ]);
+// sửa sản phẩm
+Route::GET('edit-portfolio/{portfolio_id}', [
+    'as' => 'admin-edit-portfolio',
+    'uses' => 'MyController@EditPortfolio'
+]);
 // route sản phẩm
 Route::GET('/product', [
     'as'   => 'admin-product',

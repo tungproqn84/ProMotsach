@@ -22,4 +22,15 @@
             },
         });
     }
+
+    function edit(id) {
+        $.ajax({
+            url: '/edit-portfolio/' + id,
+            type: "GET",
+            success: function(result){
+                $('#FunctionPortfolio').html("");
+                $('#FunctionPortfolio').html(result);
+            },
+        });
+    }
     
