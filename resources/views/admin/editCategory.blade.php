@@ -17,35 +17,35 @@
 </head>
 <body>
 
-    <form action="{{ route('update-portfolio') }}" method="POST">
+    <form action="{{ route('insert-category') }}" method="POST">
         {{csrf_field()}}
         <div class="container">
-            <div class="row" id="FormAddPortfolio">
-                    <div class="col-sm-9 col-12" id="titleBox"><span>SỬA DANH MỤC</span><hr></div>
-                    <input type="hidden" name="PortfolioID" id="PortfolioID" value="{{ $portfolio->PortfolioID }}">
-                    <div class="col-sm-9 col-12">
-                        <label for="PortfolioName" value="">Tên danh mục</label><br>
-                        <input type="text" name="PortfolioName" id="PortfolioName" value="{{ $portfolio->PortfolioName }}">
+            <div class="row" id="FormAddCategory">
+                    <div class="col-sm-9 offset-sm-1 col-12" id="titleBox"><span>THÊM THỂ LOẠI</span><hr></div>
+                    <input type="hidden" name="CategoryID" id="CategoryID" value="{{ $category->CategoryyID }}">
+                    <div class="col-sm-9 offset-sm-1 col-12">
+                        <label for="CategoryName" value="">Tên thể loại</label><br>
+                        <input type="text" name="CategoryName" id="CategoryName" value="{{ $category->CategoryName }}">
                     </div>
-                    <div class="col-sm-9 col-12">
-                        <label for="PortfolioDescription">Mô tả</label><br>
-                        <textarea  name="PortfolioDescription" id="PortfolioDescription" rows="5">{{ $portfolio->PortfolioDescription }}</textarea>
+                    <div class="col-sm-9 offset-sm-1 col-12">
+                        <label for="CategoryDescription">Mô tả</label><br>
+                        <textarea  name="CategoryDescription" id="CategoryDescription">{{ $category->CategoryDescription }}</textarea>
                     </div>
-                    <div class="col-sm-9 col-12">
-                        <label for="PortfolioStatus">Trạng thái</label><br>
-                            @if($portfolio->PortfolioStatus == 0)
-                                <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="0" checked>Kích hoạt
-                                <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="1">Tạm hoãn
-                            @else
-                                <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="0">Kích hoạt
-                                <input type="radio" name="PortfolioStatus" id="PortfolioStatus" value="1" checked>Tạm hoãn
-                            @endif
+                    <div class="col-sm-9 offset-sm-1 col-12">
+                        <label for="CategoryStatus">Trạng thái</label><br>
+                        @if($category->CategoryStatus == 1)
+                            <input type="radio" name="CategoryStatus" id="CategoryStatus" value="1" checked>Kích hoạt
+                            <input type="radio" name="CategoryStatus" id="CategoryStatus" value="0">Tạm hoãn
+                        @else
+                            <input type="radio" name="CategoryStatus" id="CategoryStatus" value="1">Kích hoạt
+                            <input type="radio" name="CategoryStatus" id="CategoryStatus" value="0" checked>Tạm hoãn
+                        @endif
                         <hr>
                     </div>
-                    <div class="col-sm-9 col-12">
+                    <div class="col-sm-9 offset-sm-1 col-12">
                         <div class="row" id="button">
                             <div class="col-6">
-                                <input type="submit" name="btnAddPortfolio" class="btn btn-primary" value="Xác nhận chỉnh sửa">
+                                <input type="submit" name="btnAddCategory" class="btn btn-primary" value="Tạo mới danh mục">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-danger">Hủy bỏ</button>
@@ -55,6 +55,8 @@
                 </div>
             </div>
         </form>
+
         <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
 </body>
 </html>
