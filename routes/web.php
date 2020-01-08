@@ -127,6 +127,10 @@ Route::GET('delete-category/{category_id}', [
 
 
 // ROUTE CUSTOMER
+Route:: get('/', [
+    'as'   => 'home',
+    'uses' => 'MyController@getindex'
+] );
 Route:: get('/index', [
     'as'   => 'home',
     'uses' => 'MyController@getindex'
@@ -156,3 +160,5 @@ Route:: get('/signin', ['as' => 'signin', 'uses' => 'MyController@getsignin']);
 Route:: post('/postsignin', ['as' => 'postsignin', 'uses' => 'MyController@postsignin']);
 Route:: post('/search',['as'=>'search','uses'=>'MyController@getsearch']);
 Route::get('/contact', 'MyController@getcontact');
+Route::post('/comment',['as'=>'comment', 'uses'=>'MyController@postcomment']);
+Route::post('/contact',['as'=>'contact','uses'=>'MyController@contact']);

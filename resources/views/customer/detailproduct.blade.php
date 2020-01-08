@@ -54,21 +54,46 @@
                 <h3>Bình luận</h3>
                 <div class="well well-sm">
                     <div class="row">
-                        <div id=avatar>
-                            <img src="https://i.pinimg.com/736x/e3/f3/4d/e3f34de992ae4267f272550a5935447f.jpg" height="50px" id="img">
-                        </div>
-                        <div>
-                            <span>Thanh Tùng</span>
-                            <span id="time">30 phút trước</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <span id="comment">Sách đọc rất hay, bảo quản tốt. Tuy là sách cũ nhưng tôi rất hài lòng. Sẽ ủng hộ tiếp</span>
+                    <div class="col-sm-12">
+                    <form action="{{route('comment')}}" method="POST">
+                            <div class="col-sm-8">
+                                <input type="text" name="comment" placeholder="Nhập bình luận..." id="box-comment">
+                                <input type="hidden" name="idproduct" value="{{$product->PID}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            </div>
+                            <div class="col-sm-4" >
+                                <button type="submit" class="btn btn-info" id="btn-comment">Bình luận</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+                </div>
+                @foreach ($comments as $cmt)
+                    <div class="well well-sm">
+                        <div class="row">
+                            <div id=avatar>
+                                <img src="https://i.pinimg.com/736x/e3/f3/4d/e3f34de992ae4267f272550a5935447f.jpg" height="50px" id="img">
+                            </div>
+                            <div>
+                                @foreach ($users as $user)
+                                    @if($cmt->CusID==$user->CusID)
+                                        <span>{{$user->CusName}}</span>
+                                    @endif
+                                @endforeach
+                                <span id="time">{{$cmt->created_at}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <span id="comment">{{$cmt->Comment}}</span>
+                        </div>
+
+                    </div>
+                @endforeach
+                    <span>{{$comments->links()}}</span>
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="container">
     <div class="row">
@@ -82,7 +107,7 @@
                 <a href="../detailproduct/{{$more->PID}}">
                     <center><img src="{{$more->PImage}}" id="imgmore"></center>
                     <div class="row" id="namep">
-                        <!-- <center><span>$more->PName</span></center> -->
+                        {{-- <center><span>{{$more->PName}}</span></center> --}}
                     </div>
                 </a>
             </div>
@@ -90,4 +115,3 @@
     </div>
     </div>
 @endsection
-

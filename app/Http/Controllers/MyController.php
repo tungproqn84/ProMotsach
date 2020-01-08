@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Bill;
 use App\Category;
+use App\Comment;
+use App\Contact;
 use App\Customer;
 use App\Feedback;
 use App\Order;
@@ -11,13 +13,12 @@ use App\Slide;
 use Illuminate\Http\Request;
 use App\Portfolio;
 use App\User;
-use Carbon\Carbon;
 use Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
+use Carbon\Carbon;
 class MyController extends Controller
 {
 // CONTROLLER ADMIN
@@ -220,7 +221,9 @@ class MyController extends Controller
         $product=Product::where('PID', $id)->first();
         $idmore=$product->PCategory;
         $more_product=Product::where('PCategory', $idmore)->limit(4)->get();
-        return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product'));
+        $comments=Comment::paginate(10);
+        $users=Customer::all();
+        return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product', 'comments', 'users'));
     }
     public function getsee($id)
     {
@@ -330,7 +333,6 @@ class MyController extends Controller
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
     }
     //feedback
-<<<<<<< HEAD
     public function getfeedback()
     {
         $cat=Category::all();
@@ -338,9 +340,10 @@ class MyController extends Controller
         return view('customer/feedback', compact('cat', 'slide'));
     }
     public function sendfeedback(Request $rq)
-=======
+    {
+
+    }
     public function feedback(Request $rq)
->>>>>>> e00a07e746602738645d0f909af7411fc9551f90
     {
         $feedback=$rq->feedback;
         $tbl=new Feedback();
@@ -367,8 +370,41 @@ class MyController extends Controller
         $slide=Slide::all();
         return view('customer/contact', compact('cat','slide'));
     }
-    public function postcontact(Request $rq)
+    public function contact(Request $rq)
     {
-
+        $name=$rq->name;
+        $email=$rq->email;
+        $mobile=$rq->mobile;
+        $address=$rq->address;
+        $message=$rq->message;
+        $contact=new Contact();
+        $contact->Name=$name;
+        $contact->Mobile=$mobile;
+        $contact->Email=$email;
+        $contact->Address=$address;
+        $contact->Message=$message;
+        $contact->save();
+        return redirect(Route('home'));
+    }
+    //comment
+    public function postcomment(Request $rq)
+    {
+        if(Session::has('id'))
+        {
+            $id=Session::get('id');
+            $comment=$rq->comment;
+            $idproduct=$rq->idproduct;
+            $cmt=new Comment();
+            $cmt->CusID=$id;
+            $cmt->PID=$idproduct;
+            $cmt->Comment=$comment;
+            $cmt->save();
+            return redirect("detailproduct/$id");
+        }
+       else
+        {
+            echo "<script>window.alert ('Vui lòng đăng nhập trước')</script>";
+            return redirect('login');
+        }
     }
 }

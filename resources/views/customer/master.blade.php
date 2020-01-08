@@ -28,5 +28,10 @@
 	<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 	<!--customjs-->
     <script src="../layout/assets/dest/js/custom2.js"></script>
+    <style>
+        body{
+            font-size: 15px;
+        }
+    </style>
 </body>
 </html>

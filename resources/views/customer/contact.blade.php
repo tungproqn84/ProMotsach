@@ -3,8 +3,12 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="css/admin/signup.css">
-<script src="js/admin/signup.js"></script>
+<link rel="stylesheet" href="../css/contact.css">
+<script>
+    function alert(){
+        window.alert('Cảm ơn bạn đã liên hệ. ');
+    }
+</script>
 <head>
     <title>Liên hệ với chúng tôi- Nhà sách Mọt sách</title>
     <style>
@@ -22,99 +26,52 @@
         }
     </style>
 </head>
+
 <!------ Include the above in your HEAD tag ---------->
-<form action="postsignin"  method="post"name="myForm">
+<form action="{{route('contact')}}"  method="post"name="myForm">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="container">
 		<div class="row">
-			<div class="well center-block">
-				<div class="well-header">
-                    <h3 class="text-center text-success"> Liên hệ ! <br><center>(Nhượng sách cũ lại cho chúng tôi)</center></h3>
-					<hr>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-8">
+                <div class="well ">
+                    <center><h2>THÔNG TIN LIÊN HỆ</h2></center>
+                    <hr>
+                <div class="row">
+                    <div class="">
+                        <div class="col-sm-8">
+                            <input type="text" name="name"  id="box" placeholder="Họ tên của bạn *">
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="email" id="box" name="email" placeholder="Email của bạn *">
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" id="box" name="mobile" placeholder="Số điện thoại *">
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" id="box" name="address" placeholder="Địa chỉ liên hệ *">
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea name="message" id="box" cols="10" rows="5" placeholder="Lời nhắn của bạn (nếu có)"></textarea>
+                        </div>
+                        <div class="col-sm-10">
+                            <center><button type="submit" class="btn btn-info" onclick="alert()">Gửi thông tin</button></center>
+                        </div>
+                    </div>
                 </div>
-                <form action="{{Route('postsignin')}}" method="post" name="myForm"  onsubmit="return(validate());">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <span>Họ tên của bạn <span id="b"> *</span></span>
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="glyphicon glyphicon-user"></i>
-								</div>
-								<input type="text" placeholder="Họ tên của bạn" name="name" class="form-control">
-							</div>
-						</div>
-					</div>
-				</div>
-                <span>Email <span id="b"> *</span></span>
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="glyphicon glyphicon-user"></i>
-								</div>
-								<input type="text" placeholder="Email" name="email" class="form-control">
-							</div>
-						</div>
-					</div>
-				</div>
-                <span>Số điện thoại <span id="b"> *</span></span>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="glyphicon glyphicon-phone"></i>
-								</div>
-								<input type="number" minlength="10" maxlength="12" class="form-control" name="mobile" placeholder="Số điện thoại của bạn">
-							</div>
-						</div>
-					</div>
-				</div>
-                <span>Địa chỉ <span id="b"> *</span></span>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="glyphicon glyphicon-list-alt"></i>
-								</div>
-								<input type="text" class="form-control" name="address" placeholder="Địa chỉ của bạn *">
-							</div>
-						</div>
-					</div>
-				</div>
-                <span>Hình ảnh sản phẩm <span id="b"> *</span></span>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="file" name="dob" class="form-control" id="datepicker">
-							</div>
-						</div>
-					</div>
-				</div>
-                <span>Ghi chú (nếu có) </span>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="form-group">
-							<div class="input-group">
-								<textarea name="note" colspan="8"></textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row widget">
-					<div class="col-md-12 col-xs-12 col-sm-12">
-						<button class="btn btn-warning btn-block" type="submit"> Xác nhận </button>
-					</div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10" id="box-hd">
+                    <span >* Cuộc sống ta sẽ cảm thấy hạnh phúc và vui vẻ nếu chúng ta biết cách cho đi.
+                        Cảm ơn bạn đã ghé website của chúng tôi.
+                        Vui lòng nhập thông tin liên hệ để chúng tôi có thể liên lạc với bạn.
+                        Những cuốn sách bạn đưa sẽ góp phần tạo nên giá trị mới cho xã hội và môi trường.</span>
                 </div>
-            </form>
-			</div>
+                </div>
+
+                </div>
+
+            </div>
 		</div>
 	</div>
-
-
 @endsection

@@ -21,11 +21,11 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_2146,w_3819,x_0,y_200/f_auto,q_auto,w_1100/v1565275119/shape/mentalfloss/gettyimages-938171020.jpg" width="100%" style="height: 400px;">
+                <img src="https://cdn0.fahasa.com/media/magentothem/banner7/Week1T12020_MainBanner_920x420.jpg" width="100%" style="height: 350px;">
             </div>
             @foreach ($slide as $sl)
             <div class="carousel-item">
-                    <img src="{{$sl->image}}" width="100%" style="height: 400px;">
+                    <img src="{{$sl->image}}" width="100%" style="height: 350px;">
             </div>
           @endforeach
         </div>

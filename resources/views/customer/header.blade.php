@@ -27,8 +27,8 @@
                         @endforeach
                     </ul>
                 </li>
-                <li class="upper-links"><a class="links" href="contact">Liên hệ</a></li>
-                <li class="upper-links"><a class="links" href="gioithieu">Giới thiệu</a></li>
+                <li class="upper-links"><a class="links" href="../contact">Liên hệ</a></li>
+                <li class="upper-links"><a class="links" href="../gioithieu">Giới thiệu</a></li>
 
             </ul>
         </div>
@@ -39,7 +39,7 @@
                 <h3 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ MỌT SÁCH</span></h3>
                 <h3 style="margin:0px;"><span class="largenav">MỌT SÁCH</span></h3>
             </div>
-            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
+            <div class="flipkart-navbar-search smallsearch col-sm-8">
                 <div class="row">
                         <input class="flipkart-navbar-input col-xs-11" type="text" placeholder="Nhập sản phẩm bạn muốn tìm..." name="search">
                         <button class="flipkart-navbar-button col-xs-1" type="submit">
