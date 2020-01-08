@@ -59,6 +59,20 @@ Route::GET('delete-portfolio/{portfolio_id}', [
     'as'   => 'admin-delete-portfolio',
     'uses' => 'MyController@DeletePortfolio'
 ]);
+// sửa danh mục sản phẩm
+Route::GET('edit-portfolio/{portfolio_id}', [
+    'as' => 'admin-edit-portfolio',
+    'uses' => 'MyController@EditPortfolio'
+]);
+// route sửa danh mục sản phẩm
+Route::GET('update-portfolio', [
+    'as' => 'update-portfolio',
+    'uses' => 'MyController@UpdatePortfolio'
+]);
+Route::POST('update-portfolio', [
+    'as' => 'update-portfolio',
+    'uses' => 'MyController@UpdatePortfolio'
+]);
 // route sản phẩm
 Route::GET('/product', [
     'as'   => 'admin-product',
@@ -118,10 +132,15 @@ Route::GET('/show-category/{category_id}', [
     'as'   => 'admin-show-category',
     'uses' => 'MyController@showCategory'
 ]);
-// xóa sản phẩm
+// xóa thể loại sản phẩm
 Route::GET('delete-category/{category_id}', [
     'as'   => 'admin-delete-category',
     'uses' => 'MyController@DeleteCategory'
+]);
+// sửa thể loại sản phẩm
+Route::GET('edit-category/{category_id}', [
+    'as' => 'admin-edit-category',
+    'uses' => 'MyController@EditCategory'
 ]);
 
 

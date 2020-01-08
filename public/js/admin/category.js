@@ -21,3 +21,14 @@ function show(id) {
         }
     });
 }
+// edit category 
+function edit(id) {
+    $.ajax({
+        url    : '/edit-category/' + id,
+        type   : "GET",
+        success: function(result){
+            $('#FunctionCategory').html("");
+            $('#FunctionCategory').html(result);
+        }
+    });
+}

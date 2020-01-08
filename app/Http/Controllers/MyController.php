@@ -55,6 +55,24 @@ class MyController extends Controller
         $portfolio = Portfolio::where('PortfolioID', $portfolio_id)->delete();
         return redirect()->back();
     }
+    // sửa danh mục
+    public function EditPortfolio($portfolio_id){
+        $portfolio = Portfolio::where('PortfolioID', $portfolio_id)->first();
+        return view('admin.editPortfolio', compact('portfolio'));
+    }
+    // cập nhật danh mục
+    public function UpdatePortfolio(Request $request) {
+        $portfolio = Portfolio::where('PortfolioID', $request->PortfolioID)->first();
+        if(isset($portfolio)) {
+            $portfolio->PortfolioName        = $request->PortfolioName;
+            $portfolio->PortfolioDescription = $request->PortfolioDescription;
+            $portfolio->PortfolioStatus      = $request->PortfolioStatus;
+            $portfolio->save();
+            $portfolios = Portfolio::all();
+            return view('admin/portfolio', compact('portfolios'));
+
+        }
+    }
     //login
     public function getlogin(){
         return view('admin/login');
@@ -94,30 +112,30 @@ class MyController extends Controller
         if($rq->gender=='nam')
             $gender=1;
         else
-            $gender=0;
-        $user=new User();
-        $user->name=$rq->name;
-        $user->email=$rq->email;
-        $user->password= Hash::make($rq->password);
-        $user->save();
-        $customer= new Customer();
-        $customer->CusName=$rq->name;
-        $customer->Gender=$gender;
-        $customer->DayOfBirth=$rq->dob;
-        $customer->Cellphone=$rq->mobile;
-        $customer->CusAddress=$rq->address;
-        $customer->Email=$rq->email;
-        $customer->Password=$rq->password;
-        $customer->save();
-        return redirect(Route('login'))->with("thanhcong","Tài khoản của bạn đã sẵn sàng để sử dụng");
+            $gender         = 0;
+            $user           = new User();
+            $user->name     = $rq->name;
+            $user->email    = $rq->email;
+            $user->password = Hash::make($rq->password);
+            $user->save();
+            $customer             = new Customer();
+            $customer->CusName    = $rq->name;
+            $customer->Gender     = $gender;
+            $customer->DayOfBirth = $rq->dob;
+            $customer->Cellphone  = $rq->mobile;
+            $customer->CusAddress = $rq->address;
+            $customer->Email      = $rq->email;
+            $customer->Password   = $rq->password;
+            $customer->save();
+            return redirect(Route('login'))->with("thanhcong","Tài khoản của bạn đã sẵn sàng để sử dụng");
     }
     // Chèn danh mục
     public function InsertPortfolio (Request $request)
     {
-        $portfolio = new Portfolio;
-        $portfolio->PortfolioName = request('PortfolioName');
+        $portfolio                       = new Portfolio;
+        $portfolio->PortfolioName        = request('PortfolioName');
         $portfolio->PortfolioDescription = request('PortfolioDescription');
-        $portfolio->PortfolioStatus = request('PortfolioStatus');
+        $portfolio->PortfolioStatus      = request('PortfolioStatus');
 
         $portfolio->save();
         return redirect()->route('admin-portfolio');
@@ -137,27 +155,27 @@ class MyController extends Controller
     }
     // hiển thị thông tin sản phẩm
     public function ShowProduct($product_id) {
-        $product = Product::where('PID', $product_id)->first();
+        $product   = Product::where('PID', $product_id)->first();
         $portfolio = Portfolio::where('PortfolioID', $product->PPortfolio)->first();
-        $category = Category::where('CategoryID', $product->PCategory)->first();
+        $category  = Category::where('CategoryyID', $product->PCategory)->first();
         return view('admin/showProduct', compact('product', 'portfolio', 'category'));
     }
     // chèn sản phẩm
     public function InsertProduct(Request $request) {
-        $product = new Product;
-        $startday = Carbon::now();
-        $product->PName = request('ProductName');
-        $product->PAuthor = request('Author');
-        $product->PAmount = request('Amount');
+        $product             = new Product;
+        $startday            = Carbon::now();
+        $product->PName      = request('ProductName');
+        $product->PAuthor    = request('Author');
+        $product->PAmount    = request('Amount');
         $product->PPortfolio = request('Portfolio');
-        $product->PCategory = request('Category');
-        $product->PStartDay = $startday;
-        $product->PImage = request('Image');
-        $product->PDetail = request('Detail');
-        $product->PStatus= request('Status');
-        $product->PPrice= request('Price');
-        $product->PSale= 0;
-        $product->PBuy= 0;
+        $product->PCategory  = request('Category');
+        $product->PStartDay  = $startday;
+        $product->PImage     = request('Image');
+        $product->PDetail    = request('Detail');
+        $product->PStatus    = request('Status');
+        $product->PPrice     = request('Price');
+        $product->PSale      = 0;
+        $product->PBuy       = 0;
         $product->save();
         return redirect()->route('admin-product');
     }
@@ -178,7 +196,7 @@ class MyController extends Controller
     }
     // xóa danh mục
     public function DeleteCategory($category_id) {
-        $category = Category::where('CategoryID', $category_id)->delete();
+        $category = Category::where('CategoryyID', $category_id)->delete();
         return redirect()->back();
     }
     // chèn thể loại
@@ -187,31 +205,50 @@ class MyController extends Controller
     // }
     // Xem thông tin thể
     public function InsertCategory(Request $request) {
-            $category = new Category;
-            $startday = Carbon::now();
-            $category->CategoryName = request('CategoryName');
+            $category                      = new Category;
+            $startday                      = Carbon::now();
+            $category->CategoryName        = request('CategoryName');
             $category->CategoryDescription = request('CategoryDescription');
-            $category->CategoryStatus = request('CategoryStatus');
-            $category->StartDay = $startday;
+            $category->CategoryStatus      = request('CategoryStatus');
+            $category->StartDay            = $startday;
             $category->save();
             return redirect()->route('admin-category');
     }
     // Xem thông tin thể
     public function showCategory($category_id) {
         $category = Category::where('CategoryyID',$category_id)->first();
-        return view('admin/showCategory', compact('category'));
+        return view('admin.showCategory', compact('category'));
 
 
     }
+    // sửa thể loại
+    public function EditCategory($category_id){
+        $category = Category::where('CategoryyID', $category_id)->first();
+        return view('admin.editCategory', compact('category'));
+    }
+    // cập nhật thể loại
+    public function UpdateCategory(Request $request) {
+        $portfolio = Category::where('CategoryyID', $request->CategoryID)->first();
+        if(isset($portfolio)) {
+            $category->CategoryName        = $request->CategoryName;
+            $category->CategoryDescription = $request->CategoryDescription;
+            $category->CategoryStatus      = $request->CategoryStatus;
+            $category->save();
+            $categories = Portfolio::all();
+            return view('admin.Category', compact('categories'));
+
+        }
+    }
+
     //endsignin
 // CONTROLLER CUSTOMER
     public function getindex()
     {
-        $product=Product::where('PSale', 0)->limit(4)->get();
-        $cat=Category::all();
-        $slide=Slide::all();
-        $sale= Product::where('PSale', '<>' ,0)->limit(4)->get();
-        $hot=Product::orderby('PBuy', 'desc')->limit(4)->get();
+        $product = Product::where('PSale', 0)->limit(4)->get();
+        $cat     = Category::all();
+        $slide   = Slide::all();
+        $sale    = Product::where('PSale', '<>' ,0)->limit(4)->get();
+        $hot     = Product::orderby('PBuy', 'desc')->limit(4)->get();
         return view('customer/index', compact('product', 'cat', 'slide', 'sale', 'hot'));
     }
     public function detailproduct($id)
@@ -224,6 +261,12 @@ class MyController extends Controller
         $comments=Comment::paginate(10);
         $users=Customer::all();
         return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product', 'comments', 'users'));
+        $cat          = Category::all();
+        $slide        = Slide::all();
+        $product      = Product::where('PID', $id)->first();
+        $idmore       = $product->PCategory;
+        $more_product = Product::where('PCategory', $idmore)->limit(4)->get();
+        return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product'));
     }
     public function getsee($id)
     {
