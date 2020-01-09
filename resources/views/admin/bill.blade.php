@@ -16,9 +16,9 @@
 </head>
 <body>
     @include('admin.navbar')
-    <div class="container" id="BillContainer">
+    <div class="container-fluid" id="BillContainer">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link" id="nav-oldBills-tab" data-toggle="tab" href="#nav-oldBills" role="tab" aria-controls="nav-oldBills" aria-selected="false">Hóa đơn cũ</a>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7" id="BillInfomation"></div>
+            <div class="col-sm-8" id="BillInfomation"></div>
         </div>
     </div>
     

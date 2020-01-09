@@ -271,8 +271,14 @@ class MyController extends Controller
     public function ShowBill($bill_id) {
         $bill     = Bill::where('Bill_ID', $bill_id)->first();
         $customer = Customer::where('CusID', $bill->CusID)->first();
+        $orders = Order::where('OrderID', $bill->Bill_ID)->get();
+        foreach($orders as $row) {
+            $array[] = (int)$row->PID;
+        }
+        $PIDs = implode(",", $array);
+        $products = Product::whereIn('PID', [$PIDs])->orderBy('PID', 'DESC')->get();
         $billDate    = Carbon::now();
-        return view('admin.showBill', compact('bill', 'customer', 'billDate'));
+        return view('admin.showBill', compact('bill', 'customer', 'billDate', 'orders', 'products'));
     }
 
 // CONTROLLER CUSTOMER

@@ -23,24 +23,29 @@
         <span><hr></span>
         <div class="row">
             <div class="col-sm-4">
-                <h4>Người gửi</h4>
-                <p>admin</p>
-                <p>Quận Ngũ Hành Sơn, Thành phố Đà Nẵng</p>
-                <p>Số điện thoại: 0123456789</p>
-                <p>Email: motsach@gmail.com</p>
+                <span id="titleInfo">Người gửi</span>
+                <ul>
+                    <li>admin</li>
+                    <li>Địa chỉ: Quận Ngũ Hành Sơn, Thành phố Đà Nẵng</li>
+                    <li>Số điện thoại: 0123456789</li>
+                    <li>Email: motsach@gmail.com</li>
+                </ul>
             </div>
             <div class="col-sm-4">
-                <h4>Người nhận</h4>
-                <p>{{ $customer->CusName }}</p>
-                <p>Địa chỉ: {{ $customer->CusAddress }}</p>
-                <p>Số điện thoại: {{ $customer->Cellphone }}</p>
-                <p>Email: {{ $customer->Email }}</p>
+                <span id="titleInfo">Người nhận</span>
+                <ul>
+                    <li>{{ $customer->CusName }}</li>
+                    <li>Địa chỉ: {{ $customer->CusAddress }}</li>
+                    <li>Số điện thoại: {{ $customer->Cellphone }}</li>
+                    <li>Email: {{ $customer->Email }}</li>
+                </ul>
             </div>
             <div class="col-sm-4">
-                <h4>Thông tin đơn hàng</h4>
-                <p>Mã đơn hàng: </p>
-                <p>Ngày đặt:</p>
-                <p>Tài khoản: </p>
+                <span id="titleInfo">Thông tin đơn hàng</span>
+                <ul>
+                    <li>Mã đơn hàng: {{ $bill->Bill_ID }}</li>
+                    <li>Ngày đặt: {{ $bill->created_at }}</li>
+                </ul>
             </div>
         </div>
         <div class="row">
@@ -52,14 +57,14 @@
                         <th>Đơn giá</th>
                         <th>Thành tiền</th>
                     </tr>
-                    
+                    @foreach($products as $order)
                         <tr>
-                            <td>a</td>
+                            <td>{{ $order->PID }}</td>
                             <td>a</td>
                             <td>a</td>
                             <td>a</td>
                         </tr>
-                    
+                    @endforeach
                 </table>
             </div>
         </div>
