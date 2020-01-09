@@ -44,7 +44,7 @@
                                                 <td>{{ $customer->CusName }}</td>
                                             @endif
                                         @endforeach
-                                        <td>{{ $bill->Total }}</td>
+                                        <td>{{ number_format($bill->Total) }}</td>
                                         <td>{{ $bill->BillDate }}</td>
                                     </tr>
                                 @endif

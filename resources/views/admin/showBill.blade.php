@@ -57,12 +57,16 @@
                         <th>Đơn giá</th>
                         <th>Thành tiền</th>
                     </tr>
-                    @foreach($products as $order)
+                    @foreach($products as $product)
                         <tr>
-                            <td>{{ $order->PID }}</td>
-                            <td>a</td>
-                            <td>a</td>
-                            <td>a</td>
+                            @foreach($orders as $order)
+                                @if($order->PID == $product->PID)
+                                <td>{{ $product->PName }}</td>
+                                <td>{{ $order->Amount }}</td>
+                                <td>{{ $product->PPrice }}</td>
+                                <td>{{ $order->Amount*$product->PPrice}}</td>
+                                @endif
+                            @endforeach
                         </tr>
                     @endforeach
                 </table>
@@ -70,7 +74,19 @@
         </div>
         <span><hr></span>
         <div class="row">
-            <div class="col-sm-6 offset-sm-6">sss</div>
+            <div class="col-sm-6 offset-sm-6">
+                <h3>Xác nhận đơn hàng</h3>
+                <ul>
+                    <li>Tổng tiền: {{number_format($total = $bill->Total)}} VND</li>
+                    <li>Thuế (0.5%): {{number_format($tax = $total*0.05)}} VND</li>
+                    <li>Phí vận chuyển: {{number_format($shipfee = 20000)}} VND</li>
+                    <li>Tổng: {{number_format($total - $tax - $shipfee)}} VND</li>
+                </ul>
+                <div class="row">
+                    <div class="col-sm-6"><button class="btn btn-primary">Xác nhận đơn hàng</button></div>
+                    <div class="col-sm-6"><button class="btn btn-danger">Hủy bỏ</button></div>
+                </div>
+            </div>
         </div>
     </div>
     

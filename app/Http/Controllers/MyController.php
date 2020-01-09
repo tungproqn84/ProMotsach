@@ -276,7 +276,7 @@ class MyController extends Controller
             $array[] = (int)$row->PID;
         }
         $PIDs = implode(",", $array);
-        $products = Product::whereIn('PID', [$PIDs])->orderBy('PID', 'ASC')->get();
+        $products = Product::whereIn('PID', [2,8])->orderBy('PID', 'ASC')->get();
         $billDate    = Carbon::now();
         return view('admin.showBill', compact('bill', 'customer', 'billDate', 'orders', 'products'));
     }
