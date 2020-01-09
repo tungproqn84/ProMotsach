@@ -106,6 +106,12 @@ Route::POST('/insert-product', [
     'as'   => 'insert-product',
     'uses' => 'MyController@InsertProduct'
 ]);
+// sửa sản phẩm
+Route::GET('/edit-product/{product_id}', [
+    'as'   => 'admin-edit-product',
+    'uses' => 'MyController@EditProduct'
+]);
+
 // route thể loại
 Route::GET('/category', [
     'as'   => 'admin-category',
@@ -139,11 +145,21 @@ Route::GET('delete-category/{category_id}', [
 ]);
 // sửa thể loại sản phẩm
 Route::GET('edit-category/{category_id}', [
-    'as' => 'admin-edit-category',
+    'as'   => 'admin-edit-category',
     'uses' => 'MyController@EditCategory'
 ]);
 
 
+// trang hóa đơn
+Route::GET('/bill', [
+    'as'   => 'admin-bill',
+    'uses' => 'MyController@getBillPage'
+]);
+// Thông tin đơn hàng
+Route::GET('/show-bill/{bill_id}', [
+    'as'   => 'admin-show-bill',
+    'uses' => 'MyController@ShowBill'
+]);
 
 // ROUTE CUSTOMER
 Route:: get('/index', [
@@ -166,7 +182,7 @@ Route:: get('/update','MyController@updatecart');
 Route:: post('/update','MyController@updatecart');
 Route:: get('/buy','MyController@buy');
 Route:: get('/author/{author}','MyController@getauthor');
-Route::get('/feedback','MyController@getfeedback');
+Route:: get('/feedback','MyController@getfeedback');
 Route:: post('/sendfeedback',['as'=>'feedback','uses'=>'MyController@feedback']);
 Route:: get('/login', ['as' => 'login', 'uses' => 'MyController@getlogin']);
 Route:: post('/postlogin', ['as' => 'postlogin', 'uses' => 'MyController@login']);
@@ -174,4 +190,4 @@ Route:: get('/logout', ['as' => 'logout', 'uses' =>'MyController@getlogout']);
 Route:: get('/signin', ['as' => 'signin', 'uses' => 'MyController@getsignin']);
 Route:: post('/postsignin', ['as' => 'postsignin', 'uses' => 'MyController@postsignin']);
 Route:: post('/search',['as'=>'search','uses'=>'MyController@getsearch']);
-Route::get('/contact', 'MyController@getcontact');
+Route:: get('/contact', 'MyController@getcontact');

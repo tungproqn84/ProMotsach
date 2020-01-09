@@ -72,7 +72,7 @@
             <div class="col-sm-2">
                 <div class="row" id="action">
                     <div class="col-sm-12 col-4">
-                        <button class="btn btn-success"><i class="fas fa-edit"></i> Sửa</button>
+                        <button class="btn btn-success" onclick="edit({{ $product->PID }})"><i class="fas fa-edit"></i> Sửa</button>
                     </div>
                     <div class="col-sm-12 col-4">
                         <button class="btn btn-danger"onclick="location.href='delete-product/{{ $product->PID }}'"><i class="fas fa-trash-alt"></i> Xóa</button>

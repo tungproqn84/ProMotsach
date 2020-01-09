@@ -1,0 +1,18 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#BillContainer {
+    margin-top: 100px;
+}
+
+#BillContainer table {
+    width: 100%;
+    padding: 0;
+}
+
+#BillContainer table td {
+    padding: 5px;
+    text-align: center;
+}

@@ -1,5 +1,6 @@
 body {
     padding: 0;
+    width: 100%;
     margin-top: 0px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -37,35 +38,34 @@ body {
 .showInfo {
     cursor: pointer;
 }
-#productInfomation ul {
+#InfomationBox ul {
     list-style: none;
 }
 #InfomationBox li {
     width: 100%;
 }
-#productInfomation input[type="text"],
-#productInfomation textarea,
-#productInfomation select{
+#InfomationBox input[type="text"],
+#InfomationBox textarea,
+#InfomationBox select{
     width: 100%;
     font-size: 18px;
 }
 
-#productInfomation input[type="radio"] {
+#InfomationBox input[type="radio"] {
     margin-left: 20px;
 }
-#productInfomation label {
+#InfomationBox label {
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
     font-weight: 700;
 }
-#productInfomation #titleBox span {
+#InfomationBox #titleBox span {
     font-size: 20px;
 }
 #action {
     margin-top: 10px;
 }
 #action button {
-    margin-top: 10px;
     width: 100%;
 }
