@@ -37,7 +37,42 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption01">
+                        <h4>Sách mới</h4>
+                        <p>short thumbnail description</p>
+                        <p><a href="" class="label label-danger">Zoom</a>
+                        <a href="" class="label label-default">Download</a></p>
+                    </div>
+                    <img src="https://hocluat.vn/online/wp-content/uploads/2018/05/giao-trinh.jpg"></div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption01">
+                        <h4>Sách mới</h4>
+                        <p>short thumbnail description</p>
+                        <p><a href="" class="label label-danger">Zoom</a>
+                        <a href="" class="label label-default">Download</a></p>
+                    </div>
+                    <img src="https://hocluat.vn/online/wp-content/uploads/2018/05/giao-trinh.jpg"></div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption01">
+                        <h4>Sách mới</h4>
+                        <p>short thumbnail description</p>
+                        <p><a href="" class="label label-danger">Zoom</a>
+                        <a href="" class="label label-default">Download</a></p>
+                    </div>
+                    <img src="https://hocluat.vn/online/wp-content/uploads/2018/05/giao-trinh.jpg"></div>
+            </div>
+        </div>
+    </div><!-- /.container -->
     <div class="container-fluid">
         <div class="row" id="infor">
             <div class="col-sm-auto"></div>
@@ -78,7 +113,9 @@
                 <div class="row" id=box-product>
                             @foreach ($hot as $pd )
                             <div class="col-sm-3 col-6 thumbnail">
-                                <img src="{{$pd->PImage}}" id="image">
+                                <a href="../detailproduct/{{$pd->PID}}">
+                                    <img src="{{$pd->PImage}}" id="image">
+                                </a>
                                 <div class="caption">
                                 <center><h5>{{$pd->PName}}</h5></center>
                                 <center>{{number_format($pd->PPrice)}}</center>
@@ -100,7 +137,9 @@
                 <div class="row" id=box-product>
                             @foreach ($sale as $pd )
                             <div class="col-sm-3 col-6 thumbnail">
-                                <img src="{{$pd->PImage}}" id="image">
+                                <a href="../detailproduct/{{$pd->PID}}">
+                                    <img src="{{$pd->PImage}}" id="image">
+                                </a>
                                 <div class="caption">
                                 <center><h5>{{$pd->PName}}</h5></center>
                                 <center>{{number_format($pd->PPrice)}}</center>
@@ -121,7 +160,9 @@
                 <div class="row" id=box-product>
                             @foreach ($product as $pd )
                             <div class="col-sm-3 col-6 thumbnail">
-                                <img src="{{$pd->PImage}}" id="image">
+                                <a href="../detailproduct/{{$pd->PID}}">
+                                    <img src="{{$pd->PImage}}" id="image">
+                                </a>
                                 <div class="caption">
                                 <center><h5>{{$pd->PName}}</h5></center>
                                 <center>{{number_format($pd->PPrice)}}</center>

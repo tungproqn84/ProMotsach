@@ -23,7 +23,7 @@
                 <li class="upper-links dropdown"><a class="links" href="a">Danh mục</a>
                     <ul class="dropdown-menu">
                         @foreach ($cat as $ca)
-                            <li class="profile-li"><a class="profile-links" href="{{$ca->CategoryyID}}">{{$ca->CategoryName}}</a></li>
+                            <li class="profile-li"><a class="profile-links" href="../theloai/{{$ca->CategoryyID}}">{{$ca->CategoryName}}</a></li>
                         @endforeach
                     </ul>
                 </li>

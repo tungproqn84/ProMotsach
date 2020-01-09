@@ -1,0 +1,20 @@
+#menu{
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 25px;
+}
+#menu:hover{
+    background-color: rgb(228, 235, 236);
+    width: 100%;
+    margin-left: 15px;
+    color: black;
+}
+#menu-box{
+    border: 1px solid rgb(199, 206, 206);
+    margin-right: 5px;
+    margin-top: 20px;
+}
+a{
+    text-decoration: none !important;
+}

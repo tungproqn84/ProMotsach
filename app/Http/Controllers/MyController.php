@@ -91,7 +91,8 @@ class MyController extends Controller
                 Session::put('id', $user->id);
                 return redirect(Route('home'));
             } else {
-                return redirect()->back()->with('notice', "Sai tên đăng nhập hoặc mật khẩu");
+                $notice="Sai tên đăng nhập hoặc mật khẩu";
+                return view('admin/login', compact('notice'));
                 }
             }
     }
@@ -244,6 +245,7 @@ class MyController extends Controller
 // CONTROLLER CUSTOMER
     public function getindex()
     {
+
         $product = Product::where('PSale', 0)->limit(4)->get();
         $cat     = Category::all();
         $slide   = Slide::all();
@@ -297,6 +299,7 @@ class MyController extends Controller
     {
         if(Session::has('id'))
         {
+            $cat=Category::all();
             $product = Product::where('PID', $id)-> first();
             if($product->PSale==0)
                 $price=$product->PPrice;
@@ -307,18 +310,18 @@ class MyController extends Controller
             Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
             $cart = Cart::content();
             $pro=Product::all();
-            return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
+            return view('customer/cart', array('cart' => $cart,'product'=>$product), compact('pro', 'cat'));
         }
         else
             return redirect('login');
 
-            $price=$product->PPrice - $product->PPrice*$product->PSale;
-            $image=$product->PImage;
-                //   print_r($product); die();
+        $price=$product->PPrice - $product->PPrice*$product->PSale;
+        $image=$product->PImage;
+        //   print_r($product); die();
         Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
         $cart = Cart::content();
         $pro=Product::all();
-        return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
+        return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro', 'cat'));
     }
     public function deletecart()
     {
@@ -367,12 +370,22 @@ class MyController extends Controller
         Cart::destroy();
         return redirect(Route('home'));
     }
+    //xem theo tên giác giả
     public function getauthor($author)
     {
         $product=Product::where('PAuthor', $author)->paginate(8);
         $cat=Category::all();
         $slide=Slide::all();
         $type='author';
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type', 'author'));
+    }
+    //xem theo danh mục
+    public function getcategory($id)
+    {
+        $product=Product::where('PCategory', $id)->paginate(8);
+        $cat=Category::all();
+        $slide=Slide::all();
+        $type='category';
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
     }
     //feedback

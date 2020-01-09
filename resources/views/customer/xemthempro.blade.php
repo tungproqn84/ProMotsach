@@ -8,6 +8,7 @@
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="../css/seemore.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -37,12 +38,24 @@
         </a>
       </div>
     <div class="container-fluid">
-        <div class="col-md-3" style="border: 1px solid aqua">
-            <div class="row">
-                Menu
+        <div class="col-sm-2">
+            <div class="row" id="menu-box">
+                <div class="col-sm-12">
+                    <h6>☰ DANH MỤC</h6>
+                </div>
+                <div class="col-sm-12">
+                    @foreach ($cat as $ca)
+                        <div class="row">
+                            <div id="menu">
+                                <a href="../theloai/{{$ca->CategoryyID}}"><span> >{{$ca->CategoryName}}</span></a>
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             {{-- Xem thêm sản phẩm khác --}}
             @if($type=='product')
             <div class="row">
@@ -77,40 +90,52 @@
             @elseif($type=='author')
             {{-- Xem thêm theo tên tác giả --}}
             <div class="row">
-                <div class="col-sm-12">
-                    <h4>Tác phẩm cùng tác giả <hr></h4>
-
+                <div class="col-sm-6">
+                    <h4>Tác phẩm của {{$author}}</h4>
                 </div>
-            </div>
+                <div class="col-sm-6">
+                    <span style="float: right">Trang này có: {{count($product)}} tác phẩm</span>
+                </div>
+            </div><hr>
             <div class="row" id=box-product>
+
                         @foreach ($product as $pd )
-                        <div class="col-sm-3 col-6 thumbnail">
-                            <img src="{{$pd->PImage}}" id="image">
-                            <div class="caption">
-                            <center><h5>{{$pd->PName}}</h5></center>
-                            <center>{{number_format($pd->PPrice)}}</center>
-                            <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
                     <div class="col-sm-12">
                         {{$product->links()}}
                     </div>
             </div>
-                @foreach ($sale as $pd )
-                <div class="col-sm-3 col-6 thumbnail">
-                    <img src="{{$pd->PImage}}" id="image">
-                    <div class="caption">
-                    <center><h5>{{$pd->PName}}</h5></center>
-                    <center>{{number_format($pd->PPrice)}}</center>
-                    <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
-                    </div>
+            @elseif($type=='category')
+            {{-- Xem thêm theo thể loại --}}
+            <div class="row">
+                <div class="col-sm-11">
+                    <span style="float: right">Trang này có: {{count($product)}} tác phẩm</span>
                 </div>
-            @endforeach
-            <div class="col-sm-12">
-                {{$product->links()}}
+            </div><hr>
+            <div class="row" id=box-product>
+
+                        @foreach ($product as $pd )
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                                </div>
+                            </div>
+                        @endforeach
+                    <div class="col-sm-12">
+                        {{$product->links()}}
+                    </div>
             </div>
-    </div>
             @else
                 {{-- Tìm kiếm sản phẩm theo tên --}}
                 <div class="row">

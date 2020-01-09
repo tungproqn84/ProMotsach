@@ -30,7 +30,7 @@
     <script src="../layout/assets/dest/js/custom2.js"></script>
     <style>
         body{
-            font-size: 15px;
+            font-size: 17px;
         }
     </style>
 </body>
