@@ -25,3 +25,13 @@ function show(id) {
         }
     });
 }
+function edit(id) {
+    $.ajax({
+        url: '/edit-product/' + id,
+        type: "GET",
+        success: function(result){
+            $('#FunctionProduct').html("");
+            $('#FunctionProduct').html(result);
+        }
+    });
+}
