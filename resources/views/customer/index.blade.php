@@ -108,7 +108,7 @@
             <div class="col-sm-9">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4>Sản phẩm bán chạy <hr></h4>
+                        <h4>Sản phẩm khuyến mãi <hr></h4>
 
                     </div>
                 </div>
@@ -156,7 +156,6 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h4>Sản phẩm khác <hr></h4>
-
                     </div>
                 </div>
                 <div class="row" id=box-product>

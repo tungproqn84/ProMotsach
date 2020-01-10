@@ -209,12 +209,9 @@ class MyController extends Controller
             $product->PSale      = 0;
             $product->PBuy       = 0;
             $product->save();
-<<<<<<< HEAD
             $products = Product::all();
             return view('admin.product', compact('products'));
 
-=======
->>>>>>> 36275eccd97e20869406b024003e591ab033c011
         }
             $products = Product::all();
             return view('admin/product', compact('products'));
