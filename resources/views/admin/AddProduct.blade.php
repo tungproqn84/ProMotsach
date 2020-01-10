@@ -65,8 +65,8 @@
                                 </li>
                                 <li><label for="Status">Trạng thái</label></li>
                                 <li>
-                                    <input type="radio" id="Status" name="Status" value="0">Kích hoạt
-                                    <input type="radio" id="Status" name="Status" value="1">Tạm hoãn
+                                    <input type="radio" id="Status" name="Status" value="1">Kích hoạt
+                                    <input type="radio" id="Status" name="Status" value="0">Tạm hoãn
                                 </li>
                             </ul>
                         </div>
