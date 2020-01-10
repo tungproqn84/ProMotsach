@@ -112,6 +112,15 @@ Route::GET('/edit-product/{product_id}', [
     'as'   => 'admin-edit-product',
     'uses' => 'MyController@EditProduct'
 ]);
+// update product
+Route::GET('/update-product', [
+    'as' => 'update-product',
+    'uses' => 'MyController@UpdateProduct'
+]);
+Route::POST('/update-product', [
+    'as' => 'update-product',
+    'uses' => 'MyController@UpdateProduct'
+]);
 
 // route thể loại
 Route::GET('/category', [
