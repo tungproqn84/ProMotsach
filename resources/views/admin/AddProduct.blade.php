@@ -49,7 +49,7 @@
                                     <!-- <input type="text" id="Category" name="Category"> -->
                                     <select name="Category" id="Category">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->CategoryID }}">{{ $category->CategoryName }}</option>
+                                            <option value="{{ $category->CategoryyID }}">{{ $category->CategoryName }}</option>
                                         @endforeach
                                     </select>
                                 </li>
@@ -58,7 +58,7 @@
                                 <li><label for="Amount">Số lượng</label></li>
                                 <li><input type="text" id="Amount" name="Amount"></li>
                                 <li><label for="Image">Ảnh minh họa</label></li>
-                                <li><input type="file" id="Image" name="Image" require="true"></li>
+                                <li><input type="text" id="Image" name="Image"></li>
                                 <li><label for="Detail">Chi tiết</label></li>
                                 <li>
                                     <textarea name="Detail" id="Detail"></textarea>
