@@ -280,6 +280,7 @@ class MyController extends Controller
         $PIDs = implode(",", $array);
         $products = Product::whereIn('PID', [$PIDs])->get()->paginate(8);
         print $products; die();
+        $products = Product::whereIn('PID', [2,8])->orderBy('PID', 'ASC')->get();
         $billDate    = Carbon::now();
         return view('admin.showBill', compact('bill', 'customer', 'billDate', 'orders', 'products'));
     }
