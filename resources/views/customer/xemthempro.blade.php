@@ -38,7 +38,7 @@
         </a>
       </div>
     <div class="container-fluid">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="row" id="menu-box">
                 <div class="col-sm-12">
                     <h6>☰ DANH MỤC</h6>
@@ -55,10 +55,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9 well">
             {{-- Xem thêm sản phẩm khác --}}
             @if($type=='product')
-            <div class="row">
+            <div class="row ">
 
                 <div class="col-sm-12">
                     @if($id==1)
@@ -136,13 +136,44 @@
                         {{$product->links()}}
                     </div>
             </div>
+            @elseif($type=='group')
+            {{-- Xem theo loại sách --}}
+            <div class="row">
+                <div class="col-sm-4">
+                <h4>{{$name}}</h4>
+                </div>
+                <div class="col-sm-8">
+                    <span style="float: right">Trang này có: {{count($product)}} tác phẩm</span>
+                </div>
+            </div><hr>
+            <div class="row" id=box-product>
+
+                        @foreach ($product as $pd )
+                            <div class="col-sm-3 col-6 thumbnail">
+                                <img src="{{$pd->PImage}}" id="image">
+                                <div class="caption">
+                                <center><h5>{{$pd->PName}}</h5></center>
+                                <center>{{number_format($pd->PPrice)}}</center>
+                                <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Detail</a></p>
+                                </div>
+                            </div>
+                        @endforeach
+                    <div class="col-sm-12">
+                        {{$product->links()}}
+                    </div>
+            </div>
             @else
                 {{-- Tìm kiếm sản phẩm theo tên --}}
                 <div class="row">
+                    @if (count($product)==0)
+                    <div class="col-sm-12">
+                    <span>Không tìm thấy sản phẩm nào. <a href="{{Route('home')}}">Xem sản phẩm khác ngay</a> </span>
+                    </div>
+                    @else
                     <div class="col-sm-12">
                         <h4>Kết quả tìm kiếm có {{count($product)}} sản phẩm <hr></h4>
-
                     </div>
+                    @endif
                 </div>
                 <div class="row" id=box-product>
                             @foreach ($product as $pd )

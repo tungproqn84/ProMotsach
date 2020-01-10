@@ -203,7 +203,7 @@ class MyController extends Controller
             $product->save();
             $products = Product::all();
             return view('admin.product', compact('products'));
-            
+
         }
     }
 
@@ -278,7 +278,8 @@ class MyController extends Controller
             $array[] = (int)$row->PID;
         }
         $PIDs = implode(",", $array);
-        $products = Product::whereIn('PID', [$PIDs])->orderBy('PID', 'ASC')->get();
+        $products = Product::whereIn('PID', [$PIDs])->get()->paginate(8);
+        print $products; die();
         $billDate    = Carbon::now();
         return view('admin.showBill', compact('bill', 'customer', 'billDate', 'orders', 'products'));
     }
@@ -301,7 +302,7 @@ class MyController extends Controller
         $product=Product::where('PID', $id)->first();
         $idmore=$product->PCategory;
         $more_product=Product::where('PCategory', $idmore)->limit(4)->get();
-        $comments=Comment::paginate(10);
+        $comments=Comment::where('PID', $id)->paginate(10);
         $users=Customer::all();
         return view('customer/detailproduct', compact('product', 'cat', 'slide', 'more_product', 'comments', 'users'));
         $cat          = Category::all();
@@ -347,23 +348,19 @@ class MyController extends Controller
             else
                 $price = $product->PPrice - $product->PPrice*$product->PSale;
                 $image = $product->PImage;
-                    //   print_r($product); die();
-<<<<<<< HEAD
+                //   print_r($product); die();
             Cart::add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
             $cart = Cart::content();
             $pro=Product::all();
             return view('customer/cart', array('cart' => $cart,'product'=>$product), compact('pro', 'cat'));
-=======
-                Cart:: add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
-                $cart = Cart:: content();
-                $pro =Product:: all();
-                return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
->>>>>>> 28f31fc4cb9dd1d352e5953db568b362c3733f2c
+            Cart:: add(array('id' => $id, 'name' => $product->PName, 'qty' => 1, 'price' => $price,'image'=>$image, 'weight'=>0));
+            $cart = Cart:: content();
+            $pro =Product:: all();
+            return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
         }
         else
             return redirect('login');
 
-<<<<<<< HEAD
         $price=$product->PPrice - $product->PPrice*$product->PSale;
         $image=$product->PImage;
         //   print_r($product); die();
@@ -371,7 +368,6 @@ class MyController extends Controller
         $cart = Cart::content();
         $pro=Product::all();
         return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro', 'cat'));
-=======
             $price = $product->PPrice - $product->PPrice*$product->PSale;
             $image = $product->PImage;
                 //   print_r($product); die();
@@ -379,7 +375,6 @@ class MyController extends Controller
             $cart = Cart:: content();
             $pro =Product:: all();
             return view('customer/cart', array('cart' => $cart,'product'=>$product),compact('pro'));
->>>>>>> 28f31fc4cb9dd1d352e5953db568b362c3733f2c
     }
     public function deletecart()
     {
@@ -403,13 +398,16 @@ class MyController extends Controller
     //mua sản phẩm
     public function buy(){
         $carts        = Cart::content();
-        $total        = Cart::subtotal();
+        $totalget        = Cart::subtotal();
+        $totalex=(explode(',', $totalget));
+        $total=(int) implode($totalex);
         $hd           = new Bill();
         $hd->CusID    = Session::get('id');
         $hd->BillDate = now();
         $hd->Total    = $total;
         $hd->save();
-        foreach($carts as $cart){
+        foreach($carts as $cart)
+        {
             $id             = Bill::max('Bill_ID');
             $order          = new Order();
             $order->OrderID = $id;
@@ -431,7 +429,6 @@ class MyController extends Controller
     //xem theo tên giác giả
     public function getauthor($author)
     {
-<<<<<<< HEAD
         $product=Product::where('PAuthor', $author)->paginate(8);
         $cat=Category::all();
         $slide=Slide::all();
@@ -445,13 +442,22 @@ class MyController extends Controller
         $cat=Category::all();
         $slide=Slide::all();
         $type='category';
-=======
-        $product = Product::where('PAuthor', $author)->paginate(8);
-        $cat     = Category::all();
-        $slide   = Slide::all();
-        $type    = 'author';
->>>>>>> 28f31fc4cb9dd1d352e5953db568b362c3733f2c
         return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type'));
+    }
+    //Xem theo loại
+    public function getportfolio($id)
+    {
+        $product=Product::where('PPortfolio', $id)->paginate(8);
+        $cat=Category::all();
+        $slide=Slide::all();
+        $type    = 'group';
+        if($id==6)
+            $name='SÁCH MỚI';
+        elseif($id==7)
+            $name='SÁCH CŨ';
+        else
+            $name='GIÁO TRÌNH';
+        return view('customer/xemthempro', compact('product', 'cat', 'slide', 'type', 'name'));
     }
     //feedback
     public function getfeedback()
@@ -520,7 +526,7 @@ class MyController extends Controller
             $cmt->PID=$idproduct;
             $cmt->Comment=$comment;
             $cmt->save();
-            return redirect("detailproduct/$id");
+            return redirect("detailproduct/$idproduct");
         }
        else
         {

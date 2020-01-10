@@ -39,37 +39,39 @@
         </a>
     </div>
     <div class="container">
-
         <div class="row">
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <div class="caption01">
-                        <h4>Sách mới</h4>
-                        <p>short thumbnail description</p>
-                        <p><a href="" class="label label-danger">Zoom</a>
-                        <a href="" class="label label-default">Download</a></p>
+                        <span id="type">Sách mới</span><br>
+                        <a href="../group/6"><button class="btn btn-success" id="title">Xem ngay</button></a>
                     </div>
-                    <img src="https://hocluat.vn/online/wp-content/uploads/2018/05/giao-trinh.jpg"></div>
+                    <div id="image2">
+                        <img src="../image/new01.jpg">
+                    </div>
+                </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <div class="caption01">
-                        <h4>Sách mới</h4>
-                        <p>short thumbnail description</p>
-                        <p><a href="" class="label label-danger">Zoom</a>
-                        <a href="" class="label label-default">Download</a></p>
+                        <span id="type">Sách cũ</span><br>
+                        <a href="../group/7"><button class="btn btn-success" id="title">Xem ngay</button></a>
                     </div>
-                    <img src="https://hocluat.vn/online/wp-content/uploads/2018/05/giao-trinh.jpg"></div>
+                    <div id="image2">
+                        <img src="../image/old.jpg">
+                    </div>
+                </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <div class="caption01">
-                        <h4>Sách mới</h4>
-                        <p>short thumbnail description</p>
-                        <p><a href="" class="label label-danger">Zoom</a>
-                        <a href="" class="label label-default">Download</a></p>
+                        <span id="type">Giáo trình</span><br>
+                        <a href="../group/8"><button class="btn btn-success" id="title">Xem ngay</button></a>
                     </div>
-                    <img src="https://hocluat.vn/online/wp-content/uploads/2018/05/giao-trinh.jpg"></div>
+                    <div id="image2">
+                        <img src="../image/giaotrinh.jpg">
+                    </div>
+                </div>
             </div>
         </div>
     </div><!-- /.container -->

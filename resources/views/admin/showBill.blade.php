@@ -73,7 +73,7 @@
             <div class="col-sm-6 offset-sm-6">sss</div>
         </div>
     </div>
-    
+
     <script
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
