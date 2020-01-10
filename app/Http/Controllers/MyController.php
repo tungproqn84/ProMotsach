@@ -184,25 +184,32 @@ class MyController extends Controller
         return redirect()->back();
     }
 
-    // sửa thể loại
+    // sửa sản phẩm
     public function EditProduct($product_id){
         $portfolios = Portfolio::all();
         $categories = Category::all();
         $product    = Product::where('PID', $product_id)->first();
         return view('admin.editProduct', compact('product','portfolios', 'categories'));
     }
-    // cập nhật thể loại
+    // cập nhật sản phẩm
     public function UpdateProduct(Request $request) {
         $product = Product::where('PID', $request->PID)->first();
         if(isset($product)) {
-            $product->CategoryName        = $request->CategoryName;
-            $product->CategoryDescription = $request->CategoryDescription;
-            $product->CategoryStatus      = $request->CategoryStatus;
+            $product->PName      = request('ProductName');
+            $product->PAuthor    = request('Author');
+            $product->PAmount    = request('Amount');
+            $product->PPortfolio = request('Portfolio');
+            $product->PCategory  = request('Category');
+            $product->PImage     = request('Image');
+            $product->PDetail    = request('Detail');
+            $product->PStatus    = request('Status');
+            $product->PPrice     = request('Price');
+            $product->PSale      = 0;
+            $product->PBuy       = 0;
             $product->save();
-            $products = Product::all();
-            return view('admin.product', compact('products'));
-            
         }
+            $products = Product::all();
+            return view('admin/product', compact('products'));
     }
 
     // Trang thể loại

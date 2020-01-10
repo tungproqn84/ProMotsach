@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <form action="{{ route('insert-product') }}" method="post">
+    <form action="{{ route('update-product') }}" method="post">
     {{csrf_field()}}
         <div class="container">
             <div class="row" id="InfomationBox">
@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <ul>
-                                <input type="hidden" id="ProductID" name="ProductID" value="{{ $product->PID }}">
+                                <input type="hidden" id="PID" name="PID" value="{{ $product->PID }}">
 
                                 <li><label for="ProductName">Tên sách</label></li>
                                 <li><input type="text" id="ProductName" name="ProductName" value="{{ $product->PName }}"></li>
@@ -54,9 +54,9 @@
                                     <select name="Category" id="Category">
                                         @foreach($categories as $category)
                                             @if($category->CategoryyID = $product->PCategory)
-                                                <option value="{{ $category->CategoryID }}" selected>{{ $category->CategoryName }}</option>
+                                                <option value="{{ $category->CategoryyID }}" selected>{{ $category->CategoryName }}</option>
                                             @else
-                                                <option value="{{ $category->CategoryID }}">{{ $category->CategoryName }}</option>
+                                                <option value="{{ $category->CategoryyID }}">{{ $category->CategoryName }}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -88,7 +88,7 @@
                         <div class="col-sm-8 offset-sm-4" id="action">
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="submit" class="btn btn-primary" value="Thêm sản phẩm">
+                                    <input type="submit" class="btn btn-primary" value="Xác nhận chỉnh sửa">
                                 </div>
                                 <div class="col-6">
                                     <button class="btn btn-danger">Hủy bỏ</button>
