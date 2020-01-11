@@ -23,6 +23,7 @@
                     <a href="{{ route('admin-product') }}" class="list-group-item list-group-item-action bg-light"><i class="fab fa-product-hunt"></i> Sản phẩm</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-piggy-bank"></i> Khuyến mãi</a>
                     <a href="{{ route('admin-bill') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-file-invoice"></i> Đơn hàng</a>
+                    <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-home"></i> Mọt sách</a>
                 </div>
                 <div class="sidebar-footing">
                     <ul>

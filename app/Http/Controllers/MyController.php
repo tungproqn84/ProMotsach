@@ -24,9 +24,16 @@ class MyController extends Controller
 // CONTROLLER ADMIN
     // gọi trang chủ
     public function getHomePage() {
+        if(Session::get('user')!='Admin')
+        {
+            return redirect(Route('login'));
+        }
+        else
+        {
         $count_customer = Customer::count();
         $count_product  = Product::count();
         return view('admin/home', compact('count_customer', 'count_product'));
+        }
     }
 
     // gọi trang khách hàng
@@ -81,14 +88,14 @@ class MyController extends Controller
     {
         $xacnhan = array('email'=>$rq->email,'password'=>$rq->password);
         if (($rq->email)=='admin') {
-            Session:: put('user', 'Admin');
+            Session::put('user', 'Admin');
             return redirect(Route('admin-home'));
         }
         else {
             if (Auth::attempt($xacnhan)) {
-                $user=User:: where('email', $rq->email)->first();
-                      Session:: put('user', $user->name);
-                      Session:: put('id', $user->id);
+                $user=User::where('email', $rq->email)->first();
+                      Session::put('user', $user->name);
+                      Session::put('id', $user->id);
                 return redirect(Route('home'));
             } else {
                 $notice="Sai tên đăng nhập hoặc mật khẩu";
@@ -100,7 +107,7 @@ class MyController extends Controller
     //logout
     public function getlogout(){
         Session:: flush();
-        return redirect(Route('login'));
+        return redirect(Route('home'));
     }
     //endlogout
     //signin
