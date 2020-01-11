@@ -17,11 +17,11 @@
 </head>
 <body>
 
-    <form action="{{ route('insert-category') }}" method="POST">
+    <form action="{{ route('update-category') }}" method="POST">
         {{csrf_field()}}
         <div class="container">
             <div class="row" id="FormAddCategory">
-                    <div class="col-sm-9 offset-sm-1 col-12" id="titleBox"><span>THÊM THỂ LOẠI</span><hr></div>
+                    <div class="col-sm-9 offset-sm-1 col-12" id="titleBox"><span>SỬA THỂ LOẠI</span><hr></div>
                     <input type="hidden" name="CategoryID" id="CategoryID" value="{{ $category->CategoryyID }}">
                     <div class="col-sm-9 offset-sm-1 col-12">
                         <label for="CategoryName" value="">Tên thể loại</label><br>
@@ -45,7 +45,7 @@
                     <div class="col-sm-9 offset-sm-1 col-12">
                         <div class="row" id="button">
                             <div class="col-6">
-                                <input type="submit" name="btnAddCategory" class="btn btn-primary" value="Tạo mới danh mục">
+                                <input type="submit" name="btnAddCategory" class="btn btn-primary" value="Xác nhận">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-danger">Hủy bỏ</button>

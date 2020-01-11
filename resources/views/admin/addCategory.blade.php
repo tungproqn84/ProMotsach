@@ -40,7 +40,7 @@
                     <div class="col-sm-9 offset-sm-1 col-12">
                         <div class="row" id="button">
                             <div class="col-6">
-                                <input type="submit" name="btnAddCategory" class="btn btn-primary" value="Tạo mới danh mục">
+                                <input type="submit" name="btnAddCategory" class="btn btn-primary" value="Tạo mới thể loại">
                             </div>
                             <div class="col-6">
                                 <button class="btn btn-danger">Hủy bỏ</button>

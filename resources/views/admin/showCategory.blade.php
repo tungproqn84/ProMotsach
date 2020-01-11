@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-9">
                 <div class="row">
-                    <div class="col-sm-12" id="title"><span>Chi tiết danh mục</span><hr></div>
+                    <div class="col-sm-12" id="title"><span>Chi tiết thể loại </span><hr></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12" id="portfolioInfomation">
@@ -57,7 +57,7 @@
                         <button class="btn btn-success" onclick="edit({{ $category->CategoryyID }})"><i class="fas fa-edit"></i> Sửa</button>
                     </div>
                     <div class="col-sm-12 col-4">
-                        <button class="btn btn-danger" onclick="location.href='delete-category/{{ $category->CategoryID }}'"><i class="fas fa-trash-alt"></i> Xóa</button>
+                        <button class="btn btn-danger" onclick="location.href='delete-category/{{ $category->CategoryyID }}'"><i class="fas fa-trash-alt"></i> Xóa</button>
                     </div>
                 </div>
             </div>

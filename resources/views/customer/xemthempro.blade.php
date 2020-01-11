@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mọt sách | Sản phẩm</title>
+</head>
+<body>
 @extends('customer/master')
 @section('content')
 <!DOCTYPE html>
@@ -176,19 +185,19 @@
                     @endif
                 </div>
                 <div class="row" id=box-product>
-                            @foreach ($product as $pd )
-                            <div class="col-sm-3 col-6 thumbnail">
-                                <img src="{{$pd->PImage}}" id="image">
-                                <div class="caption">
+                    @foreach ($product as $pd )
+                        <div class="col-sm-3 col-6 thumbnail">
+                            <img src="{{$pd->PImage}}" id="image">
+                            <div class="caption">
                                 <center><h5>{{$pd->PName}}</h5></center>
                                 <center>{{number_format($pd->PPrice)}}</center>
                                 <p align="center"><a href="../detailproduct/{{$pd->PID}}" class="btn btn-primary btn-block">Xem chi tiết</a></p>
-                                </div>
                             </div>
-                        @endforeach
-                        <div class="col-sm-12">
-                            {{$product->links()}}
                         </div>
+                    @endforeach
+                    <div class="col-sm-12">
+                        {{$product->links()}}
+                    </div>
                 </div>
 
             @endif
@@ -198,3 +207,6 @@
 </body>
 </html>
 @endsection
+
+</body>
+</html>

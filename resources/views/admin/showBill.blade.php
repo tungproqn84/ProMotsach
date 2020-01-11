@@ -63,8 +63,8 @@
                                 @if($order->PID == $product->PID)
                                 <td>{{ $product->PName }}</td>
                                 <td>{{ $order->Amount }}</td>
-                                <td>{{ $product->PPrice }}</td>
-                                <td>{{ $order->Amount*$product->PPrice}}</td>
+                                <td>{{ number_format($product->PPrice) }}</td>
+                                <td>{{ number_format($order->Amount*$product->PPrice)}}</td>
                                 @endif
                             @endforeach
                         </tr>

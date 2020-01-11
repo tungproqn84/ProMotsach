@@ -25,7 +25,7 @@
                 <div class="col-sm-9  offset-sm-1">
                     <div class="row">
                         <div class="col-sm-12" id="titleBox">
-                            <span>THÊM SẢN PHẨM MỚI</span><hr>
+                            <span>SỬA SẢN PHẨM</span><hr>
                         </div>
                     </div>
                     <div class="row">

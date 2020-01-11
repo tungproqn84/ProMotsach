@@ -82,7 +82,7 @@ class MyController extends Controller
         $xacnhan = array('email'=>$rq->email,'password'=>$rq->password);
         if (($rq->email)=='admin') {
             Session:: put('user', 'Admin');
-            return view('admin/home');
+            return redirect(Route('admin-home'));
         }
         else {
             if (Auth::attempt($xacnhan)) {
@@ -260,13 +260,13 @@ class MyController extends Controller
     }
     // cập nhật thể loại
     public function UpdateCategory(Request $request) {
-        $portfolio = Category::where('CategoryyID', $request->CategoryID)->first();
-        if(isset($portfolio)) {
+        $category = Category::where('CategoryyID', $request->CategoryID)->first();
+        if(isset($category)) {
             $category->CategoryName        = $request->CategoryName;
             $category->CategoryDescription = $request->CategoryDescription;
             $category->CategoryStatus      = $request->CategoryStatus;
             $category->save();
-            $categories = Portfolio::all();
+            $categories = Category::all();
             return view('admin.Category', compact('categories'));
 
         }
@@ -288,9 +288,8 @@ class MyController extends Controller
             $array[] = (int)$row->PID;
         }
         $PIDs = implode(",", $array);
-        $products = Product::whereIn('PID', [$PIDs])->get()->paginate(8);
-        print $products; die();
-        $products = Product::whereIn('PID', [2,8])->orderBy('PID', 'ASC')->get();
+        
+        $products = Product::whereIn('PID', [2,3,4,5,6,7,8,9,10,11])->orderBy('PID', 'ASC')->get();
         $billDate    = Carbon::now();
         return view('admin.showBill', compact('bill', 'customer', 'billDate', 'orders', 'products'));
     }

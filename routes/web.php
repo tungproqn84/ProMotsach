@@ -158,7 +158,15 @@ Route::GET('edit-category/{category_id}', [
     'as'   => 'admin-edit-category',
     'uses' => 'MyController@EditCategory'
 ]);
-
+// update category
+Route::GET('/update-category', [
+    'as' => 'update-category',
+    'uses' => 'MyController@UpdateCategory'
+]);
+Route::POST('/update-category', [
+    'as' => 'update-category',
+    'uses' => 'MyController@UpdateCategory'
+]);
 
 // trang hóa đơn
 Route::GET('/bill', [
